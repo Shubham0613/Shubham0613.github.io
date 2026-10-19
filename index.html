@@ -3,59 +3,78 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#070914">
-<meta name="description" content="Shubham Creator Hub — AI, technology, digital creativity and projects.">
-<title>Shubham Creator Hub | Explore Beyond Limits</title>
+<meta name="description" content="Shubham Gawande — AI, data analytics, IT operations, networking and creator projects.">
+<title>Shubham Creator Hub — Explore Beyond Limits</title>
 <style>
-:root{--bg:#070914;--panel:#101426;--text:#f4f6ff;--muted:#a2abc5;--cyan:#62e8ff;--purple:#a78bfa}
+:root{color-scheme:dark;--bg:#070914;--text:#f4f6ff;--muted:#a6afc9;--cyan:#62e8ff;--purple:#a78bfa;--line:#ffffff18}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:85px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,Segoe UI,Arial,sans-serif;line-height:1.65}
-body:before{content:"";position:fixed;inset:0;z-index:-2;background:radial-gradient(ellipse at 15% 20%,#172354 0,transparent 42%),radial-gradient(ellipse at 85% 55%,#271544 0,transparent 40%),#070914}
+html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.65;overflow-x:hidden}
+body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 15% 18%,#172354 0,transparent 42%),radial-gradient(ellipse at 85% 55%,#271544 0,transparent 40%),#070914}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:17px 7%;background:#070914d9;backdrop-filter:blur(16px);border-bottom:1px solid #ffffff12}
-.logo{font-weight:800;letter-spacing:.3px}.logo span{color:var(--cyan)}
-.links{display:flex;gap:22px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.links a:hover,.muted:hover{color:var(--cyan)}
-.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:95px 20px 75px;position:relative;overflow:hidden}
-.hero:before{content:"";position:absolute;width:340px;height:340px;border:1px solid #62e8ff30;border-radius:50%;box-shadow:0 0 90px #7860ff20;animation:orbit 18s linear infinite}
-.hero-inner{max-width:850px;position:relative}
-.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:4px;font-size:12px;font-weight:700}
-h1{font-size:clamp(42px,8vw,82px);line-height:1.08;letter-spacing:-3px;margin:22px 0}
-.gradient{background:linear-gradient(100deg,#fff,var(--cyan),var(--purple));color:transparent;background-clip:text}
+nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 7%;background:#070914e8;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
+.logo{font-weight:850;letter-spacing:.5px;white-space:nowrap}.logo span{color:var(--cyan)}
+.links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.links a:hover{color:var(--cyan)}
+.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:95px 20px;position:relative;overflow:hidden}
+.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid #62e8ff24;border-radius:50%;width:min(66vw,520px);aspect-ratio:1;animation:orbit 36s linear infinite}
+.hero:after{width:min(48vw,370px);border-color:#a78bfa28;animation-direction:reverse;animation-duration:26s}
+.hero-inner{max-width:900px;position:relative;z-index:1}
+.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}
+h1{font-size:clamp(43px,8vw,86px);line-height:1.04;letter-spacing:-3px;margin:22px 0}
+.gradient{background:linear-gradient(100deg,#fff,var(--cyan),var(--purple));color:transparent;background-clip:text;-webkit-background-clip:text}
 p{color:var(--muted)}
-.hero p{max-width:620px;margin:20px auto 28px;font-size:17px}
-.actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:28px}
-.btn{padding:12px 20px;border-radius:9px;border:1px solid #ffffff2a;display:inline-block;font-size:14px;font-weight:700;transition:.25s}
+.hero p{max-width:680px;margin:22px auto 28px;font-size:clamp(15px,2vw,18px)}
+.actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:27px}
+.btn{padding:11px 18px;border-radius:10px;border:1px solid #ffffff30;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:750;transition:.25s}
 .primary{background:linear-gradient(110deg,#60dfff,#a78bfa);color:#090b18;border:0}
-.btn:hover{transform:translateY(-3px);box-shadow:0 8px 30px #62e8ff25}
-section{padding:75px 7%;max-width:1250px;margin:auto}
-.section-head{margin-bottom:30px}
-.section-head h2{font-size:clamp(28px,4vw,42px);margin:8px 0}
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:17px}
-.card{background:linear-gradient(145deg,#151b31d9,#0d1020eF);border:1px solid #ffffff12;border-radius:16px;padding:24px;transition:.3s}
-.card:hover{transform:translateY(-5px);border-color:#62e8ff70}
-.icon{font-size:28px}.card h3{margin:12px 0 6px}.card p{font-size:14px}
-.tag{display:inline-block;font-size:11px;padding:4px 9px;border:1px solid #62e8ff45;border-radius:20px;color:var(--cyan);margin-top:8px}
-.about{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
-.feature{border-radius:18px;padding:30px;background:linear-gradient(135deg,#172448,#21153b);border:1px solid #ffffff17}
-.feature strong{font-size:22px}
-footer{text-align:center;padding:35px 20px;border-top:1px solid #ffffff13;color:var(--muted);font-size:13px}
-.reveal{animation:rise .8s both}
-@keyframes rise{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.btn:hover{transform:translateY(-3px);border-color:#62e8ff88;box-shadow:0 8px 30px #62e8ff20}
+section{padding:76px 7%;max-width:1280px;margin:auto}
+.section-head{margin-bottom:28px}
+.section-head h2{font-size:clamp(29px,4vw,43px);line-height:1.15;margin:8px 0}
+.section-head p{max-width:690px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));gap:17px}
+.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#151b31e8,#0d1020f2);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .3s,border-color .3s}
+.card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,#62e8ff0c,transparent 55%)}
+.card:hover{transform:translateY(-5px);border-color:#62e8ff65}
+.card h3{margin:10px 0 6px;font-size:19px}
+.card p{font-size:14px}
+.icon{font-size:27px}
+.tag{display:inline-block;font-size:11px;padding:4px 9px;border:1px solid #62e8ff45;border-radius:30px;color:var(--cyan);margin:5px 5px 0 0}
+.about{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
+.feature{border-radius:20px;padding:30px;background:linear-gradient(135deg,#172448,#21153b);border:1px solid #ffffff20;box-shadow:0 20px 70px #0003}
+.feature strong{font-size:23px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
+.stat{padding:13px;border:1px solid var(--line);border-radius:12px;background:#080c1a70}
+.stat strong{display:block;font-size:23px;color:var(--cyan)}
+.stat span{font-size:11px;color:var(--muted)}
+.project-link{margin-top:12px}
+.notice{font-size:12px;border-left:2px solid var(--purple);padding:8px 12px;margin-top:18px}
+.video-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.video-mark{display:grid;place-items:center;width:76px;height:76px;flex:0 0 76px;border-radius:20px;background:linear-gradient(135deg,#16284a,#352052);font-size:32px}
+footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+#starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
 @keyframes orbit{to{transform:rotate(360deg)}}
-@media(max-width:650px){nav{align-items:flex-start;flex-direction:column}.links{gap:13px}.hero{min-height:70vh}.about{grid-template-columns:1fr}h1{letter-spacing:-1.5px}section{padding:55px 6%}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+@media(max-width:700px){nav{align-items:flex-start;flex-direction:column;padding:14px 6%}.links{gap:12px;font-size:12px}.hero{min-height:70vh;padding-top:80px}h1{letter-spacing:-1.5px}.about{grid-template-columns:1fr}section{padding:55px 6%}.stats{grid-template-columns:repeat(3,1fr)}.stat strong{font-size:19px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
 </head>
 <body>
+<canvas id="starfield" aria-hidden="true"></canvas>
+
 <nav>
   <a class="logo" href="#home">SHUBHAM<span>.</span>HUB</a>
-  <div class="links">
-    <a href="#home">Home</a><a href="#about">About</a>
-    <a href="#projects">Projects</a><a href="#studio">AI Studio</a>
-    <a href="#videos">Videos</a><a href="#contact">Contact</a>
+  <div class="links" aria-label="Main navigation">
+    <a href="#home">Home</a>
+    <a href="#about">About</a>
+    <a href="#projects">Projects</a>
+    <a href="#studio">Creator Studio</a>
+    <a href="#videos">YouTube</a>
+    <a href="#contact">Contact</a>
   </div>
 </nav>
 
@@ -63,90 +82,138 @@ footer{text-align:center;padding:35px 20px;border-top:1px solid #ffffff13;color:
   <div class="hero-inner reveal">
     <div class="eyebrow">Technology · Creativity · AI</div>
     <h1>Explore Beyond<br><span class="gradient">The Ordinary.</span></h1>
-    <p>A personal digital hub for technology projects, AI experiments, creator resources and ideas that turn curiosity into something real.</p>
+    <p>A cinematic home for my technology projects, data insights, AI experiments and creator journey. Learn, build and create — all in one place.</p>
     <div class="actions">
-      <a class="btn primary" href="#projects">Explore Projects ↗</a>
-      <a class="btn" href="#studio">Discover the Studio</a>
+      <a class="btn primary" href="#projects">Explore My Projects ↗</a>
+      <a class="btn" href="#videos">Explore My Channels ↓</a>
     </div>
   </div>
 </header>
 
 <section id="about">
   <div class="about">
-    <div>
-      <div class="eyebrow">A little about me</div>
-      <h2>Building at the intersection of <span class="gradient">AI and technology.</span></h2>
+    <div class="reveal">
+      <div class="eyebrow">The person behind the projects</div>
+      <h2>Building at the intersection of <span class="gradient">data, IT and creativity.</span></h2>
       <p>I'm Shubham Gawande, an IT graduate interested in data analytics, business intelligence, IT operations, networking and AI-powered content creation.</p>
-      <p>This website brings my projects, learning journey and digital creations together in one place.</p>
-      <a class="btn" href="#contact">Connect with me →</a>
+      <p>This is my public hub for practical projects, technical learning and digital media. I'll keep expanding it as I build and publish more.</p>
+      <div class="actions" style="justify-content:flex-start">
+        <a class="btn" href="https://github.com/Shubham0613" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+        <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      </div>
     </div>
-    <div class="feature">
+    <div class="feature reveal">
       <div class="icon">✦</div>
       <strong>Learn. Build. Create.</strong>
-      <p>Practical projects, useful resources and experiments designed to make technology more accessible.</p>
-      <span class="tag">Always exploring</span>
+      <p>Practical projects and useful experiments, with a focus on turning technology into understandable outcomes.</p>
+      <span class="tag">Data & BI</span>
+      <span class="tag">IT Operations</span>
+      <span class="tag">AI Creator</span>
     </div>
   </div>
 </section>
 
 <section id="projects">
-  <div class="section-head">
+  <div class="section-head reveal">
     <div class="eyebrow">Selected work</div>
     <h2>Projects & <span class="gradient">experiments.</span></h2>
-    <p>Explore my technology and analytics work.</p>
+    <p>Real portfolio work across analytics, IT operations and technology.</p>
   </div>
   <div class="grid">
-    <article class="card">
-      <div class="icon">📊</div><h3>AI-IT Operations Analytics</h3>
-      <p>A Power BI, Excel and SQL project exploring incident trends, SLA compliance, service quality and operational insights.</p>
-      <a class="btn" href="https://app.powerbi.com/view?r=eyJrIjoiYjFhNjliNmUtZTI0Ni00Y2UxLWJjOTctNjdjMzQyYjQwN2UwIiwidCI6Ijg3MGY4ZTE2LTllMWQtNDNjNi1hZGUwLWMxMDY1ODAxYTc2MiJ9" target="_blank" rel="noopener noreferrer">View Dashboard ↗</a>
+    <article class="card reveal">
+      <div class="icon">📊</div>
+      <h3>AI-IT Operations Analytics</h3>
+      <p>A Power BI, Excel and SQL portfolio project analyzing 1,500 IT incident records, resolution trends, SLA performance and service quality.</p>
+      <div class="stats">
+        <div class="stat"><strong>1,500</strong><span>Total tickets</span></div>
+        <div class="stat"><strong>977</strong><span>Resolved tickets</span></div>
+        <div class="stat"><strong>91.8%</strong><span>SLA compliance</span></div>
+      </div>
+      <div><span class="tag">Power BI</span><span class="tag">SQL</span><span class="tag">Excel</span></div>
+      <div class="project-link">
+        <a class="btn primary" href="https://app.powerbi.com/view?r=eyJrIjoiYjFhNjliNmUtZTI0Ni00Y2UxLWJjOTctNjdjMzQyYjQwN2UwIiwidCI6Ijg3MGY4ZTE2LTllMWQtNDNjNi1hZGUwLWMxMDY1ODAxYTc2MiJ9" target="_blank" rel="noopener noreferrer">Open Live Dashboard ↗</a>
+      </div>
     </article>
-    <article class="card">
-      <div class="icon">🧠</div><h3>AI & Digital Tools</h3>
-      <p>Experiments with AI assistants, productivity workflows, content generation and practical automation.</p>
-      <span class="tag">More projects coming</span>
+    <article class="card reveal">
+      <div class="icon">🧠</div>
+      <h3>AI & Digital Creator Tools</h3>
+      <p>A growing collection of experiments with AI assistants, creative workflows, prompt design and digital productivity.</p>
+      <span class="tag">AI tools</span><span class="tag">Productivity</span>
     </article>
-    <article class="card">
-      <div class="icon">🌐</div><h3>IT & Networking</h3>
-      <p>A growing collection of technical learning, networking concepts, troubleshooting and IT operations work.</p>
-      <span class="tag">Technology</span>
+    <article class="card reveal">
+      <div class="icon">🌐</div>
+      <h3>IT & Networking</h3>
+      <p>Technical learning and projects around network fundamentals, IP addressing, troubleshooting and IT operations.</p>
+      <span class="tag">Networking</span><span class="tag">IT support</span>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🔧</div>
+      <h3>Fintrack-AI</h3>
+      <p>A developing web-app project exploring a modern application stack with Next.js, Prisma, PostgreSQL and Supabase.</p>
+      <span class="tag">Next.js</span><span class="tag">PostgreSQL</span>
     </article>
   </div>
 </section>
 
 <section id="studio">
-  <div class="section-head">
+  <div class="section-head reveal">
     <div class="eyebrow">Creator workspace</div>
-    <h2>Your ideas, <span class="gradient">in progress.</span></h2>
-    <p>This section is the starting point for a future AI-powered creation workspace.</p>
+    <h2>Ideas become <span class="gradient">experiments.</span></h2>
+    <p>A preview of the tools and resources planned for this hub. These cards are informational for now; AI generation is not connected yet.</p>
   </div>
   <div class="grid">
-    <article class="card"><div class="icon">✍️</div><h3>Script Workshop</h3><p>Plan video scripts, hooks, outlines and narration.</p></article>
-    <article class="card"><div class="icon">🎬</div><h3>Video Ideas</h3><p>Develop concepts, titles, descriptions and storyboards.</p></article>
-    <article class="card"><div class="icon">✨</div><h3>Prompt Library</h3><p>Organize reusable prompts for AI tools and creative projects.</p></article>
+    <article class="card reveal">
+      <div class="icon">✍️</div>
+      <h3>Script Workshop</h3>
+      <p>Shape video hooks, outlines, narration and story ideas.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">🎬</div>
+      <h3>Video Production</h3>
+      <p>Plan concepts, titles, descriptions, thumbnails and storyboards.</p>
+    </article>
+    <article class="card reveal">
+      <div class="icon">✨</div>
+      <h3>Prompt Library</h3>
+      <p>Collect reusable prompts for research, AI tools and creative workflows.</p>
+    </article>
   </div>
-  <p><strong>Note:</strong> These are currently informational sections, not live AI generators. Secure AI integration can be added in a later stage.</p>
+  <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
 </section>
 
 <section id="videos">
-  <div class="section-head">
-    <div class="eyebrow">Watch & learn</div>
-    <h2>Video <span class="gradient">library.</span></h2>
-    <p>Videos and tutorials will appear here as they are published.</p>
+  <div class="section-head reveal">
+    <div class="eyebrow">My YouTube channels</div>
+    <h2>Two worlds. <span class="gradient">One creator hub.</span></h2>
+    <p>Explore my two channels: practical AI and technology, plus mysteries and stories from our world.</p>
   </div>
-  <div class="card">
-    <div class="icon">▶️</div>
-    <h3>Discover my YouTube content</h3>
-    <p>Visit my channel for videos, experiments and creator projects. Replace this link with your actual channel URL when ready.</p>
-    <a class="btn" href="https://www.youtube.com/" target="_blank" rel="noopener noreferrer">Explore YouTube ↗</a>
+  <div class="grid">
+    <article class="card video-card reveal">
+      <div class="video-mark" aria-hidden="true">🤖</div>
+      <div style="flex:1;min-width:220px">
+        <span class="tag">AI · Technology · Productivity</span>
+        <h3>Mind Over Machines</h3>
+        <p>AI tools, digital creativity and practical technology content.</p>
+        <a class="btn primary" href="https://www.youtube.com/@MindOverMachines.O" target="_blank" rel="noopener noreferrer">Visit Mind Over Machines ↗</a>
+      </div>
+    </article>
+    <article class="card video-card reveal">
+      <div class="video-mark" aria-hidden="true">🌍</div>
+      <div style="flex:1;min-width:220px">
+        <span class="tag">Mysteries · History · Exploration</span>
+        <h3>Project Dark Earth</h3>
+        <p>Explore mysteries, intriguing places and stories that invite you to look deeper into our world.</p>
+        <a class="btn primary" href="https://www.youtube.com/@ProjectDarkEarth" target="_blank" rel="noopener noreferrer">Visit Project Dark Earth ↗</a>
+      </div>
+    </article>
   </div>
 </section>
 
 <section id="contact">
-  <div class="section-head">
-    <div class="eyebrow">Let's connect</div>
-    <h2>Ideas start with a <span class="gradient">conversation.</span></h2>
-    <p>Find my professional work and public projects online.</p>
+  <div class="section-head reveal">
+    <div class="eyebrow">Stay connected</div>
+    <h2>Let's build something <span class="gradient">useful.</span></h2>
+    <p>Explore my public work and follow the journey as new projects and creator resources are published.</p>
   </div>
   <div class="actions" style="justify-content:flex-start">
     <a class="btn primary" href="https://github.com/Shubham0613" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
@@ -155,8 +222,72 @@ footer{text-align:center;padding:35px 20px;border-top:1px solid #ffffff13;color:
 </section>
 
 <footer>© <span id="year"></span> Shubham Creator Hub · Built to explore what's possible.</footer>
+
 <script>
-document.getElementById("year").textContent=new Date().getFullYear();
+document.getElementById("year").textContent = new Date().getFullYear();
+
+(() => {
+  const canvas = document.getElementById("starfield");
+  const ctx = canvas && canvas.getContext("2d");
+  if (!ctx) return;
+
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  let width = 0, height = 0, stars = [], frame = 0;
+
+  function resize() {
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    width = window.innerWidth;
+    height = window.innerHeight;
+    canvas.width = Math.round(width * dpr);
+    canvas.height = Math.round(height * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    stars = Array.from({length: Math.min(125, Math.floor(width * height / 8500))}, () => ({
+      x: Math.random() * width,
+      y: Math.random() * height,
+      r: Math.random() * 1.3 + .25,
+      alpha: Math.random() * .55 + .15,
+      speed: Math.random() * .16 + .025
+    }));
+    if (reduce.matches) draw(false);
+  }
+
+  function draw(animate = true) {
+    cancelAnimationFrame(frame);
+    ctx.clearRect(0, 0, width, height);
+    for (const s of stars) {
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(155,220,255,${s.alpha})`;
+      ctx.fill();
+      if (animate && !reduce.matches) {
+        s.y -= s.speed;
+        if (s.y < -2) { s.y = height + 2; s.x = Math.random() * width; }
+      }
+    }
+    if (animate && !reduce.matches) frame = requestAnimationFrame(() => draw(true));
+  }
+
+  window.addEventListener("resize", resize);
+  resize();
+  if (!reduce.matches) draw(true);
+})();
+
+(() => {
+  const items = document.querySelectorAll(".reveal");
+  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+    items.forEach(item => item.classList.add("visible"));
+    return;
+  }
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {threshold: 0.12});
+  items.forEach(item => observer.observe(item));
+})();
 </script>
 </body>
 </html>
