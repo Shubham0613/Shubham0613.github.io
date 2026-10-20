@@ -2378,57 +2378,126 @@ addEventListener("load", () => {
 </script>
 
 <script>
-/* ---------- Soft ambient music: user-started, fades in/out, single AudioContext ---------- */
+/* ---------- Ambient soundtrack: two-track playlist, autoplay attempt + first-interaction fallback ---------- */
 (() => {
-  const btn = document.getElementById("ambient-audio-toggle"), label = document.getElementById("ambient-audio-label");
-  if (!btn) return;
-  const AC = window.AudioContext || window.webkitAudioContext;
-  if (!AC) { btn.disabled = true; label.textContent = "Audio unavailable"; return; }
-  const SCALE = [220, 261.63, 329.63, 392, 329.63, 261.63, 196, 246.94, 293.66, 369.99, 293.66, 246.94];
-  let ctx = null, master = null, on = false, voices = [], timers = [], fadeTimer = 0, idx = 0;
-  const ui = state => {
+  const btn = document.getElementById("ambient-audio-toggle");
+  const label = document.getElementById("ambient-audio-label");
+  if (!btn || !label) return;
+
+  // Place these two MP3 files in the repository root beside index.html.
+  const tracks = [
+    { src: "./The_Slow_Breath.mp3", name: "The Slow Breath" },
+    { src: "./Temple_of_the_Sacred_Breath.mp3", name: "Temple of the Sacred Breath" }
+  ];
+  const audio = new Audio();
+  audio.preload = "auto";
+  audio.loop = false;
+  audio.volume = 0.34;
+
+  let enabled = false;
+  let current = 0;
+  let interactionFallbackInstalled = false;
+  let failedTracks = new Set();
+
+  const ui = (state, message) => {
     btn.setAttribute("aria-pressed", String(state));
-    btn.setAttribute("aria-label", state ? "Turn off ambient music" : "Turn on ambient music");
-    label.textContent = state ? "Soft ambient music · On" : "Enable soft ambient music";
+    btn.setAttribute("aria-label", state ? "Turn off background music" : "Turn on background music");
+    label.textContent = message || (state ? "Background music · On" : "Play background music");
   };
-  function voice(freq, t, dur, gain, lp) {
-    const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
-    o.type = "sine"; o.frequency.setValueAtTime(freq, t); f.type = "lowpass"; f.frequency.value = lp;
-    g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(gain, t + Math.min(2.2, dur / 3)); g.gain.linearRampToValueAtTime(.0001, t + dur);
-    o.connect(f); f.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .1);
-    voices.push(o); o.onended = () => { voices = voices.filter(v => v !== o); try { g.disconnect(); f.disconnect(); } catch (_) {} };
+
+  function nextTrack() {
+    if (failedTracks.size >= tracks.length) {
+      ui(false, "Music files not found");
+      enabled = false;
+      return;
+    }
+    current = (current + 1) % tracks.length;
+    if (failedTracks.has(current)) {
+      nextTrack();
+      return;
+    }
+    audio.src = tracks[current].src;
+    audio.load();
+    audio.play().catch(() => {
+      // Playback can be blocked by browser autoplay policy; the next user gesture retries it.
+      installInteractionFallback();
+    });
   }
-  function teardown() {
-    clearTimeout(fadeTimer); fadeTimer = 0; timers.forEach(clearTimeout); timers = [];
-    voices.forEach(v => { try { v.stop(); } catch (_) {} }); voices = [];
-    if (master) { try { master.disconnect(); } catch (_) {} master = null; }
-  }
-  function loop() {
-    if (!on || !ctx) return;
-    const now = ctx.currentTime;
-    voice(SCALE[idx % SCALE.length], now, 7, .03, 900);
-    if (idx % 3 === 0) voice(SCALE[(idx + 4) % SCALE.length] / 2, now, 9, .02, 600);
-    idx++; timers.push(setTimeout(loop, 4200));
-  }
-  async function start() {
-    teardown(); ctx = ctx || new AC();
-    await ctx.resume();
-    master = ctx.createGain(); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.linearRampToValueAtTime(.45, ctx.currentTime + 3); /* gentle 3s fade-in, modest volume */
-    master.connect(ctx.destination);
-    voice(55, ctx.currentTime, 3600, .05, 220); voice(82.41, ctx.currentTime, 3600, .035, 220); /* low drone pad */
-    on = true; ui(true); loop();
-  }
-  function stop() {
-    on = false; ui(false); timers.forEach(clearTimeout); timers = [];
-    if (master && ctx) { const g = master.gain, t = ctx.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(0, t + 1.2); }
-    fadeTimer = setTimeout(() => { teardown(); if (ctx && ctx.state === "running") ctx.suspend(); }, 1400);
-  }
-  btn.addEventListener("click", async () => {
-    if (on) { stop(); return; }
-    try { await start(); } catch (_) { on = false; ui(false); label.textContent = "Audio blocked — try again"; }
+
+  audio.addEventListener("ended", () => {
+    if (!enabled) return;
+    nextTrack();
   });
-})();
-</script>
+  audio.addEventListener("error", () => {
+    failedTracks.add(current);
+    if (enabled) nextTrack();
+  });
+
+  async function playMusic() {
+    enabled = true;
+    if (failedTracks.size >= tracks.length) {
+      ui(false, "Add MP3 files to enable music");
+      enabled = false;
+      return;
+    }
+    if (failedTracks.has(current)) {
+      current = tracks.findIndex((_, i) => !failedTracks.has(i));
+      if (current < 0) {
+        ui(false, "Add MP3 files to enable music");
+        enabled = false;
+        return;
+      }
+    }
+    audio.src = tracks[current].src;
+    try {
+      await audio.play();
+      ui(true, "Now playing · " + tracks[current].name);
+    } catch (_) {
+      enabled = false;
+      ui(false, "Tap to start background music");
+      installInteractionFallback();
+    }
+  }
+
+  function installInteractionFallback() {
+    if (interactionFallbackInstalled) return;
+    interactionFallbackInstalled = true;
+    const retry = () => {
+      if (!enabled) {
+        playMusic();
+      }
+      document.removeEventListener("pointerdown", retry);
+      document.removeEventListener("keydown", retry);
+      document.removeEventListener("touchstart", retry);
+      interactionFallbackInstalled = false;
+    };
+    document.addEventListener("pointerdown", retry, { once: true, passive: true });
+    document.addEventListener("keydown", retry, { once: true });
+    document.addEventListener("touchstart", retry, { once: true, passive: true });
+  }
+
+  function stopMusic() {
+    enabled = false;
+    audio.pause();
+    audio.currentTime = 0;
+    ui(false, "Play background music");
+  }
+
+  btn.addEventListener("click", () => {
+    if (enabled) stopMusic();
+    else playMusic();
+  });
+
+  // Try autoplay immediately; if the browser blocks it, resume on the first user gesture.
+  audio.src = tracks[0].src;
+  audio.play().then(() => {
+    enabled = true;
+    ui(true, "Now playing · " + tracks[0].name);
+  }).catch(() => {
+    ui(false, "Tap to start background music");
+    installInteractionFallback();
+  });
+})();</script>
 </body>
 </html>
 
