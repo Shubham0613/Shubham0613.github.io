@@ -177,6 +177,22 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
 </section>
 
 <section id="studio">
+  <div class="seo-tool reveal" id="workflow-studio">
+    <div class="eyebrow">One idea · complete workflow</div>
+    <h3>Creator Workflow Studio</h3>
+    <p class="seo-tool-intro">Enter your video idea once. This tool fills and runs your Script Studio, SEO Studio and Thumbnail Prompt Studio, then adds the idea to your Content Planner.</p>
+    <form id="workflowForm" class="seo-form">
+      <div class="seo-field full"><label for="workflowTopic">Video topic *</label><input id="workflowTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe"></div>
+      <div class="seo-field"><label for="workflowChannel">Channel</label><select id="workflowChannel"><option value="Mind Over Machines">Mind Over Machines</option><option value="Project Dark Earth">Project Dark Earth</option></select></div>
+      <div class="seo-field"><label for="workflowFormat">Video format</label><select id="workflowFormat"><option value="short">YouTube Short</option><option value="long">Long-form video</option></select></div>
+      <div class="seo-field"><label for="workflowStyle">Style</label><select id="workflowStyle"><option value="curious">Curiosity-driven</option><option value="cinematic">Cinematic documentary</option><option value="educational">Educational explainer</option><option value="friendly">Friendly and practical</option></select></div>
+      <div class="seo-field full"><label for="workflowNotes">Verified facts / key points (optional)</label><textarea id="workflowNotes" maxlength="1000" placeholder="Add details you want all the drafts to reflect. Verify claims before publishing."></textarea></div>
+      <div class="seo-actions full"><button class="btn primary" type="submit">Build my content package ✦</button><button class="btn" type="reset">Clear form</button></div>
+    </form>
+    <p class="seo-status" id="workflowStatus" role="status" aria-live="polite"></p>
+    <p class="notice">This is a local template workflow—not live AI research. Review each generated draft and verify facts before publishing. Your planner data stays in this browser.</p>
+  </div>
+
   <div class="section-head reveal">
     <div class="eyebrow">Creator workspace</div>
     <h2>Ideas become <span class="gradient">experiments.</span></h2>
@@ -833,6 +849,55 @@ document.getElementById("year").textContent = new Date().getFullYear();
     items = []; persist(); render(); announce("All content plan items cleared.");
   });
   render();
+})();
+
+
+(() => {
+  const form = document.getElementById("workflowForm");
+  if (!form) return;
+  const $ = id => document.getElementById(id);
+  const setValue = (id, value) => { const field = $(id); if (field) field.value = value; };
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const topic = $("workflowTopic").value.trim();
+    if (!topic) { $("workflowStatus").textContent = "Enter a video topic first."; return; }
+    const channel = $("workflowChannel").value;
+    const format = $("workflowFormat").value;
+    const style = $("workflowStyle").value;
+    const notes = $("workflowNotes").value.trim();
+
+    setValue("scriptTopic", topic);
+    setValue("scriptChannel", channel);
+    setValue("scriptFormat", format);
+    setValue("scriptTone", style === "friendly" ? "friendly" : style);
+    setValue("scriptFacts", notes);
+
+    setValue("seoTopic", topic);
+    setValue("seoChannel", channel);
+    setValue("seoFormat", format === "short" ? "Shorts" : "long");
+    setValue("seoTone", style === "curious" ? "curiosity" : style === "cinematic" ? "cinematic" : style === "friendly" ? "practical" : "educational");
+    setValue("seoAudience", channel === "Project Dark Earth" ? "curious viewers" : "beginners");
+    setValue("seoNotes", notes);
+
+    setValue("thumbTopic", topic);
+    setValue("thumbChannel", channel);
+    setValue("thumbMood", channel === "Project Dark Earth" ? "cinematic mystery" : style === "cinematic" ? "dramatic discovery" : "high-tech futuristic");
+    setValue("thumbDetails", notes);
+
+    $("scriptForm").requestSubmit();
+    $("seoForm").requestSubmit();
+    $("thumbForm").requestSubmit();
+
+    setValue("planTitle", topic);
+    setValue("planChannel", channel);
+    setValue("planFormat", format === "short" ? "Short" : "Long video");
+    setValue("planStatus", "Idea");
+    setValue("planNotes", notes);
+    $("plannerForm").requestSubmit();
+
+    $("workflowStatus").textContent = "Package drafted and the idea was added to your Content Planner. Scroll down to review the script, SEO suggestions, thumbnail prompt and plan entry.";
+    $("workflowStatus").scrollIntoView({behavior:"smooth", block:"nearest"});
+  });
 })();
 
 </script>
