@@ -393,6 +393,25 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
     </div>
   </div>
 
+  <div class="seo-tool reveal" id="content-planner">
+    <div class="eyebrow">Creator workflow</div>
+    <h3>Content Planner</h3>
+    <p class="seo-tool-intro">Plan videos for both channels, track progress, and export your plan. Items are saved in this browser on this device—not synced to other devices or accounts.</p>
+    <form id="plannerForm" class="seo-form">
+      <div class="seo-field full"><label for="planTitle">Video idea / working title *</label><input id="planTitle" maxlength="180" required placeholder="e.g. 5 AI tools that save time"></div>
+      <div class="seo-field"><label for="planChannel">Channel</label><select id="planChannel"><option>Mind Over Machines</option><option>Project Dark Earth</option></select></div>
+      <div class="seo-field"><label for="planFormat">Format</label><select id="planFormat"><option>Short</option><option>Long video</option><option>Community post</option></select></div>
+      <div class="seo-field"><label for="planDate">Planned publish date</label><input id="planDate" type="date"></div>
+      <div class="seo-field"><label for="planStatus">Status</label><select id="planStatus"><option>Idea</option><option>Researching</option><option>Script ready</option><option>Editing</option><option>Scheduled</option><option>Published</option></select></div>
+      <div class="seo-field full"><label for="planNotes">Notes (optional)</label><textarea id="planNotes" maxlength="600" placeholder="Hook, research links to check, assets needed, or next action"></textarea></div>
+      <div class="seo-actions full"><button class="btn primary" type="submit">Add to content plan ✦</button><button class="btn" type="reset">Clear form</button></div>
+    </form>
+    <p class="seo-status" id="plannerStatus" role="status" aria-live="polite"></p>
+    <div class="seo-actions"><button class="btn" type="button" id="plannerExport">Export CSV</button><button class="btn" type="button" id="plannerClear">Clear all items</button></div>
+    <div id="plannerList" class="seo-results" aria-live="polite"></div>
+    <p class="notice">Privacy note: the planner uses local browser storage only. Clearing browser data can erase the plan; export a CSV backup periodically. Do not store passwords, API keys, or sensitive information here.</p>
+  </div>
+
   <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
 </section>
 
@@ -731,6 +750,91 @@ document.getElementById("year").textContent = new Date().getFullYear();
   }, {threshold: 0.12});
   items.forEach(item => observer.observe(item));
 })();
+
+(() => {
+  const form = document.getElementById("plannerForm");
+  if (!form) return;
+  const $ = id => document.getElementById(id);
+  const storageKey = "shubhamCreatorHubContentPlanV1";
+  let items = [];
+  try {
+    const saved = localStorage.getItem(storageKey);
+    items = saved ? JSON.parse(saved) : [];
+    if (!Array.isArray(items)) items = [];
+  } catch (_) { items = []; }
+  const announce = message => { $("plannerStatus").textContent = message; };
+  const persist = () => {
+    try { localStorage.setItem(storageKey, JSON.stringify(items)); announce("Saved in this browser."); return true; }
+    catch (_) { announce("Browser storage is unavailable or full. Export your plan as CSV to keep a backup."); return false; }
+  };
+  const make = (tag, className, textValue) => {
+    const node = document.createElement(tag);
+    if (className) node.className = className;
+    if (textValue !== undefined) node.textContent = textValue;
+    return node;
+  };
+  function render() {
+    const root = $("plannerList");
+    root.replaceChildren();
+    if (!items.length) { root.append(make("p", "notice", "Your plan is empty. Add your first video idea above.")); return; }
+    root.append(make("p", "seo-tool-intro", items.length + " planned item" + (items.length === 1 ? "" : "s")));
+    items.forEach(item => {
+      const card = make("article", "seo-output");
+      const head = make("div", "seo-output-head");
+      head.append(make("h4", "", item.title));
+      const remove = make("button", "seo-copy", "Delete");
+      remove.type = "button";
+      remove.setAttribute("aria-label", "Delete " + item.title);
+      remove.addEventListener("click", () => { items = items.filter(entry => entry.id !== item.id); persist(); render(); });
+      head.append(remove); card.append(head);
+      card.append(make("p", "seo-output-text", [item.channel, item.format, item.date || "No date set", item.status].join(" · ")));
+      if (item.notes) card.append(make("p", "seo-output-text", item.notes));
+      const controls = make("div", "seo-actions");
+      const statusLabel = make("label", "", "Update status");
+      statusLabel.htmlFor = "status-" + item.id;
+      const status = document.createElement("select");
+      status.id = "status-" + item.id;
+      status.style.maxWidth = "220px";
+      status.style.border = "1px solid #ffffff25";
+      status.style.borderRadius = "10px";
+      status.style.padding = "10px";
+      status.style.background = "#080c1a";
+      status.style.color = "var(--text)";
+      ["Idea", "Researching", "Script ready", "Editing", "Scheduled", "Published"].forEach(value => {
+        const option = document.createElement("option");
+        option.value = value; option.textContent = value; option.selected = value === item.status; status.append(option);
+      });
+      status.addEventListener("change", () => { item.status = status.value; persist(); render(); });
+      controls.append(statusLabel, status); card.append(controls); root.append(card);
+    });
+  }
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const title = $("planTitle").value.trim();
+    if (!title) { announce("Enter a video idea first."); return; }
+    items.unshift({id: Date.now().toString(36) + Math.random().toString(36).slice(2, 7), title: title.slice(0, 180), channel: $("planChannel").value, format: $("planFormat").value, date: $("planDate").value, status: $("planStatus").value, notes: $("planNotes").value.trim().slice(0, 600)});
+    persist(); render(); form.reset();
+  });
+  $("plannerExport").addEventListener("click", () => {
+    if (!items.length) { announce("Add at least one item before exporting."); return; }
+    const columns = ["title", "channel", "format", "date", "status", "notes"];
+    const quote = value => '"' + String(value ?? "").replace(/"/g, '""') + '"';
+    const csv = [columns.join(","), ...items.map(item => columns.map(key => quote(item[key])).join(","))].join("\r\n");
+    const blob = new Blob(["\uFEFF" + csv], {type: "text/csv;charset=utf-8;"});
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    link.href = url; link.download = "shubham-content-plan.csv";
+    document.body.append(link); link.click(); link.remove(); URL.revokeObjectURL(url);
+    announce("CSV export started.");
+  });
+  $("plannerClear").addEventListener("click", () => {
+    if (!items.length) { announce("There are no items to clear."); return; }
+    if (!window.confirm("Delete every item in this browser content plan? Export a CSV backup first if needed.")) return;
+    items = []; persist(); render(); announce("All content plan items cleared.");
+  });
+  render();
+})();
+
 </script>
 </body>
 </html>
