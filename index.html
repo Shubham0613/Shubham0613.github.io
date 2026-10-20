@@ -322,6 +322,11 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
 @media(max-width:760px){nav{padding:13px 5%;gap:12px;align-items:flex-start}.links{gap:10px 13px;font-size:12px}.hero{padding-inline:16px}.section-head h2{font-size:clamp(28px,7vw,44px)}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
 
+
+/* Planet scene cleanup: prevent decorative CSS orbit rings crossing the canvas. */
+#planetary-stage{background:radial-gradient(ellipse at 76% 45%,rgba(18,37,70,.18),transparent 48%),linear-gradient(90deg,rgba(3,6,13,.98) 0%,rgba(3,6,13,.78) 36%,rgba(3,6,13,.12) 76%,rgba(3,6,13,.3) 100%)}
+.hero:before,.hero:after{z-index:0;opacity:.18}
+
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -1570,8 +1575,19 @@ document.getElementById("year").textContent = new Date().getFullYear();
     mesh.userData={name:p.name,config:p};
     system.add(mesh);
     loader.load(textureURLs[p.name],tex=>{tex.colorSpace=THREE.SRGBColorSpace;material.map=tex;material.color.set(0xffffff);material.needsUpdate=true;},undefined,()=>{});
-    const glow=new THREE.Sprite(new THREE.SpriteMaterial({color:p.color,transparent:true,opacity:.11,depthWrite:false,blending:THREE.AdditiveBlending}));
-    glow.scale.set(p.radius*4.6,p.radius*4.6,1);mesh.add(glow);
+    // Soft circular atmospheric bloom (radial texture avoids square sprite artifacts).
+    const glowCanvas=document.createElement('canvas');
+    glowCanvas.width=glowCanvas.height=128;
+    const glowCtx=glowCanvas.getContext('2d');
+    const glowGradient=glowCtx.createRadialGradient(64,64,2,64,64,64);
+    glowGradient.addColorStop(0,'rgba(255,255,255,0.22)');
+    glowGradient.addColorStop(.18,'rgba(255,255,255,0.12)');
+    glowGradient.addColorStop(.48,'rgba(255,255,255,0.035)');
+    glowGradient.addColorStop(1,'rgba(255,255,255,0)');
+    glowCtx.fillStyle=glowGradient;glowCtx.fillRect(0,0,128,128);
+    const glowTexture=new THREE.CanvasTexture(glowCanvas);
+    const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture,color:p.color,transparent:true,opacity:.5,depthWrite:false,blending:THREE.AdditiveBlending}));
+    glow.scale.set(p.radius*3.1,p.radius*3.1,1);mesh.add(glow);
     if(p.name==='Saturn'){
       const ring=new THREE.Mesh(new THREE.RingGeometry(p.radius*1.35,p.radius*2.2,128),new THREE.MeshStandardMaterial({color:0xdac79f,side:THREE.DoubleSide,transparent:true,opacity:.72,roughness:.8}));
       ring.rotation.x=Math.PI/2.35;mesh.add(ring);
