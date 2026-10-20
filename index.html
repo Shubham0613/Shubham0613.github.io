@@ -180,7 +180,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
   <div class="section-head reveal">
     <div class="eyebrow">Creator workspace</div>
     <h2>Ideas become <span class="gradient">experiments.</span></h2>
-    <p>A preview of the tools and resources planned for this hub. These cards are informational for now; AI generation is not connected yet.</p>
+    <p>Use the browser-based tools below to plan video scripts and prepare YouTube metadata. These tools use local templates and do not call an AI service.</p>
   </div>
   <div class="grid">
     <article class="card reveal">
@@ -198,6 +198,70 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
       <h3>Prompt Library</h3>
       <p>Collect reusable prompts for research, AI tools and creative workflows.</p>
     </article>
+  </div>
+
+
+  <div class="seo-tool reveal" id="script-studio">
+    <div class="eyebrow">Free browser-based tool</div>
+    <h3>YouTube Script Studio</h3>
+    <p class="seo-tool-intro">Build a structured draft with a hook, narration, scene directions and ending. Everything runs in your browser; no API key or paid service is used.</p>
+    <form id="scriptForm" class="seo-form">
+      <div class="seo-field full">
+        <label for="scriptTopic">Video topic <span aria-hidden="true">*</span></label>
+        <input id="scriptTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe">
+      </div>
+      <div class="seo-field">
+        <label for="scriptChannel">Channel</label>
+        <select id="scriptChannel">
+          <option value="Mind Over Machines">Mind Over Machines</option>
+          <option value="Project Dark Earth">Project Dark Earth</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="scriptFormat">Video format</label>
+        <select id="scriptFormat">
+          <option value="short">Short (30–60 seconds)</option>
+          <option value="long">Long-form (about 3–5 minutes)</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="scriptTone">Narration style</label>
+        <select id="scriptTone">
+          <option value="curious">Curiosity-driven</option>
+          <option value="cinematic">Cinematic documentary</option>
+          <option value="friendly">Friendly and practical</option>
+          <option value="educational">Educational explainer</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="scriptLanguage">Language</label>
+        <select id="scriptLanguage">
+          <option value="English">English</option>
+          <option value="Hinglish">Hinglish</option>
+          <option value="Hindi">Hindi (Devanagari)</option>
+        </select>
+      </div>
+      <div class="seo-field full">
+        <label for="scriptFacts">Facts or key points to include (optional)</label>
+        <textarea id="scriptFacts" maxlength="1000" placeholder="Add verified facts, steps, or key points. The script will use these notes as supplied."></textarea>
+      </div>
+      <div class="seo-actions full">
+        <button class="btn primary" type="submit">Build script draft ✦</button>
+        <button class="btn" type="reset">Clear form</button>
+      </div>
+    </form>
+    <p class="seo-status" id="scriptStatus" role="status" aria-live="polite"></p>
+    <div class="seo-results" id="scriptResults" hidden>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Complete script and scene prompts</h4><button class="seo-copy" type="button" data-script-copy="scriptFull">Copy full script</button></div>
+        <div class="seo-output-text" id="scriptFull"></div>
+      </div>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Visual / AI video prompt</h4><button class="seo-copy" type="button" data-script-copy="scriptVisual">Copy visual prompt</button></div>
+        <div class="seo-output-text" id="scriptVisual"></div>
+      </div>
+      <p class="notice">This is a structured template draft, not AI-generated research. Verify factual claims, replace placeholders with accurate details, and review any AI video platform's rules before publishing.</p>
+    </div>
   </div>
 
   <div class="seo-tool reveal" id="youtube-seo">
@@ -325,6 +389,93 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
 <script>
 
 document.getElementById("year").textContent = new Date().getFullYear();
+
+
+(() => {
+  const form = document.getElementById("scriptForm");
+  if (!form) return;
+  const el = id => document.getElementById(id);
+  const clean = value => String(value || "").replace(/[<>]/g, "").trim();
+  const lines = value => clean(value).split(/\n+/).map(item => item.trim()).filter(Boolean);
+  const templates = {
+    short: [
+      ["HOOK (0–3s)", topic => "What if " + topic + " is more interesting than it first appears?"],
+      ["CONTEXT (3–12s)", topic => "Here is the key idea behind " + topic + ". In this short video, we will break it down simply."],
+      ["MAIN POINT (12–40s)", topic => "Start with the most important fact or step about " + topic + ". Explain one clear point, then support it with a verified example or detail."],
+      ["TAKEAWAY (40–52s)", topic => "The key takeaway: understand the evidence, separate facts from assumptions, and keep exploring."],
+      ["CALL TO ACTION (final seconds)", topic => "What do you think? Share your view in the comments and follow for more."]
+    ],
+    long: [
+      ["OPENING HOOK", topic => "There is more to " + topic + " than a quick glance reveals. To understand it, we need to look at the details and the evidence."],
+      ["INTRODUCTION", topic => "Welcome back. In this video, we explore " + topic + ", explain the most important context, and separate confirmed information from open questions."],
+      ["CHAPTER 1 — CONTEXT", topic => "First, establish the background. Explain where the story or process begins, why it matters, and what viewers need to know before moving on."],
+      ["CHAPTER 2 — MAIN EXPLANATION", topic => "Walk through the central points one by one. Use specific examples, on-screen labels, and verified details. Avoid presenting speculation as established fact."],
+      ["CHAPTER 3 — EVIDENCE / EXAMPLE", topic => "Show a concrete example or supporting detail. Explain what it demonstrates, what it does not prove, and where uncertainty remains."],
+      ["CONCLUSION", topic => "To sum up, the most useful insight about " + topic + " is the difference between the key evidence and the questions that remain."],
+      ["CALL TO ACTION", topic => "If this helped, like the video, share your perspective in the comments, and subscribe for the next episode."]
+    ]
+  };
+  const channelStyle = channel => channel === "Project Dark Earth"
+    ? "Atmosphere: cinematic, mysterious, investigative. Use slow reveals, maps or archival-style visuals where appropriate. Keep historical claims evidence-based."
+    : "Atmosphere: clear, modern, useful and technology-focused. Use readable screen recordings, simple motion graphics and practical examples.";
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const topic = clean(el("scriptTopic").value);
+    if (!topic) { el("scriptTopic").focus(); return; }
+    const channel = el("scriptChannel").value;
+    const format = el("scriptFormat").value;
+    const tone = el("scriptTone").value;
+    const language = el("scriptLanguage").value;
+    const facts = lines(el("scriptFacts").value);
+    const sections = templates[format].map(([heading, build]) => heading + "\n" + build(topic));
+    const toneNote = {
+      curious: "Delivery: ask focused questions, create curiosity, then give viewers clear answers without exaggerated claims.",
+      cinematic: "Delivery: measured narration, vivid but accurate imagery, deliberate pauses and a documentary rhythm.",
+      friendly: "Delivery: conversational, direct and approachable; explain unfamiliar terms in plain language.",
+      educational: "Delivery: organized, precise and step-by-step; define terms and use simple examples."
+    }[tone];
+    const factBlock = facts.length ? "\n\nUSER-PROVIDED KEY POINTS (verify before publishing)\n" + facts.map((fact, index) => (index + 1) + ". " + fact).join("\n") : "\n\nRESEARCH CHECKLIST\n- Add verified facts, dates, names or examples relevant to the topic.\n- Check sources and remove any unsupported claims.";
+    const full = "VIDEO SCRIPT DRAFT\nTopic: " + topic + "\nChannel: " + channel + "\nFormat: " + (format === "short" ? "Short" : "Long-form") + "\nLanguage: " + language + "\nTone: " + tone + "\n\n" +
+      toneNote + "\n\n" + sections.join("\n\n") + factBlock +
+      "\n\nEDITOR NOTES\n- Match each scene to the spoken narration.\n- Add captions and keep text readable on mobile.\n- Verify claims and use licensed or original media.\n- Read the narration aloud and adjust pacing before recording.";
+    const visual = "VISUAL DIRECTION FOR: " + topic + "\n" + channelStyle(channel) + "\n" +
+      "Style: " + tone + "; format: " + (format === "short" ? "vertical 9:16 video" : "16:9 landscape video") + "; language: " + language + ".\n\n" +
+      (format === "short"
+        ? "Scene 1 — HOOK: striking but relevant opening shot; bold readable caption.\nScene 2 — CONTEXT: establish the topic with a clear visual.\nScene 3 — MAIN POINT: show a relevant example, diagram, screen recording or location.\nScene 4 — TAKEAWAY: summarize the main idea with clean text.\nScene 5 — END: simple channel end card and comment prompt."
+        : "Scene 1 — OPEN: establish mood and topic with a strong opening visual.\nScene 2 — CONTEXT: use a map, overview graphic or screen recording.\nScene 3 — EXPLANATION: use 2–3 supporting shots, diagrams or labeled screen captures.\nScene 4 — EVIDENCE: show source-backed details and distinguish facts from uncertainty.\nScene 5 — CONCLUSION: recap the key point and finish with a clean end card.") +
+      "\n\nKeep visuals coherent, transitions purposeful, captions legible, and all factual depictions accurate. Avoid fabricated evidence, logos you do not own, and misleading on-screen claims.";
+    el("scriptFull").textContent = full;
+    el("scriptVisual").textContent = visual;
+    el("scriptResults").hidden = false;
+    el("scriptStatus").textContent = "Script draft created locally. Review the structure and verify all factual details.";
+    el("scriptResults").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+  });
+  form.addEventListener("reset", () => {
+    el("scriptResults").hidden = true;
+    el("scriptStatus").textContent = "";
+  });
+  document.querySelectorAll("[data-script-copy]").forEach(button => {
+    button.addEventListener("click", async () => {
+      const target = el(button.dataset.scriptCopy);
+      const value = target ? target.textContent : "";
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        el("scriptStatus").textContent = "Copied to clipboard.";
+      } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = value;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        const copied = document.execCommand("copy");
+        area.remove();
+        el("scriptStatus").textContent = copied ? "Copied to clipboard." : "Copy was blocked; select and copy the text manually.";
+      }
+    });
+  });
+})();
 
 (() => {
   const form = document.getElementById("seoForm");
