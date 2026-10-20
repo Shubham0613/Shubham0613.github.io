@@ -233,14 +233,6 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
           <option value="educational">Educational explainer</option>
         </select>
       </div>
-      <div class="seo-field">
-        <label for="scriptLanguage">Language</label>
-        <select id="scriptLanguage">
-          <option value="English">English</option>
-          <option value="Hinglish">Hinglish</option>
-          <option value="Hindi">Hindi (Devanagari)</option>
-        </select>
-      </div>
       <div class="seo-field full">
         <label for="scriptFacts">Facts or key points to include (optional)</label>
         <textarea id="scriptFacts" maxlength="1000" placeholder="Add verified facts, steps, or key points. The script will use these notes as supplied."></textarea>
@@ -425,7 +417,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     const channel = el("scriptChannel").value;
     const format = el("scriptFormat").value;
     const tone = el("scriptTone").value;
-    const language = el("scriptLanguage").value;
+    const language = "English";
     const facts = lines(el("scriptFacts").value);
     const sections = templates[format].map(([heading, build]) => heading + "\n" + build(topic));
     const toneNote = {
