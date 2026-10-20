@@ -3,339 +3,168 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#070914">
+<meta name="theme-color" content="#05070c">
 <meta name="description" content="Shubham Gawande — AI, data analytics, IT operations, networking and creator projects.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Shubham Creator Hub — Explore Beyond Limits">
+<meta property="og:description" content="AI, data analytics, IT operations, networking and creator projects by Shubham Gawande.">
+<meta property="og:url" content="https://shubham0613.github.io/">
+<link rel="canonical" href="https://shubham0613.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='14' fill='%237fe9e0'/%3E%3Cellipse cx='32' cy='32' rx='28' ry='9' fill='none' stroke='%23bfb1ff' stroke-width='3' transform='rotate(-20 32 32)'/%3E%3C/svg%3E">
 <title>Shubham Creator Hub — Explore Beyond Limits</title>
 <style>
-:root{color-scheme:dark;--bg:#070914;--text:#f4f6ff;--muted:#a6afc9;--cyan:#62e8ff;--purple:#a78bfa;--line:#ffffff18}
+:root{color-scheme:dark;--bg:#05070c;--text:#f4f6fb;--muted:#a9b3c7;--cyan:#7fe9e0;--purple:#bfb1ff;--line:rgba(175,205,235,.14);--panel:linear-gradient(145deg,rgba(18,26,40,.9),rgba(8,12,22,.93));--shadow:0 20px 60px rgba(0,0,0,.28)}
 *{box-sizing:border-box}
-html{scroll-behavior:smooth;scroll-padding-top:90px}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Arial,sans-serif;line-height:1.65;overflow-x:hidden}
-body:before{content:"";position:fixed;inset:0;z-index:-2;pointer-events:none;background:radial-gradient(ellipse at 15% 18%,#172354 0,transparent 42%),radial-gradient(ellipse at 85% 55%,#271544 0,transparent 40%),#070914}
+html{scroll-behavior:smooth;scroll-padding-top:96px;background:var(--bg)}
+body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;line-height:1.65;overflow-x:hidden;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
+body:before{content:"";position:fixed;inset:0;z-index:-3;pointer-events:none;background:radial-gradient(ellipse at 76% 12%,rgba(22,72,95,.26),transparent 40%),radial-gradient(ellipse at 10% 60%,rgba(85,54,120,.18),transparent 36%),linear-gradient(150deg,#05070c,#0a0f18 55%,#05070c)}
+#starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-2;opacity:.5}
 a{color:inherit;text-decoration:none}
-nav{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:16px 7%;background:#070914e8;backdrop-filter:blur(16px);border-bottom:1px solid var(--line)}
-.logo{font-weight:850;letter-spacing:.5px;white-space:nowrap}.logo span{color:var(--cyan)}
-.links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
-.links a:hover{color:var(--cyan)}
-.hero{min-height:78vh;display:grid;place-items:center;text-align:center;padding:95px 20px;position:relative;overflow:hidden}
-.hero:before,.hero:after{content:"";position:absolute;pointer-events:none;border:1px solid #62e8ff24;border-radius:50%;width:min(66vw,520px);aspect-ratio:1;animation:orbit 36s linear infinite}
-.hero:after{width:min(48vw,370px);border-color:#a78bfa28;animation-direction:reverse;animation-duration:26s}
-.hero-inner{max-width:900px;position:relative;z-index:1}
-.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}
-h1{font-size:clamp(43px,8vw,86px);line-height:1.04;letter-spacing:-3px;margin:22px 0}
-.gradient{background:linear-gradient(100deg,#fff,var(--cyan),var(--purple));color:transparent;background-clip:text;-webkit-background-clip:text}
+img,video,canvas{max-width:100%}
 p{color:var(--muted)}
-.hero p{max-width:680px;margin:22px auto 28px;font-size:clamp(15px,2vw,18px)}
-.actions{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:27px}
-.btn{padding:11px 18px;border-radius:10px;border:1px solid #ffffff30;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:750;transition:.25s}
-.primary{background:linear-gradient(110deg,#60dfff,#a78bfa);color:#090b18;border:0}
-.btn:hover{transform:translateY(-3px);border-color:#62e8ff88;box-shadow:0 8px 30px #62e8ff20}
-section{padding:76px 7%;max-width:1280px;margin:auto}
-.section-head{margin-bottom:28px}
-.section-head h2{font-size:clamp(29px,4vw,43px);line-height:1.15;margin:8px 0}
-.section-head p{max-width:690px}
+::selection{background:rgba(127,233,224,.28);color:#fff}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
+.skip{position:absolute;left:-999px;top:8px;z-index:100;background:#fff;color:#000;padding:8px 14px;border-radius:8px}.skip:focus{left:8px}
+nav{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:15px 7%;background:rgba(5,7,12,.72);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);border-bottom:1px solid var(--line)}
+.logo{font-weight:850;letter-spacing:.5px;white-space:nowrap;font-size:clamp(16px,1.5vw,20px)}.logo span{color:var(--cyan)}
+.links{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--muted)}
+.links a{padding:6px 0;transition:color .2s}.links a:hover{color:var(--cyan)}
+/* Hero */
+.hero{position:relative;isolation:isolate;overflow:hidden;min-height:min(860px,92vh);display:flex;align-items:center;padding:clamp(70px,9vw,130px) 7%}
+.hero-inner{position:relative;z-index:2;max-width:660px;pointer-events:none}
+.hero-inner a,.hero-inner button{pointer-events:auto}
+.eyebrow{color:var(--cyan);text-transform:uppercase;letter-spacing:3px;font-size:11px;font-weight:800}
+h1{font-size:clamp(44px,7vw,84px);line-height:1.04;letter-spacing:-.05em;margin:22px 0;text-wrap:balance;text-shadow:0 6px 40px rgba(0,0,0,.4)}
+h2{text-wrap:balance}
+.gradient,.gradient-text{background:linear-gradient(105deg,#f6f2e8 5%,#a4e8df 48%,#c6b8ff 92%);color:transparent;background-clip:text;-webkit-background-clip:text}
+.hero p{max-width:560px;margin:0 0 26px;font-size:clamp(15px,2vw,18px)}
+.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:27px}
+.hero .actions{margin-top:0}
+.btn{padding:11px 18px;min-height:42px;border-radius:12px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.03);display:inline-flex;align-items:center;justify-content:center;gap:8px;font-size:13px;font-weight:750;cursor:pointer;color:var(--text);font-family:inherit;transition:transform .2s,border-color .2s,box-shadow .2s,filter .2s}
+.btn.primary,.primary-btn{color:#081013;background:linear-gradient(110deg,#a4e8df,#d4c7ff);border:0}
+.btn:hover,.primary-btn:hover,.secondary-btn:hover{transform:translateY(-2px);border-color:rgba(127,233,224,.6);box-shadow:0 10px 30px rgba(127,233,224,.12);filter:brightness(1.07)}
+.primary-btn,.secondary-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 16px;border-radius:12px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}
+.secondary-btn{color:#e7edff;background:rgba(255,255,255,.045);border:1px solid rgba(172,194,255,.22)}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none!important}
+/* Planetarium */
+#planetary-stage{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:linear-gradient(90deg,rgba(3,6,13,.95) 0%,rgba(3,6,13,.7) 34%,rgba(3,6,13,.05) 72%,rgba(3,6,13,.25) 100%)}
+#planetary-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:auto;touch-action:pan-y;cursor:grab}
+#planetary-canvas:active{cursor:grabbing}
+#planetary-stage.fallback:after{content:"";position:absolute;right:12%;top:50%;width:min(36vw,380px);aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:radial-gradient(circle at 32% 30%,#7fb7ff,#244a86 55%,#07101f 100%);box-shadow:0 0 80px rgba(98,150,255,.25)}
+#orbital-console{max-width:1280px;margin:0 auto;padding:0 7% 24px;position:relative;z-index:2}
+.orbital-console-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:17px 20px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(120deg,rgba(12,21,29,.84),rgba(16,15,28,.78));backdrop-filter:blur(22px);box-shadow:0 15px 55px rgba(0,0,0,.25)}
+.orbital-readout{display:flex;gap:20px;flex-wrap:wrap}.orbital-metric{display:grid;gap:2px}.orbital-metric span{font-size:9px;letter-spacing:1.8px;color:#899aa9}.orbital-metric strong{font-size:13px;color:#e5f4f0;font-weight:650}
+.orbital-actions{display:flex;gap:8px;flex-wrap:wrap}
+.orbital-actions button{cursor:pointer;min-height:38px;border:1px solid rgba(164,232,223,.3);background:rgba(164,232,223,.05);color:#e9f6f3;padding:9px 13px;border-radius:10px;font:750 11px inherit;font-family:inherit}
+.orbital-actions button:hover,.orbital-actions button[aria-pressed=true]{background:rgba(164,232,223,.14);border-color:rgba(164,232,223,.6)}
+.orbital-planet-picker{display:flex;flex-basis:100%;align-items:center;gap:7px;flex-wrap:wrap}
+.orbital-planet-picker button{min-height:34px;border:1px solid rgba(170,198,235,.19);border-radius:999px;background:rgba(8,15,27,.72);color:#d8e5f7;padding:7px 12px;font:600 11px/1.2 inherit;font-family:inherit;cursor:pointer;transition:transform .2s,border-color .2s,background .2s}
+.orbital-planet-picker button:hover,.orbital-planet-picker button[aria-pressed=true]{transform:translateY(-2px);border-color:rgba(135,204,255,.72);background:rgba(65,116,175,.25);color:#fff}
+#planet-info{flex-basis:100%;max-width:520px;padding:12px 15px;border:1px solid rgba(148,193,238,.2);border-radius:14px;background:rgba(5,11,21,.84)}
+#planet-info[hidden]{display:none}
+.planet-info-label{font-size:9px;letter-spacing:1.8px;color:#8ecdf5;text-transform:uppercase}
+#planet-info strong{display:block;margin:4px 0;font-size:18px}
+#planet-info p{margin:0 0 4px;font-size:12.5px;line-height:1.6;color:#aab9cd}
+#planet-info .planet-info-hint{font-size:10.5px;color:#8190a5;margin-top:6px}
+.orbital-caption{color:#899aa9;font-size:10px;margin-top:8px;letter-spacing:.4px}
+#ambient-audio-toggle{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:9px;border:1px solid rgba(185,207,239,.22);border-radius:999px;padding:10px 15px;background:rgba(6,12,23,.9);color:#e5edfa;box-shadow:0 12px 38px rgba(0,0,0,.4);backdrop-filter:blur(18px);font:12px inherit;font-family:inherit;cursor:pointer;transition:transform .2s,border-color .2s}
+#ambient-audio-toggle:hover{transform:translateY(-2px);border-color:rgba(127,233,224,.65)}
+.audio-dot{width:8px;height:8px;border-radius:50%;background:#5b6674;transition:background .3s,box-shadow .3s}
+#ambient-audio-toggle[aria-pressed=true] .audio-dot{background:#7fe9e0;box-shadow:0 0 12px #7fe9e0}
+/* Sections and cards */
+section{position:relative;isolation:isolate;width:100%;max-width:1280px;margin:auto;padding:76px 7%}
+.section-head,.section-heading{margin:0 0 28px}
+.section-head h2,.section-heading h2{font-size:clamp(29px,4vw,43px);line-height:1.15;margin:8px 0;letter-spacing:-.035em}
+.section-head p,.section-heading p{max-width:720px}
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,255px),1fr));gap:17px}
-.card{position:relative;overflow:hidden;background:linear-gradient(145deg,#151b31e8,#0d1020f2);border:1px solid var(--line);border-radius:18px;padding:24px;transition:transform .3s,border-color .3s}
-.card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,#62e8ff0c,transparent 55%)}
-.card:hover{transform:translateY(-5px);border-color:#62e8ff65}
-.card h3{margin:10px 0 6px;font-size:19px}
-.card p{font-size:14px}
+.card,.tool-card,.pulse-panel,.revenue-card,.feature,.seo-tool{position:relative;overflow:hidden;background:var(--panel);border:1px solid rgba(180,218,220,.15);border-radius:20px;box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+.card{padding:24px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.card:before,.tool-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(127,233,224,.07),transparent 55%)}
+.card:hover,.revenue-card:hover{transform:translateY(-4px);border-color:rgba(127,233,224,.38)}
+.card h3{margin:10px 0 6px;font-size:19px}.card p{font-size:14px}
 .icon{font-size:27px}
-.tag{display:inline-block;font-size:11px;padding:4px 9px;border:1px solid #62e8ff45;border-radius:30px;color:var(--cyan);margin:5px 5px 0 0}
+.tag{display:inline-block;font-size:11px;padding:4px 10px;border:1px solid rgba(127,233,224,.35);border-radius:30px;color:var(--cyan);margin:5px 5px 0 0}
 .about{display:grid;grid-template-columns:1.2fr 1fr;gap:28px;align-items:center}
-.feature{border-radius:20px;padding:30px;background:linear-gradient(135deg,#172448,#21153b);border:1px solid #ffffff20;box-shadow:0 20px 70px #0003}
-.feature strong{font-size:23px}
+.feature{padding:30px;background:linear-gradient(135deg,rgba(23,36,60,.9),rgba(30,21,56,.85))}.feature strong{font-size:23px}
 .stats{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:20px}
-.stat{padding:13px;border:1px solid var(--line);border-radius:12px;background:#080c1a70}
-.stat strong{display:block;font-size:23px;color:var(--cyan)}
-.stat span{font-size:11px;color:var(--muted)}
+.stat{padding:13px;border:1px solid var(--line);border-radius:12px;background:rgba(8,12,26,.5)}
+.stat strong{display:block;font-size:23px;color:var(--cyan)}.stat span{font-size:11px;color:var(--muted)}
 .project-link{margin-top:12px}
-.notice{font-size:12px;border-left:2px solid var(--purple);padding:8px 12px;margin-top:18px}
-
-.seo-tool{margin-top:24px;padding:clamp(18px,3vw,30px);border:1px solid #62e8ff38;border-radius:20px;background:linear-gradient(145deg,#10182beF,#111024f2);box-shadow:0 18px 55px #0003}
-.seo-tool h3{margin:0 0 6px;font-size:clamp(22px,3vw,30px)}
+.notice{font-size:12px;line-height:1.65;color:#aebbd8;border-left:2px solid var(--purple);padding:8px 12px;margin-top:18px}
+.video-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+.video-mark{display:grid;place-items:center;width:76px;height:76px;flex:0 0 76px;border-radius:20px;background:linear-gradient(135deg,#16284a,#352052);font-size:32px}
+/* Tools */
+.seo-tool{margin-top:24px;padding:clamp(18px,3vw,30px)}
+.seo-tool h3,.tool-card h3{margin:0 0 6px;font-size:clamp(21px,3vw,29px)}
 .seo-tool-intro{margin:0 0 22px;font-size:14px}
 .seo-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
-.seo-field{display:flex;flex-direction:column;gap:7px;min-width:0}
-.seo-field.full{grid-column:1/-1}
-.seo-field label{font-size:12px;font-weight:750;color:#dce5ff}
-.seo-field input,.seo-field select,.seo-field textarea{width:100%;min-width:0;border:1px solid #ffffff25;border-radius:10px;padding:12px;background:#080c1a;color:var(--text);font:inherit;font-size:14px}
-.seo-field textarea{min-height:84px;resize:vertical}
-.seo-field input:focus,.seo-field select:focus,.seo-field textarea:focus{outline:2px solid #62e8ff80;border-color:var(--cyan)}
+.seo-field{display:flex;flex-direction:column;gap:7px;min-width:0}.seo-field.full{grid-column:1/-1}
+.seo-field label,.tool-form label,.pulse-form label{font-size:12px;font-weight:750;color:#dce7ff}
+.seo-field input,.seo-field select,.seo-field textarea,.tool-form input,.tool-form select,.tool-form textarea,.pulse-form input,.pulse-form select,.pulse-form textarea,.planner-status{display:block;width:100%;min-width:0;max-width:100%;color:var(--text);background:rgba(4,8,14,.9);border:1px solid rgba(180,218,220,.2);border-radius:12px;padding:12px 14px;font:inherit;font-size:14px;transition:border-color .2s,box-shadow .2s}
+.seo-field input:focus,.seo-field select:focus,.seo-field textarea:focus,.tool-form input:focus,.tool-form select:focus,.tool-form textarea:focus,.pulse-form input:focus,.pulse-form select:focus,.pulse-form textarea:focus{outline:none;border-color:var(--cyan);box-shadow:0 0 0 3px rgba(127,233,224,.14)}
+.seo-field textarea,.tool-form textarea,.pulse-form textarea{min-height:84px;resize:vertical;line-height:1.55}
+.planner-status{max-width:220px;padding:10px}
+.tool-card{margin:20px 0;padding:clamp(20px,3vw,32px)}
+.tool-form{display:grid;gap:9px}.tool-form label{margin-top:5px}
 .seo-results{display:grid;gap:14px;margin-top:24px}
-.seo-output{border:1px solid #ffffff20;border-radius:14px;padding:16px;background:#070b19a8;min-width:0}
+.seo-output{min-width:0;border:1px solid var(--line);border-radius:14px;padding:16px;background:rgba(7,11,25,.62)}
 .seo-output-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
 .seo-output h4{margin:0;font-size:15px}
 .seo-output-text{white-space:pre-wrap;overflow-wrap:anywhere;color:#e5eaff;font-size:14px;margin:12px 0 0}
-.seo-copy{border:1px solid #62e8ff55;border-radius:8px;padding:7px 11px;background:#14243a;color:var(--cyan);font:inherit;font-size:12px;font-weight:750;cursor:pointer}
-.seo-copy:hover{background:#1a3150}
+.seo-copy{border:1px solid rgba(127,233,224,.4);border-radius:8px;padding:7px 11px;background:rgba(20,36,50,.8);color:var(--cyan);font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+.seo-copy:hover{background:rgba(30,56,74,.9)}
 .seo-status{font-size:12px;color:var(--cyan);min-height:20px;margin:10px 0 0}
 .seo-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
-@media(max-width:600px){.seo-form{grid-template-columns:1fr}.seo-field.full{grid-column:auto}.seo-tool{padding:17px}.seo-output{padding:13px}}
-
-.video-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
-.video-mark{display:grid;place-items:center;width:76px;height:76px;flex:0 0 76px;border-radius:20px;background:linear-gradient(135deg,#16284a,#352052);font-size:32px}
-footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
-.reveal.visible{opacity:1;transform:translateY(0)}
-#starfield{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:-1}
-@keyframes orbit{to{transform:rotate(360deg)}}
-@media(max-width:700px){nav{align-items:flex-start;flex-direction:column;padding:14px 6%}.links{gap:12px;font-size:12px}.hero{min-height:70vh;padding-top:80px}h1{letter-spacing:-1.5px}.about{grid-template-columns:1fr}section{padding:55px 6%}.stats{grid-template-columns:repeat(3,1fr)}.stat strong{font-size:19px}}
-@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
-
-/* === CREATOR HUB VISUAL REFINEMENT === */
-:root{--glass:rgba(12,17,34,.74);--glass-border:rgba(163,190,255,.18);--shadow:0 24px 80px rgba(0,0,0,.28)}
-body{background:#060813}
-body:before{z-index:-3;background:radial-gradient(ellipse at 12% 15%,rgba(22,88,137,.3),transparent 42%),radial-gradient(ellipse at 86% 34%,rgba(94,39,143,.28),transparent 42%),radial-gradient(ellipse at 48% 100%,rgba(13,72,79,.2),transparent 42%),#060813;background-size:140% 140%;animation:ambientDrift 24s ease-in-out infinite alternate}
-#starfield{z-index:-2;opacity:.72}
-@keyframes ambientDrift{0%{background-position:0% 0%}100%{background-position:100% 80%}}
-nav{background:rgba(6,8,19,.78);border-bottom-color:rgba(148,183,255,.16);box-shadow:0 8px 36px rgba(0,0,0,.12)}
-.links a{padding:7px 0;transition:color .2s ease,text-shadow .2s ease}
-.links a:hover{color:#8ff0ff;text-shadow:0 0 18px rgba(98,232,255,.35)}
-section{width:100%}
-.section-heading{margin:0 0 28px}
-.section-heading h2{font-size:clamp(29px,4vw,43px);line-height:1.15;margin:8px 0}
-.section-heading p{max-width:690px}
-.tool-card{position:relative;isolation:isolate;margin:20px 0;padding:clamp(20px,3vw,32px);border:1px solid rgba(133,175,255,.2);border-radius:22px;background:linear-gradient(145deg,rgba(18,27,49,.88),rgba(12,13,30,.86));box-shadow:var(--shadow);backdrop-filter:blur(18px);overflow:hidden}
-.tool-card:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(98,232,255,.1),transparent 45%)}
-.tool-card h3{font-size:clamp(20px,2.5vw,27px);margin:0 0 8px}
-.tool-form{display:grid;grid-template-columns:1fr;gap:9px}
-.tool-form label,.pulse-form label{font-size:12px;font-weight:750;color:#dce7ff;margin-top:5px}
-.tool-form input,.tool-form select,.tool-form textarea,.pulse-form input,.pulse-form select,.pulse-form textarea{display:block;width:100%;min-width:0;max-width:100%;color:#f4f6ff;background:rgba(5,9,22,.88);border:1px solid rgba(172,194,255,.22);border-radius:12px;padding:13px 14px;font:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
-.tool-form input:focus,.tool-form select:focus,.tool-form textarea:focus,.pulse-form input:focus,.pulse-form select:focus,.pulse-form textarea:focus{border-color:#62e8ff;box-shadow:0 0 0 3px rgba(98,232,255,.12);background:#080e20}
-.tool-form textarea,.pulse-form textarea{resize:vertical;line-height:1.55}
-.primary-btn,.secondary-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 16px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s,background .2s}
-.primary-btn{color:#07101a;background:linear-gradient(110deg,#67e8f9,#b5a0ff);border:1px solid transparent;box-shadow:0 8px 26px rgba(98,232,255,.12)}
-.secondary-btn{color:#e7edff;background:rgba(255,255,255,.045);border:1px solid rgba(172,194,255,.22)}
-.primary-btn:hover,.secondary-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(98,232,255,.12);border-color:rgba(98,232,255,.65)}
-button:disabled{opacity:.45;cursor:not-allowed;transform:none}
-.seo-actions{gap:10px}
-.notice{color:#aebbd8;line-height:1.65}
 #cloudConnectionStatus,#cloudAuthStatus,#cloudProjectStatusMessage{overflow-wrap:anywhere}
-#cloudProjectList{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
-#cloudProjectList .seo-output{background:rgba(5,9,22,.58);border-color:rgba(172,194,255,.17)}
-#cloudProjectList button{margin:6px 7px 0 0}
-.people-pulse{max-width:1280px}
+#cloudProjectList{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+#cloudProjectList button{margin-top:8px}
+/* Community */
 .pulse-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
-.pulse-panel{position:relative;overflow:hidden;padding:clamp(20px,3vw,30px);border:1px solid rgba(151,180,255,.2);border-radius:24px;background:linear-gradient(145deg,rgba(18,29,53,.86),rgba(11,13,30,.9));box-shadow:var(--shadow);backdrop-filter:blur(16px)}
-.pulse-panel:after{content:"";position:absolute;right:-80px;top:-100px;width:220px;height:220px;border-radius:50%;background:rgba(98,232,255,.07);filter:blur(2px);pointer-events:none}
+.pulse-panel{padding:clamp(20px,3vw,30px);border-radius:24px}
 .pulse-panel h3,.pulse-wall-head h3{font-size:clamp(21px,3vw,28px);margin:10px 0}
 .pulse-kicker{font-size:10px;font-weight:850;letter-spacing:2px;color:var(--cyan)}
-.pulse-form{position:relative;z-index:1;display:grid;gap:9px}
-.pulse-form label span{color:var(--muted);font-weight:500}
-.pulse-form button{margin-top:9px;justify-self:start}
+.pulse-form{display:grid;gap:9px}.pulse-form label span{color:var(--muted);font-weight:500}.pulse-form button{margin-top:9px;justify-self:start}
 .pulse-status{font-size:12px;min-height:22px;color:#9eeeff;overflow-wrap:anywhere}
 .pulse-wall-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:38px 0 18px}
 .pulse-wall-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
-.pulse-wall-actions select{min-height:40px;border-radius:10px;border:1px solid var(--glass-border);padding:8px 12px;color:var(--text);background:#0b1020}
+.pulse-wall-actions select{min-height:40px;border-radius:10px;border:1px solid var(--line);padding:8px 12px;color:var(--text);background:#0b1020}
 .pulse-wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
-.pulse-post{min-width:0;border:1px solid var(--glass-border);border-radius:17px;padding:19px;background:linear-gradient(145deg,rgba(18,24,44,.8),rgba(8,11,24,.85));box-shadow:0 12px 40px rgba(0,0,0,.14);animation:postEnter .35s ease both}
-.pulse-post .pulse-post-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
-.pulse-chip{display:inline-flex;border:1px solid rgba(98,232,255,.25);border-radius:30px;padding:4px 9px;font-size:10px;color:#8feeff}
+.pulse-post{min-width:0;border:1px solid var(--line);border-radius:17px;padding:19px;background:linear-gradient(145deg,rgba(18,24,44,.8),rgba(8,11,24,.85));animation:postEnter .35s ease both}
+.pulse-post-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.pulse-chip{display:inline-flex;border:1px solid rgba(127,233,224,.3);border-radius:30px;padding:4px 9px;font-size:10px;color:#8feeff}
 .pulse-post h4{margin:12px 0 6px;font-size:17px;overflow-wrap:anywhere}
 .pulse-post p{font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 15px}
 .pulse-post small{font-size:11px;color:#94a2c2}
-.pulse-post-actions{display:flex;gap:8px;flex-wrap:wrap}
-.pulse-post-actions button{font-size:11px;min-height:32px;padding:6px 10px}
-.pulse-empty{grid-column:1/-1;padding:28px;border:1px dashed var(--glass-border);border-radius:16px;text-align:center;color:var(--muted)}
-@keyframes postEnter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
-@media(max-width:760px){.pulse-grid{grid-template-columns:1fr}.tool-card{border-radius:17px}.pulse-wall-head{align-items:flex-start}.pulse-wall-actions{width:100%}.pulse-wall-actions select{flex:1;min-width:120px}}
-@media(prefers-reduced-motion:reduce){body:before{animation:none!important}.pulse-post{animation:none!important}}
-
-
-/* === IMMERSIVE 3D / PREMIUM CREATOR ECONOMY LAYER === */
-:root{--neon:#70f0ff;--neon2:#b59bff;--panel:rgba(11,16,34,.82)}
-html{scroll-padding-top:105px}
-body{perspective:1200px}
-.hero{isolation:isolate}
-.hero:before,.hero:after{filter:drop-shadow(0 0 28px rgba(98,232,255,.12));transform-style:preserve-3d}
-.hero-inner{animation:heroLift 7s ease-in-out infinite}
-@keyframes heroLift{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
-.card,.tool-card,.pulse-panel,.revenue-card,.feature{transform-style:preserve-3d;backface-visibility:hidden}
-.card:hover,.revenue-card:hover{transform:translateY(-7px) rotateX(1deg);box-shadow:0 26px 70px rgba(0,0,0,.3),0 0 0 1px rgba(112,240,255,.09)}
-#revenue-lab .section-heading{margin-bottom:28px}
+.pulse-post-actions{display:flex;gap:8px;flex-wrap:wrap}.pulse-post-actions button{font-size:11px;min-height:32px;padding:6px 10px}
+.pulse-empty{grid-column:1/-1;padding:28px;border:1px dashed var(--line);border-radius:16px;text-align:center;color:var(--muted)}
+@keyframes postEnter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+/* Revenue */
 .revenue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:17px}
-.revenue-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;overflow:hidden;padding:25px;border:1px solid rgba(144,178,255,.2);border-radius:22px;background:linear-gradient(145deg,rgba(17,28,53,.9),rgba(10,12,28,.92));box-shadow:0 18px 55px rgba(0,0,0,.2);transition:transform .3s,border-color .3s,box-shadow .3s}
-.revenue-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(112,240,255,.13),transparent 48%)}
-.revenue-icon{display:grid;place-items:center;width:50px;height:50px;border:1px solid rgba(112,240,255,.25);border-radius:15px;background:linear-gradient(145deg,rgba(112,240,255,.13),rgba(181,155,255,.14));font-size:25px;color:var(--neon);box-shadow:inset 0 0 24px rgba(112,240,255,.05)}
-.revenue-tag{margin-top:20px;font-size:10px;font-weight:850;letter-spacing:1.5px;color:var(--neon)}
-.revenue-card h3{font-size:21px;margin:8px 0}
-.revenue-card p{font-size:13px;line-height:1.7}
+.revenue-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;padding:25px;border-radius:22px;transition:transform .25s,border-color .25s}
+.revenue-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(127,233,224,.1),transparent 48%)}
+.revenue-icon{display:grid;place-items:center;width:50px;height:50px;border:1px solid rgba(127,233,224,.28);border-radius:15px;background:linear-gradient(145deg,rgba(127,233,224,.12),rgba(191,177,255,.12));font-size:24px;color:var(--cyan)}
+.revenue-tag{margin-top:20px;font-size:10px;font-weight:850;letter-spacing:1.5px;color:var(--cyan)}
+.revenue-card h3{font-size:21px;margin:8px 0}.revenue-card p{font-size:13px;line-height:1.7}
 .revenue-card .btn{margin-top:auto}
-.revenue-text-link{font-size:12px;color:var(--neon);margin-top:13px}
-.revenue-disclosure{font-size:11px!important;border-left:2px solid var(--neon2);padding-left:10px}
-.revenue-note{margin-top:17px;padding:17px 19px;border:1px solid rgba(144,178,255,.18);border-radius:15px;background:rgba(10,15,31,.68);font-size:13px;color:#b9c5e0;line-height:1.7}
-.revenue-note strong{color:#e8edff}
-a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
-@media(max-width:700px){.hero-inner{animation:none}.revenue-card{padding:21px}}
-@media(prefers-reduced-motion:reduce){.hero-inner{animation:none!important}.card:hover,.revenue-card:hover{transform:none}}
-
-
-/* === EDITORIAL LUXURY THEME: OBSIDIAN / IVORY / BRUSHED COPPER === */
-:root{
- color-scheme:dark;
- --bg:#10110f;--text:#f3efe7;--muted:#b3ada1;
- --cyan:#d7a66a;--purple:#a7a58e;--line:rgba(226,211,185,.15);
- --glass:rgba(25,26,22,.88);--glass-border:rgba(213,173,113,.2);
- --shadow:0 24px 80px rgba(0,0,0,.34);
- --accent:#d7a66a;--accent-soft:#f0d2a4;--panel:#191a16;
-}
-html{background:#10110f}
-body{background:#10110f!important;color:#f3efe7}
-body:before{
- z-index:-3!important;
- background:
-   radial-gradient(ellipse at 12% 8%,rgba(133,96,48,.20),transparent 36%),
-   radial-gradient(ellipse at 88% 24%,rgba(99,104,78,.16),transparent 38%),
-   radial-gradient(ellipse at 52% 100%,rgba(123,83,42,.13),transparent 44%),
-   linear-gradient(135deg,#10110f 0%,#171814 48%,#10110f 100%)!important;
- background-size:160% 160%!important;
- animation:luxuryAtmosphere 38s ease-in-out infinite alternate!important;
-}
-@keyframes luxuryAtmosphere{0%{background-position:0% 20%}50%{background-position:100% 45%}100%{background-position:30% 100%}}
-#starfield{opacity:.22!important;filter:sepia(.8) saturate(.55)}
-nav{background:rgba(16,17,15,.88)!important;border-bottom:1px solid rgba(215,166,106,.2)!important;box-shadow:0 12px 38px rgba(0,0,0,.22)!important}
-.logo span,.links a:hover{color:#e5b879!important;text-shadow:none!important}
-.links{color:#b3ada1!important}
-.hero:before,.hero:after{border-color:rgba(215,166,106,.22)!important;box-shadow:inset 0 0 60px rgba(215,166,106,.025),0 0 55px rgba(215,166,106,.025)}
-.hero:after{border-color:rgba(167,165,142,.2)!important}
-.eyebrow,.pulse-kicker,.revenue-tag{color:#e0b579!important}
-.gradient,.gradient-text{
- background:linear-gradient(100deg,#fff8e9 5%,#e5bd80 52%,#aaa991 100%)!important;
- color:transparent!important;background-clip:text!important;-webkit-background-clip:text!important;
-}
-.primary,.primary-btn,.revenue-card .btn.primary{
- color:#1a1711!important;background:linear-gradient(115deg,#e4c18a,#b9884c)!important;border:1px solid rgba(255,228,182,.38)!important;box-shadow:0 8px 28px rgba(168,117,55,.16)!important
-}
-.btn,.primary-btn,.secondary-btn{border-radius:12px}
-.btn:hover,.primary-btn:hover,.secondary-btn:hover{border-color:rgba(229,187,121,.65)!important;box-shadow:0 12px 32px rgba(168,117,55,.15)!important}
-.card,.tool-card,.pulse-panel,.revenue-card,.seo-tool,.feature{
- background:linear-gradient(145deg,rgba(34,35,29,.94),rgba(22,23,19,.96))!important;
- border-color:rgba(215,166,106,.18)!important;box-shadow:0 24px 70px rgba(0,0,0,.24)!important;
- backdrop-filter:blur(20px)
-}
-.card:before,.tool-card:before{background:radial-gradient(circle at 100% 0,rgba(215,166,106,.09),transparent 54%)!important}
-.card:hover,.revenue-card:hover{border-color:rgba(215,166,106,.48)!important;box-shadow:0 28px 75px rgba(0,0,0,.32),0 0 0 1px rgba(215,166,106,.07)!important}
-.feature{background:linear-gradient(135deg,#29291f,#1b1c17)!important}
-.stat,.seo-output,#cloudProjectList .seo-output{background:rgba(12,13,11,.62)!important;border-color:rgba(215,166,106,.16)!important}
-.stat strong{color:#e1b579!important}
-.tag,.pulse-kicker{border-color:rgba(215,166,106,.34)!important}
-.tag{color:#e0b579!important}
-.tool-form label,.pulse-form label,.seo-field label{color:#e7dfd1!important}
-.tool-form input,.tool-form select,.tool-form textarea,.pulse-form input,.pulse-form select,.pulse-form textarea,
-.seo-field input,.seo-field select,.seo-field textarea{
- color:#f3efe7!important;background:rgba(12,13,11,.82)!important;border-color:rgba(215,166,106,.22)!important
-}
-.tool-form input:focus,.tool-form select:focus,.tool-form textarea:focus,.pulse-form input:focus,.pulse-form select:focus,.pulse-form textarea:focus,
-.seo-field input:focus,.seo-field select:focus,.seo-field textarea:focus{
- border-color:#d7a66a!important;box-shadow:0 0 0 3px rgba(215,166,106,.13)!important;background:#151611!important
-}
-.seo-copy{color:#e5bd80!important;border-color:rgba(215,166,106,.4)!important;background:#24231c!important}
-.seo-copy:hover{background:#302b20!important}
-.seo-status,.pulse-status{color:#e0b579!important}
-.pulse-panel:after{background:rgba(215,166,106,.07)!important}
-.pulse-wall-actions select{color:#f3efe7!important;background:#171813!important;border-color:rgba(215,166,106,.22)!important}
-.notice{border-left-color:#d7a66a!important;color:#c6beaf!important}
-.revenue-icon{color:#e0b579!important;border-color:rgba(215,166,106,.28)!important;background:linear-gradient(145deg,rgba(215,166,106,.13),rgba(167,165,142,.08))!important;box-shadow:inset 0 0 24px rgba(215,166,106,.04)!important}
-.revenue-note{background:rgba(24,25,20,.82)!important;border-color:rgba(215,166,106,.17)!important;color:#c6beaf!important}
-.revenue-note strong{color:#f3efe7!important}
-footer{border-top-color:rgba(215,166,106,.18)!important}
-a:focus-visible,button:focus-visible{outline:2px solid #e5bd80!important;outline-offset:3px}
-::selection{background:rgba(215,166,106,.35);color:#fffaf0}
-@media(prefers-reduced-motion:reduce){body:before{animation:none!important}}
-
-/* === ORRERY OS: PLANETARY WORKSPACE === */
-:root{color-scheme:dark;--bg:#05070c;--text:#f5f4f0;--muted:#a5acb8;--cyan:#8de9e1;--purple:#c2b5ff;--line:rgba(225,235,255,.12);--accent:#8de9e1}
-html,body{background:#05070c!important;color:#f5f4f0}
-body:before{background:radial-gradient(ellipse at 74% 18%,rgba(22,72,85,.24),transparent 35%),radial-gradient(ellipse at 14% 58%,rgba(85,54,110,.17),transparent 32%),linear-gradient(150deg,#05070c,#0b1018 54%,#05070c)!important;animation:deepSpaceShift 32s ease-in-out infinite alternate!important}
-@keyframes deepSpaceShift{0%{background-position:0% 0%,100% 20%,0% 50%}100%{background-position:100% 80%,0% 70%,100% 50%}}
-#planetary-stage{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none}
-#planetary-canvas{width:100%;height:100%;display:block;opacity:.98;touch-action:pan-y}
-.hero{min-height:min(850px,88vh);display:flex;align-items:center;text-align:left;padding:clamp(70px,10vw,140px) 7%;isolation:isolate}
-.hero:before,.hero:after{display:none}
-.hero-inner{max-width:690px;margin-right:auto;z-index:2;position:relative}
-.hero-inner h1{font-size:clamp(44px,7.1vw,84px);letter-spacing:-2.8px;text-shadow:0 5px 38px #0008}
-.hero-inner p{margin-left:0;max-width:570px}
-.hero .eyebrow{color:#a2e8df}
-.hero .gradient,.gradient-text{background:linear-gradient(105deg,#f6f2e8 5%,#a4e8df 48%,#c6b8ff 92%)!important;background-clip:text!important;-webkit-background-clip:text!important;color:transparent!important}
-nav{background:rgba(5,7,12,.72)!important;border-bottom:1px solid rgba(190,223,228,.14)!important;backdrop-filter:blur(22px)}
-.logo span,.links a:hover{color:#a4e8df!important}
-.card,.tool-card,.pulse-panel,.revenue-card,.feature{background:linear-gradient(145deg,rgba(18,25,36,.88),rgba(8,12,20,.91))!important;border-color:rgba(180,218,220,.15)!important;box-shadow:0 22px 70px rgba(0,0,0,.22)!important;backdrop-filter:blur(18px)}
-.btn.primary,.primary-btn{background:linear-gradient(110deg,#a4e8df,#d4c7ff)!important;color:#081013!important;border:0!important}
-.eyebrow,.pulse-kicker,.revenue-tag{color:#a4e8df!important}
-.tool-form input,.tool-form select,.tool-form textarea,.pulse-form input,.pulse-form select,.pulse-form textarea{background:rgba(4,8,14,.9)!important;border-color:rgba(180,218,220,.2)!important}
-#orbital-console{max-width:1280px;margin:0 auto;padding:0 7% 24px;position:relative;z-index:2}
-.orbital-console-inner{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:17px 20px;border:1px solid rgba(180,218,220,.17);border-radius:18px;background:linear-gradient(120deg,rgba(12,21,29,.82),rgba(16,15,28,.76));backdrop-filter:blur(22px);box-shadow:0 15px 55px #0003}
-.orbital-readout{display:flex;gap:20px;flex-wrap:wrap}.orbital-metric{display:grid;gap:2px}.orbital-metric span{font-size:9px;letter-spacing:1.8px;color:#899aa9}.orbital-metric strong{font-size:13px;color:#e5f4f0;font-weight:650}
-.orbital-actions{display:flex;gap:8px;flex-wrap:wrap}.orbital-actions button{cursor:pointer;border:1px solid #a4e8df38;background:#a4e8df0a;color:#e9f6f3;padding:9px 12px;border-radius:10px;font-size:11px;font-weight:750}.orbital-actions button:hover,.orbital-actions button[aria-pressed="true"]{background:#a4e8df1e;border-color:#a4e8df99}
-.orbital-caption{color:#899aa9;font-size:10px;margin-top:8px;letter-spacing:.4px}
-@media(max-width:700px){.hero{min-height:800px;align-items:flex-start;padding-top:105px}.hero-inner{max-width:100%}.hero-inner h1{font-size:clamp(42px,13vw,65px)}#planetary-stage{opacity:.82}.orbital-console-inner{align-items:flex-start}.orbital-readout{gap:12px}.orbital-metric{min-width:78px}}
-@media(prefers-reduced-motion:reduce){body:before{animation:none!important}}
-
-
-/* === ORRERY 2.0: PHYSICAL 3D PLANETARIUM === */
-#planetary-stage{position:absolute;inset:0;z-index:0;overflow:hidden;pointer-events:none;background:radial-gradient(ellipse at 76% 45%,rgba(18,37,70,.24),transparent 44%),linear-gradient(90deg,rgba(3,6,13,.98) 0%,rgba(3,6,13,.78) 36%,rgba(3,6,13,.12) 76%,rgba(3,6,13,.3) 100%)}
-#planetary-canvas{position:absolute;inset:0;width:100%;height:100%;display:block;pointer-events:auto;touch-action:none;cursor:grab}
-#planetary-canvas:active{cursor:grabbing}
-.hero-inner{pointer-events:none}
-.hero-inner a,.hero-inner button{pointer-events:auto}
-.orbital-console-inner{gap:16px}
-.orbital-planet-picker{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:13px}
-.orbital-planet-picker button{border:1px solid rgba(170,198,235,.19);border-radius:999px;background:rgba(8,15,27,.72);color:#d8e5f7;padding:7px 11px;font:600 10px/1.2 inherit;letter-spacing:.25px;cursor:pointer;transition:transform .25s ease,border-color .25s ease,background .25s ease}
-.orbital-planet-picker button:hover,.orbital-planet-picker button[aria-pressed=true]{transform:translateY(-2px);border-color:rgba(135,204,255,.72);background:rgba(65,116,175,.23);color:#fff}
-#planet-info{margin-top:12px;padding:12px 15px;max-width:460px;border:1px solid rgba(148,193,238,.2);border-radius:14px;background:rgba(5,11,21,.84);backdrop-filter:blur(20px);box-shadow:0 14px 50px #0004}
-#planet-info[hidden]{display:none}
-#planet-info .planet-info-label{font-size:9px;letter-spacing:1.8px;color:#8ecdf5;text-transform:uppercase}
-#planet-info strong{display:block;margin:4px 0;font-size:18px;color:#f5f8ff}
-#planet-info p{margin:0;color:#aab9cd;font-size:12px;line-height:1.6}
-#planet-info .planet-info-hint{margin-top:8px;font-size:10px;color:#8190a5}
-#ambient-audio-toggle{position:fixed;right:18px;bottom:18px;z-index:50;display:flex;align-items:center;gap:9px;border:1px solid rgba(185,207,239,.22);border-radius:999px;padding:10px 14px;background:rgba(6,12,23,.88);color:#e5edfa;box-shadow:0 12px 38px #0006;backdrop-filter:blur(18px);font-size:11px;cursor:pointer;transition:transform .25s ease,border-color .25s ease}
-#ambient-audio-toggle:hover{transform:translateY(-2px);border-color:rgba(141,233,225,.65)}
-#ambient-audio-toggle .audio-dot{width:7px;height:7px;border-radius:50%;background:#8de9e1;box-shadow:0 0 12px #8de9e1}
-@media(max-width:700px){.hero{min-height:760px}#planetary-stage{opacity:.9}.hero-inner{pointer-events:none}.orbital-planet-picker{gap:6px}.orbital-planet-picker button{padding:7px 9px;font-size:10px}#ambient-audio-toggle{right:12px;bottom:12px}}
-@media(prefers-reduced-motion:reduce){#planetary-canvas{touch-action:pan-y} .orbital-planet-picker button,#ambient-audio-toggle{transition:none}}
-
-
-/* === VISUAL POLISH: crisp surfaces, depth, and responsive details === */
-:root{--panel:rgba(14,20,39,.72);--panel-strong:rgba(11,17,33,.9);--line-soft:rgba(164,190,235,.16);--glow:rgba(98,232,255,.13)}
-body{background-color:#060812;text-rendering:optimizeLegibility;-webkit-font-smoothing:antialiased}
-::selection{background:rgba(98,232,255,.28);color:#fff}
-nav{border-bottom-color:rgba(164,190,235,.13);box-shadow:0 10px 40px rgba(0,0,0,.12)}
-.logo{font-size:clamp(16px,1.5vw,20px)}
-.links a{transition:color .2s ease,opacity .2s ease}
-section{isolation:isolate}
-.section-head{max-width:820px;margin-inline:auto}
-.section-head h2{letter-spacing:-.035em;text-wrap:balance}
-.section-head p{max-width:720px;margin-inline:auto;color:var(--muted)}
-.hero-inner h1{letter-spacing:-.055em;text-wrap:balance;text-shadow:0 8px 50px rgba(0,0,0,.34)}
-.hero-inner p{max-width:760px;margin-inline:auto}
-.card,.project-card,.revenue-card,.tool-card,.feature-card,.stat-card,.panel,.studio-card,.community-card{border-color:var(--line-soft);box-shadow:0 18px 55px rgba(0,0,0,.16);transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
-.card:hover,.project-card:hover,.revenue-card:hover,.tool-card:hover,.feature-card:hover,.stat-card:hover,.studio-card:hover,.community-card:hover{transform:translateY(-3px);border-color:rgba(98,232,255,.34);box-shadow:0 22px 64px rgba(0,0,0,.25),0 0 28px rgba(98,232,255,.045)}
-button,.btn,input,select,textarea{font-family:inherit}
-button,.btn{transition:transform .2s ease,border-color .2s ease,background .2s ease,box-shadow .2s ease}
-.btn:hover,button:hover{filter:brightness(1.07)}
-input,select,textarea{max-width:100%;border-color:rgba(164,190,235,.2);background:rgba(5,10,22,.72);color:var(--text);border-radius:12px}
-input:focus,select:focus,textarea:focus{outline:2px solid rgba(98,232,255,.45);outline-offset:2px;border-color:var(--cyan)}
-:focus-visible{outline:2px solid var(--cyan);outline-offset:3px}
-img,video,canvas{max-width:100%}
-footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
-@media(max-width:760px){nav{padding:13px 5%;gap:12px;align-items:flex-start}.links{gap:10px 13px;font-size:12px}.hero{padding-inline:16px}.section-head h2{font-size:clamp(28px,7vw,44px)}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
-
-
-/* Planet scene cleanup: prevent decorative CSS orbit rings crossing the canvas. */
-#planetary-stage{background:radial-gradient(ellipse at 76% 45%,rgba(18,37,70,.18),transparent 48%),linear-gradient(90deg,rgba(3,6,13,.98) 0%,rgba(3,6,13,.78) 36%,rgba(3,6,13,.12) 76%,rgba(3,6,13,.3) 100%)}
-.hero:before,.hero:after{z-index:0;opacity:.18}
-
+.revenue-text-link{font-size:12px;color:var(--cyan);margin-top:13px}
+.revenue-disclosure{font-size:11px!important;border-left:2px solid var(--purple);padding-left:10px}
+footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);color:#8f9bb7;font-size:12px}
+.js .reveal{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.js .reveal.visible{opacity:1;transform:none}
+@media(max-width:900px){.hero{align-items:flex-start;min-height:820px;padding-top:100px}.hero-inner{max-width:100%}#planetary-stage{background:linear-gradient(180deg,rgba(3,6,13,.9) 0%,rgba(3,6,13,.55) 40%,rgba(3,6,13,.05) 75%)}}
+@media(max-width:760px){nav{flex-direction:column;align-items:flex-start;padding:12px 5%;gap:8px}.links{flex-wrap:nowrap;overflow-x:auto;width:100%;gap:16px;font-size:12.5px;scrollbar-width:none}.links a{white-space:nowrap}.about,.pulse-grid{grid-template-columns:1fr}.seo-form{grid-template-columns:1fr}.seo-field.full{grid-column:auto}section{padding:55px 6%}.hero{padding-inline:6%}#orbital-console{padding-inline:5%}.pulse-wall-actions{width:100%}.pulse-wall-actions select{flex:1}#ambient-audio-toggle{right:12px;bottom:12px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}}
 </style>
-  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>document.documentElement.classList.add("js")</script>
+<script defer src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
+<a class="skip" href="#about">Skip to content</a>
 <canvas id="starfield" aria-hidden="true"></canvas>
 
-<nav>
+<nav aria-label="Main navigation">
   <a class="logo" href="#home">SHUBHAM<span>.</span>HUB</a>
-  <div class="links" aria-label="Main navigation">
+  <div class="links">
     <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
@@ -349,7 +178,7 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
 </nav>
 
 <header class="hero" id="home">
-  <div id="planetary-stage" aria-hidden="true"><canvas id="planetary-canvas"></canvas></div>
+  <div id="planetary-stage"><canvas id="planetary-canvas" tabindex="0" role="img" aria-label="Interactive 3D solar system. Drag to rotate, scroll to zoom, click a planet to focus. Arrow keys rotate, plus and minus zoom, Escape resets."></canvas></div>
   <div class="hero-inner reveal">
     <div class="eyebrow">Technology · Creativity · AI</div>
     <h1>Explore Beyond<br><span class="gradient">The Ordinary.</span></h1>
@@ -360,8 +189,9 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
     </div>
   </div>
 </header>
-<div id="orbital-console" aria-label="Interactive 3D planetarium controls"><div class="orbital-console-inner"><div class="orbital-readout"><div class="orbital-metric"><span>ENVIRONMENT</span><strong>ORRERY / 02</strong></div><div class="orbital-metric"><span>SIMULATION</span><strong id="orbit-status">LIVE · ORBITAL</strong></div><div class="orbital-metric"><span>CELESTIAL BODIES</span><strong>7 WORLDS</strong></div></div><div class="orbital-actions"><button type="button" id="orbit-toggle" aria-pressed="false">Ⅱ Pause motion</button><button type="button" id="orbit-speed">↗ Speed ×1</button><button type="button" id="orbit-view" aria-pressed="false">◎ Reset view</button></div><div class="orbital-planet-picker" aria-label="Choose a planet"><button type="button" data-planet="Mercury" aria-pressed="false">Mercury</button><button type="button" data-planet="Venus" aria-pressed="false">Venus</button><button type="button" data-planet="Earth" aria-pressed="false">Earth</button><button type="button" data-planet="Mars" aria-pressed="false">Mars</button><button type="button" data-planet="Jupiter" aria-pressed="false">Jupiter</button><button type="button" data-planet="Saturn" aria-pressed="false">Saturn</button><button type="button" data-planet="Neptune" aria-pressed="false">Neptune</button></div><div id="planet-info" hidden><span class="planet-info-label">Selected world</span><strong data-planet-name>Earth</strong><p data-planet-desc>Our blue home.</p><p class="planet-info-hint">Scroll to zoom · drag to rotate · select another world to travel</p></div></div><div class="orbital-caption">REAL-TIME 3D ORRERY · CLICK A PLANET TO FOCUS · DRAG TO ROTATE · SCROLL TO ZOOM</div></div>
+<div id="orbital-console" role="region" aria-label="Interactive 3D planetarium controls"><div class="orbital-console-inner"><div class="orbital-readout"><div class="orbital-metric"><span>ENVIRONMENT</span><strong>ORRERY / 02</strong></div><div class="orbital-metric"><span>SIMULATION</span><strong id="orbit-status" role="status">LIVE · ORBITAL</strong></div><div class="orbital-metric"><span>CELESTIAL BODIES</span><strong>7 WORLDS</strong></div></div><div class="orbital-actions"><button type="button" id="orbit-toggle" aria-pressed="false">Ⅱ Pause motion</button><button type="button" id="orbit-speed">↗ Speed ×1</button><button type="button" id="orbit-view" aria-pressed="false">◎ Reset view</button></div><div class="orbital-planet-picker" role="group" aria-label="Choose a planet"><button type="button" data-planet="Mercury" aria-pressed="false">Mercury</button><button type="button" data-planet="Venus" aria-pressed="false">Venus</button><button type="button" data-planet="Earth" aria-pressed="false">Earth</button><button type="button" data-planet="Mars" aria-pressed="false">Mars</button><button type="button" data-planet="Jupiter" aria-pressed="false">Jupiter</button><button type="button" data-planet="Saturn" aria-pressed="false">Saturn</button><button type="button" data-planet="Neptune" aria-pressed="false">Neptune</button></div><div id="planet-info" hidden aria-live="polite"><span class="planet-info-label">Selected world</span><strong data-planet-name>Earth</strong><p data-planet-desc>Our blue home.</p><p data-planet-fact></p><p class="planet-info-hint">Scroll to zoom · drag to rotate · select another world to travel</p></div></div><div class="orbital-caption">REAL-TIME 3D ORRERY · SIZES AND DISTANCES ARE NOT TO SCALE · CLICK A PLANET TO FOCUS · DRAG TO ROTATE · SCROLL TO ZOOM</div></div>
 
+<main id="main">
 <section id="about">
   <div class="about">
     <div class="reveal">
@@ -444,81 +274,33 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
     <p class="notice">This is a local template workflow—not live AI research. Review each generated draft and verify facts before publishing. Your planner data stays in this browser.</p>
   </div>
 
-  <div class="section-head reveal">
+  <div class="section-head reveal" style="margin-top:56px">
     <div class="eyebrow">Creator workspace</div>
     <h2>Ideas become <span class="gradient">experiments.</span></h2>
     <p>Use the browser-based tools below to plan video scripts and prepare YouTube metadata. These tools use local templates and do not call an AI service.</p>
   </div>
   <div class="grid">
-    <article class="card reveal">
-      <div class="icon">✍️</div>
-      <h3>Script Workshop</h3>
-      <p>Shape video hooks, outlines, narration and story ideas.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">🎬</div>
-      <h3>Video Production</h3>
-      <p>Plan concepts, titles, descriptions, thumbnails and storyboards.</p>
-    </article>
-    <article class="card reveal">
-      <div class="icon">✨</div>
-      <h3>Prompt Library</h3>
-      <p>Collect reusable prompts for research, AI tools and creative workflows.</p>
-    </article>
+    <article class="card reveal"><div class="icon">✍️</div><h3>Script Workshop</h3><p>Shape video hooks, outlines, narration and story ideas.</p></article>
+    <article class="card reveal"><div class="icon">🎬</div><h3>Video Production</h3><p>Plan concepts, titles, descriptions, thumbnails and storyboards.</p></article>
+    <article class="card reveal"><div class="icon">✨</div><h3>Prompt Library</h3><p>Collect reusable prompts for research, AI tools and creative workflows.</p></article>
   </div>
-
 
   <div class="seo-tool reveal" id="script-studio">
     <div class="eyebrow">Free browser-based tool</div>
     <h3>YouTube Script Studio</h3>
     <p class="seo-tool-intro">Build a structured draft with a hook, narration, scene directions and ending. Everything runs in your browser; no API key or paid service is used.</p>
     <form id="scriptForm" class="seo-form">
-      <div class="seo-field full">
-        <label for="scriptTopic">Video topic <span aria-hidden="true">*</span></label>
-        <input id="scriptTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe">
-      </div>
-      <div class="seo-field">
-        <label for="scriptChannel">Channel</label>
-        <select id="scriptChannel">
-          <option value="Mind Over Machines">Mind Over Machines</option>
-          <option value="Project Dark Earth">Project Dark Earth</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="scriptFormat">Video format</label>
-        <select id="scriptFormat">
-          <option value="short">Short (30–60 seconds)</option>
-          <option value="long">Long-form (about 3–5 minutes)</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="scriptTone">Narration style</label>
-        <select id="scriptTone">
-          <option value="curious">Curiosity-driven</option>
-          <option value="cinematic">Cinematic documentary</option>
-          <option value="friendly">Friendly and practical</option>
-          <option value="educational">Educational explainer</option>
-        </select>
-      </div>
-      <div class="seo-field full">
-        <label for="scriptFacts">Facts or key points to include (optional)</label>
-        <textarea id="scriptFacts" maxlength="1000" placeholder="Add verified facts, steps, or key points. The script will use these notes as supplied."></textarea>
-      </div>
-      <div class="seo-actions full">
-        <button class="btn primary" type="submit">Build script draft ✦</button>
-        <button class="btn" type="reset">Clear form</button>
-      </div>
+      <div class="seo-field full"><label for="scriptTopic">Video topic <span aria-hidden="true">*</span></label><input id="scriptTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe"></div>
+      <div class="seo-field"><label for="scriptChannel">Channel</label><select id="scriptChannel"><option value="Mind Over Machines">Mind Over Machines</option><option value="Project Dark Earth">Project Dark Earth</option></select></div>
+      <div class="seo-field"><label for="scriptFormat">Video format</label><select id="scriptFormat"><option value="short">Short (30–60 seconds)</option><option value="long">Long-form (about 3–5 minutes)</option></select></div>
+      <div class="seo-field"><label for="scriptTone">Narration style</label><select id="scriptTone"><option value="curious">Curiosity-driven</option><option value="cinematic">Cinematic documentary</option><option value="friendly">Friendly and practical</option><option value="educational">Educational explainer</option></select></div>
+      <div class="seo-field full"><label for="scriptFacts">Facts or key points to include (optional)</label><textarea id="scriptFacts" maxlength="1000" placeholder="Add verified facts, steps, or key points. The script will use these notes as supplied."></textarea></div>
+      <div class="seo-actions full"><button class="btn primary" type="submit">Build script draft ✦</button><button class="btn" type="reset">Clear form</button></div>
     </form>
     <p class="seo-status" id="scriptStatus" role="status" aria-live="polite"></p>
     <div class="seo-results" id="scriptResults" hidden>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Complete script and scene prompts</h4><button class="seo-copy" type="button" data-script-copy="scriptFull">Copy full script</button></div>
-        <div class="seo-output-text" id="scriptFull"></div>
-      </div>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Visual / AI video prompt</h4><button class="seo-copy" type="button" data-script-copy="scriptVisual">Copy visual prompt</button></div>
-        <div class="seo-output-text" id="scriptVisual"></div>
-      </div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Complete script and scene prompts</h4><button class="seo-copy" type="button" data-script-copy="scriptFull">Copy full script</button></div><div class="seo-output-text" id="scriptFull"></div></div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Visual / AI video prompt</h4><button class="seo-copy" type="button" data-script-copy="scriptVisual">Copy visual prompt</button></div><div class="seo-output-text" id="scriptVisual"></div></div>
       <p class="notice">This is a structured template draft, not AI-generated research. Verify factual claims, replace placeholders with accurate details, and review any AI video platform's rules before publishing.</p>
     </div>
   </div>
@@ -528,134 +310,41 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
     <h3>YouTube SEO Studio</h3>
     <p class="seo-tool-intro">Create title ideas, a video description and relevant hashtags from your topic. This first version uses built-in templates in your browser—no account, API key or paid service required.</p>
     <form id="seoForm" class="seo-form">
-      <div class="seo-field full">
-        <label for="seoTopic">Video topic <span aria-hidden="true">*</span></label>
-        <input id="seoTopic" name="topic" maxlength="160" required placeholder="e.g. 5 free AI tools that save time">
-      </div>
-      <div class="seo-field">
-        <label for="seoChannel">Channel</label>
-        <select id="seoChannel" name="channel">
-          <option value="Mind Over Machines">Mind Over Machines</option>
-          <option value="Project Dark Earth">Project Dark Earth</option>
-          <option value="general">General / another channel</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="seoFormat">Video format</label>
-        <select id="seoFormat" name="format">
-          <option value="Shorts">YouTube Short</option>
-          <option value="long">Long-form video</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="seoAudience">Target audience</label>
-        <select id="seoAudience" name="audience">
-          <option value="beginners">Beginners</option>
-          <option value="curious viewers">Curious viewers</option>
-          <option value="creators and professionals">Creators and professionals</option>
-          <option value="technology enthusiasts">Technology enthusiasts</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="seoTone">Style</label>
-        <select id="seoTone" name="tone">
-          <option value="curiosity">Curiosity-driven</option>
-          <option value="educational">Educational</option>
-          <option value="cinematic">Cinematic / documentary</option>
-          <option value="practical">Practical and direct</option>
-        </select>
-      </div>
-      <div class="seo-field full">
-        <label for="seoKeywords">Optional keywords (comma-separated)</label>
-        <input id="seoKeywords" name="keywords" maxlength="240" placeholder="e.g. AI tools, productivity, tutorial">
-      </div>
-      <div class="seo-field full">
-        <label for="seoNotes">Key points to mention (optional)</label>
-        <textarea id="seoNotes" name="notes" maxlength="500" placeholder="Add what the video actually covers so the description stays accurate."></textarea>
-      </div>
-      <div class="seo-actions full">
-        <button class="btn primary" type="submit">Generate SEO pack ✦</button>
-        <button class="btn" type="reset">Clear form</button>
-      </div>
+      <div class="seo-field full"><label for="seoTopic">Video topic <span aria-hidden="true">*</span></label><input id="seoTopic" name="topic" maxlength="160" required placeholder="e.g. 5 free AI tools that save time"></div>
+      <div class="seo-field"><label for="seoChannel">Channel</label><select id="seoChannel" name="channel"><option value="Mind Over Machines">Mind Over Machines</option><option value="Project Dark Earth">Project Dark Earth</option><option value="general">General / another channel</option></select></div>
+      <div class="seo-field"><label for="seoFormat">Video format</label><select id="seoFormat" name="format"><option value="Shorts">YouTube Short</option><option value="long">Long-form video</option></select></div>
+      <div class="seo-field"><label for="seoAudience">Target audience</label><select id="seoAudience" name="audience"><option value="beginners">Beginners</option><option value="curious viewers">Curious viewers</option><option value="creators and professionals">Creators and professionals</option><option value="technology enthusiasts">Technology enthusiasts</option></select></div>
+      <div class="seo-field"><label for="seoTone">Style</label><select id="seoTone" name="tone"><option value="curiosity">Curiosity-driven</option><option value="educational">Educational</option><option value="cinematic">Cinematic / documentary</option><option value="practical">Practical and direct</option></select></div>
+      <div class="seo-field full"><label for="seoKeywords">Optional keywords (comma-separated)</label><input id="seoKeywords" name="keywords" maxlength="240" placeholder="e.g. AI tools, productivity, tutorial"></div>
+      <div class="seo-field full"><label for="seoNotes">Key points to mention (optional)</label><textarea id="seoNotes" name="notes" maxlength="500" placeholder="Add what the video actually covers so the description stays accurate."></textarea></div>
+      <div class="seo-actions full"><button class="btn primary" type="submit">Generate SEO pack ✦</button><button class="btn" type="reset">Clear form</button></div>
     </form>
     <p class="seo-status" id="seoStatus" role="status" aria-live="polite"></p>
     <div class="seo-results" id="seoResults" hidden>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Title ideas</h4><button class="seo-copy" type="button" data-copy="seoTitles">Copy titles</button></div>
-        <div class="seo-output-text" id="seoTitles"></div>
-      </div>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Video description</h4><button class="seo-copy" type="button" data-copy="seoDescription">Copy description</button></div>
-        <div class="seo-output-text" id="seoDescription"></div>
-      </div>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Hashtags</h4><button class="seo-copy" type="button" data-copy="seoHashtags">Copy hashtags</button></div>
-        <div class="seo-output-text" id="seoHashtags"></div>
-      </div>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Suggested tags / keywords</h4><button class="seo-copy" type="button" data-copy="seoTags">Copy keywords</button></div>
-        <div class="seo-output-text" id="seoTags"></div>
-      </div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Title ideas</h4><button class="seo-copy" type="button" data-copy="seoTitles">Copy titles</button></div><div class="seo-output-text" id="seoTitles"></div></div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Video description</h4><button class="seo-copy" type="button" data-copy="seoDescription">Copy description</button></div><div class="seo-output-text" id="seoDescription"></div></div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Hashtags</h4><button class="seo-copy" type="button" data-copy="seoHashtags">Copy hashtags</button></div><div class="seo-output-text" id="seoHashtags"></div></div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Suggested tags / keywords</h4><button class="seo-copy" type="button" data-copy="seoTags">Copy keywords</button></div><div class="seo-output-text" id="seoTags"></div></div>
       <p class="notice">SEO suggestions are template-based, not live search-volume data or AI-generated research. Check that every title and claim accurately reflects your video before publishing.</p>
     </div>
   </div>
-
 
   <div class="seo-tool reveal" id="thumbnail-studio">
     <div class="eyebrow">Free browser-based tool</div>
     <h3>Thumbnail Prompt Studio</h3>
     <p class="seo-tool-intro">Create a detailed prompt for an image generator. This tool writes the prompt locally; it does not generate the thumbnail image itself.</p>
     <form id="thumbForm" class="seo-form">
-      <div class="seo-field full">
-        <label for="thumbTopic">Video topic <span aria-hidden="true">*</span></label>
-        <input id="thumbTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe">
-      </div>
-      <div class="seo-field">
-        <label for="thumbChannel">Channel</label>
-        <select id="thumbChannel">
-          <option value="Mind Over Machines">Mind Over Machines</option>
-          <option value="Project Dark Earth">Project Dark Earth</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="thumbMood">Visual mood</label>
-        <select id="thumbMood">
-          <option value="cinematic mystery">Cinematic mystery</option>
-          <option value="high-tech futuristic">High-tech futuristic</option>
-          <option value="documentary realism">Documentary realism</option>
-          <option value="clean educational">Clean educational</option>
-          <option value="dramatic discovery">Dramatic discovery</option>
-        </select>
-      </div>
-      <div class="seo-field">
-        <label for="thumbText">Thumbnail text (optional)</label>
-        <input id="thumbText" maxlength="55" placeholder="e.g. LOST HISTORY?">
-      </div>
-      <div class="seo-field">
-        <label for="thumbColors">Color palette</label>
-        <select id="thumbColors">
-          <option value="electric cyan and violet on deep black">Cyan and violet</option>
-          <option value="warm amber and deep charcoal">Amber and charcoal</option>
-          <option value="earthy bronze, sand and shadow">Earthy bronze</option>
-          <option value="crimson accents with cool blue shadows">Crimson and blue</option>
-          <option value="clean white, navy and cyan">White, navy and cyan</option>
-        </select>
-      </div>
-      <div class="seo-field full">
-        <label for="thumbDetails">Specific visual elements (optional)</label>
-        <textarea id="thumbDetails" maxlength="400" placeholder="e.g. ancient stone pillars, fog, distant landscape, one central focal point"></textarea>
-      </div>
-      <div class="seo-actions full">
-        <button class="btn primary" type="submit">Create thumbnail prompt ✦</button>
-        <button class="btn" type="reset">Clear form</button>
-      </div>
+      <div class="seo-field full"><label for="thumbTopic">Video topic <span aria-hidden="true">*</span></label><input id="thumbTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe"></div>
+      <div class="seo-field"><label for="thumbChannel">Channel</label><select id="thumbChannel"><option value="Mind Over Machines">Mind Over Machines</option><option value="Project Dark Earth">Project Dark Earth</option></select></div>
+      <div class="seo-field"><label for="thumbMood">Visual mood</label><select id="thumbMood"><option value="cinematic mystery">Cinematic mystery</option><option value="high-tech futuristic">High-tech futuristic</option><option value="documentary realism">Documentary realism</option><option value="clean educational">Clean educational</option><option value="dramatic discovery">Dramatic discovery</option></select></div>
+      <div class="seo-field"><label for="thumbText">Thumbnail text (optional)</label><input id="thumbText" maxlength="55" placeholder="e.g. LOST HISTORY?"></div>
+      <div class="seo-field"><label for="thumbColors">Color palette</label><select id="thumbColors"><option value="electric cyan and violet on deep black">Cyan and violet</option><option value="warm amber and deep charcoal">Amber and charcoal</option><option value="earthy bronze, sand and shadow">Earthy bronze</option><option value="crimson accents with cool blue shadows">Crimson and blue</option><option value="clean white, navy and cyan">White, navy and cyan</option></select></div>
+      <div class="seo-field full"><label for="thumbDetails">Specific visual elements (optional)</label><textarea id="thumbDetails" maxlength="400" placeholder="e.g. ancient stone pillars, fog, distant landscape, one central focal point"></textarea></div>
+      <div class="seo-actions full"><button class="btn primary" type="submit">Create thumbnail prompt ✦</button><button class="btn" type="reset">Clear form</button></div>
     </form>
     <p class="seo-status" id="thumbStatus" role="status" aria-live="polite"></p>
     <div class="seo-results" id="thumbResults" hidden>
-      <div class="seo-output">
-        <div class="seo-output-head"><h4>Image-generation prompt</h4><button class="seo-copy" type="button" id="thumbCopy">Copy prompt</button></div>
-        <div class="seo-output-text" id="thumbPrompt"></div>
-      </div>
+      <div class="seo-output"><div class="seo-output-head"><h4>Image-generation prompt</h4><button class="seo-copy" type="button" id="thumbCopy">Copy prompt</button></div><div class="seo-output-text" id="thumbPrompt"></div></div>
       <p class="notice">Tip: image generators may render text inaccurately. For clean lettering, generate the artwork without text and add the title in an editor.</p>
     </div>
   </div>
@@ -681,8 +370,6 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
 
   <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
 </section>
-
-
 
 <section id="people-pulse" class="people-pulse">
   <div class="section-head reveal">
@@ -807,7 +494,6 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
   </div>
 </section>
 
-
 <section id="revenue-lab">
   <div class="section-heading">
     <p class="eyebrow">CREATOR ECONOMY · TRANSPARENT BY DESIGN</p>
@@ -816,27 +502,27 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
   </div>
   <div class="revenue-grid">
     <article class="revenue-card">
-      <div class="revenue-icon">▶</div><span class="revenue-tag">CONTENT MONETIZATION</span>
+      <div class="revenue-icon" aria-hidden="true">▶</div><span class="revenue-tag">CONTENT MONETIZATION</span>
       <h3>Video & website ads</h3>
       <p>Explore Google AdSense for eligible website ads and YouTube Studio for channel monetization. Approval, original content, policy compliance and qualifying traffic are required.</p>
       <a class="btn primary" href="https://adsense.google.com/start/" target="_blank" rel="noopener noreferrer">Explore AdSense ↗</a>
       <a class="revenue-text-link" href="https://studio.youtube.com/" target="_blank" rel="noopener noreferrer">Open YouTube Studio ↗</a>
     </article>
     <article class="revenue-card">
-      <div class="revenue-icon">◇</div><span class="revenue-tag">AFFILIATE RECOMMENDATIONS</span>
+      <div class="revenue-icon" aria-hidden="true">◇</div><span class="revenue-tag">AFFILIATE RECOMMENDATIONS</span>
       <h3>Recommend tools you trust</h3>
       <p>Apply to relevant affiliate programs and publish honest reviews. You earn only if a program approves you and qualifying referrals convert.</p>
       <a class="btn" href="https://affiliate-program.amazon.in/" target="_blank" rel="noopener noreferrer">Amazon Associates India ↗</a>
       <p class="revenue-disclosure">Always disclose affiliate links clearly. Never recommend a product solely for commission.</p>
     </article>
     <article class="revenue-card">
-      <div class="revenue-icon">⬡</div><span class="revenue-tag">DIGITAL PRODUCTS</span>
+      <div class="revenue-icon" aria-hidden="true">⬡</div><span class="revenue-tag">DIGITAL PRODUCTS</span>
       <h3>Sell useful downloads</h3>
       <p>Create original templates, creator planners, dashboard guides or educational resources. A storefront/payment provider is needed to collect payments and deliver purchases.</p>
       <a class="btn" href="https://gumroad.com/" target="_blank" rel="noopener noreferrer">Explore Gumroad ↗</a>
     </article>
     <article class="revenue-card">
-      <div class="revenue-icon">✦</div><span class="revenue-tag">COMMUNITY SUPPORT</span>
+      <div class="revenue-icon" aria-hidden="true">✦</div><span class="revenue-tag">COMMUNITY SUPPORT</span>
       <h3>Support the work</h3>
       <p>Once you have an audience, offer optional support or memberships through a third-party provider. Check its fees, eligibility and payout rules first.</p>
       <a class="btn" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">Explore Ko-fi ↗</a>
@@ -855,14 +541,30 @@ footer{border-top:1px solid rgba(164,190,235,.12);color:#8f9bb7}
     <a class="btn" href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
   </div>
 </section>
+</main>
 
 <footer>© <span id="year"></span> Shubham Creator Hub · Built to explore what's possible.</footer>
 
-<script>
+<button id="ambient-audio-toggle" type="button" aria-pressed="false" aria-label="Turn on ambient music"><span class="audio-dot" aria-hidden="true"></span><span id="ambient-audio-label">Enable soft ambient music</span></button>
 
+<script>
 document.getElementById("year").textContent = new Date().getFullYear();
 
+/* Shared clipboard helper (used by Script, SEO and Thumbnail tools). */
+async function copyText(value, statusEl, okMsg, failMsg) {
+  if (!value) return;
+  try { await navigator.clipboard.writeText(value); statusEl.textContent = okMsg; }
+  catch (_) {
+    const area = document.createElement("textarea");
+    area.value = value; area.style.position = "fixed"; area.style.opacity = "0";
+    document.body.appendChild(area); area.select();
+    let copied = false; try { copied = document.execCommand("copy"); } catch (__) {}
+    area.remove(); statusEl.textContent = copied ? okMsg : failMsg;
+  }
+}
+const smoothOpt = () => ({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
 
+/* ---------- Script Studio ---------- */
 (() => {
   const form = document.getElementById("scriptForm");
   if (!form) return;
@@ -894,10 +596,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     event.preventDefault();
     const topic = clean(el("scriptTopic").value);
     if (!topic) { el("scriptTopic").focus(); return; }
-    const channel = el("scriptChannel").value;
-    const format = el("scriptFormat").value;
-    const tone = el("scriptTone").value;
-    const language = "English";
+    const channel = el("scriptChannel").value, format = el("scriptFormat").value, tone = el("scriptTone").value, language = "English";
     const facts = lines(el("scriptFacts").value);
     const sections = templates[format].map(([heading, build]) => heading + "\n" + build(topic));
     const toneNote = {
@@ -920,35 +619,16 @@ document.getElementById("year").textContent = new Date().getFullYear();
     el("scriptVisual").textContent = visual;
     el("scriptResults").hidden = false;
     el("scriptStatus").textContent = "Script draft created locally. Review the structure and verify all factual details.";
-    el("scriptResults").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+    el("scriptResults").scrollIntoView(smoothOpt());
   });
-  form.addEventListener("reset", () => {
-    el("scriptResults").hidden = true;
-    el("scriptStatus").textContent = "";
-  });
-  document.querySelectorAll("[data-script-copy]").forEach(button => {
-    button.addEventListener("click", async () => {
-      const target = el(button.dataset.scriptCopy);
-      const value = target ? target.textContent : "";
-      if (!value) return;
-      try {
-        await navigator.clipboard.writeText(value);
-        el("scriptStatus").textContent = "Copied to clipboard.";
-      } catch (error) {
-        const area = document.createElement("textarea");
-        area.value = value;
-        area.style.position = "fixed";
-        area.style.opacity = "0";
-        document.body.appendChild(area);
-        area.select();
-        const copied = document.execCommand("copy");
-        area.remove();
-        el("scriptStatus").textContent = copied ? "Copied to clipboard." : "Copy was blocked; select and copy the text manually.";
-      }
-    });
-  });
+  form.addEventListener("reset", () => { el("scriptResults").hidden = true; el("scriptStatus").textContent = ""; });
+  document.querySelectorAll("[data-script-copy]").forEach(button => button.addEventListener("click", () => {
+    const target = el(button.dataset.scriptCopy);
+    copyText(target ? target.textContent : "", el("scriptStatus"), "Copied to clipboard.", "Copy was blocked; select and copy the text manually.");
+  }));
 })();
 
+/* ---------- YouTube SEO Studio ---------- */
 (() => {
   const form = document.getElementById("seoForm");
   if (!form) return;
@@ -966,18 +646,12 @@ document.getElementById("year").textContent = new Date().getFullYear();
     event.preventDefault();
     const topic = clean(byId("seoTopic").value);
     if (!topic) { byId("seoTopic").focus(); return; }
-    const channel = byId("seoChannel").value;
-    const format = byId("seoFormat").value;
-    const audience = byId("seoAudience").value;
-    const tone = byId("seoTone").value;
+    const channel = byId("seoChannel").value, format = byId("seoFormat").value, audience = byId("seoAudience").value, tone = byId("seoTone").value;
     const keywords = splitKeywords(byId("seoKeywords").value);
     const notes = clean(byId("seoNotes").value);
     const short = format === "Shorts";
-    const channelKeywords = channel === "Mind Over Machines"
-      ? ["AI tools", "technology", "digital productivity"]
-      : channel === "Project Dark Earth"
-        ? ["mysteries", "history", "documentary"]
-        : ["YouTube", "video content"];
+    const channelKeywords = channel === "Mind Over Machines" ? ["AI tools", "technology", "digital productivity"]
+      : channel === "Project Dark Earth" ? ["mysteries", "history", "documentary"] : ["YouTube", "video content"];
     const titles = tone === "cinematic"
       ? [topic + " | The Story Behind the Mystery", "What Makes " + topic + " So Fascinating?", "Inside " + topic + ": What We Know"]
       : tone === "educational"
@@ -993,8 +667,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
       (notes ? notes + "\n\n" : "In this video, we explore " + topic + " for " + audience + ". Watch to learn the key ideas and takeaways.\n\n") +
       (keywords.length ? "Topics covered: " + keywords.join(", ") + ".\n\n" : "") +
       "If you found this useful, like the video, share your thoughts in the comments, and subscribe for more content." +
-      channelLine + "\n\n" +
-      (short ? "#Shorts " : "") + "Please verify all details and tailor this description to the final video.";
+      channelLine + "\n\n" + (short ? "#Shorts " : "") + "Please verify all details and tailor this description to the final video.";
     const baseTags = [...new Set([...channelKeywords, ...keywords, ...topic.split(/\s+/).filter(word => word.length > 2)])];
     const hashtags = [...new Set([...(short ? ["#Shorts"] : []), ...baseTags.map(slugHashtag).filter(Boolean)])].slice(0, 12);
     setText("seoTitles", formattedTitles.join("\n"));
@@ -1003,37 +676,16 @@ document.getElementById("year").textContent = new Date().getFullYear();
     setText("seoTags", [...new Set([...keywords, ...channelKeywords, ...topic.split(/\s+/).filter(word => word.length > 2)])].join(", "));
     byId("seoResults").hidden = false;
     byId("seoStatus").textContent = "SEO pack created in your browser. Review and customize it before publishing.";
-    byId("seoResults").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+    byId("seoResults").scrollIntoView(smoothOpt());
   });
-  form.addEventListener("reset", () => {
-    byId("seoResults").hidden = true;
-    byId("seoStatus").textContent = "";
-  });
-  document.querySelectorAll("[data-copy]").forEach(button => {
-    button.addEventListener("click", async () => {
-      const target = byId(button.dataset.copy);
-      const value = target ? target.textContent : "";
-      if (!value) return;
-      try {
-        await navigator.clipboard.writeText(value);
-        byId("seoStatus").textContent = "Copied to clipboard.";
-      } catch (error) {
-        const area = document.createElement("textarea");
-        area.value = value;
-        area.style.position = "fixed";
-        area.style.opacity = "0";
-        document.body.appendChild(area);
-        area.select();
-        const copied = document.execCommand("copy");
-        area.remove();
-        byId("seoStatus").textContent = copied ? "Copied to clipboard." : "Copy was blocked by your browser. Select and copy the text manually.";
-      }
-    });
-  });
+  form.addEventListener("reset", () => { byId("seoResults").hidden = true; byId("seoStatus").textContent = ""; });
+  document.querySelectorAll("[data-copy]").forEach(button => button.addEventListener("click", () => {
+    const target = byId(button.dataset.copy);
+    copyText(target ? target.textContent : "", byId("seoStatus"), "Copied to clipboard.", "Copy was blocked by your browser. Select and copy the text manually.");
+  }));
 })();
 
-
-
+/* ---------- Thumbnail Prompt Studio ---------- */
 (() => {
   const form = document.getElementById("thumbForm");
   if (!form) return;
@@ -1043,11 +695,8 @@ document.getElementById("year").textContent = new Date().getFullYear();
     event.preventDefault();
     const topic = clean(el("thumbTopic").value);
     if (!topic) { el("thumbTopic").focus(); return; }
-    const channel = el("thumbChannel").value;
-    const mood = el("thumbMood").value;
-    const colors = el("thumbColors").value;
-    const text = clean(el("thumbText").value);
-    const details = clean(el("thumbDetails").value);
+    const channel = el("thumbChannel").value, mood = el("thumbMood").value, colors = el("thumbColors").value;
+    const text = clean(el("thumbText").value), details = clean(el("thumbDetails").value);
     const style = channel === "Project Dark Earth"
       ? "investigative history and mystery documentary, atmospheric ancient-world or exploration visuals, grounded documentary realism"
       : "modern technology and AI creator channel, polished digital visuals, sleek high-contrast composition";
@@ -1063,117 +712,65 @@ document.getElementById("year").textContent = new Date().getFullYear();
     el("thumbPrompt").textContent = prompt;
     el("thumbResults").hidden = false;
     el("thumbStatus").textContent = "Prompt created locally. Paste it into an image generator and review its output.";
-    el("thumbResults").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+    el("thumbResults").scrollIntoView(smoothOpt());
   });
-  form.addEventListener("reset", () => {
-    el("thumbResults").hidden = true;
-    el("thumbStatus").textContent = "";
-  });
-  el("thumbCopy").addEventListener("click", async () => {
-    const value = el("thumbPrompt").textContent;
-    if (!value) return;
-    try {
-      await navigator.clipboard.writeText(value);
-      el("thumbStatus").textContent = "Prompt copied to clipboard.";
-    } catch (error) {
-      const area = document.createElement("textarea");
-      area.value = value;
-      area.style.position = "fixed";
-      area.style.opacity = "0";
-      document.body.appendChild(area);
-      area.select();
-      const copied = document.execCommand("copy");
-      area.remove();
-      el("thumbStatus").textContent = copied ? "Prompt copied to clipboard." : "Copy was blocked; select and copy the prompt manually.";
-    }
-  });
+  form.addEventListener("reset", () => { el("thumbResults").hidden = true; el("thumbStatus").textContent = ""; });
+  el("thumbCopy").addEventListener("click", () => copyText(el("thumbPrompt").textContent, el("thumbStatus"), "Prompt copied to clipboard.", "Copy was blocked; select and copy the prompt manually."));
 })();
 
+/* ---------- 2D starfield (paused when tab hidden) ---------- */
 (() => {
   const canvas = document.getElementById("starfield");
   const ctx = canvas && canvas.getContext("2d");
   if (!ctx) return;
-
-  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)");
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)");
   let width = 0, height = 0, stars = [], frame = 0;
-
   function resize() {
     const dpr = Math.min(window.devicePixelRatio || 1, 2);
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = Math.round(width * dpr);
-    canvas.height = Math.round(height * dpr);
+    width = innerWidth; height = innerHeight;
+    canvas.width = Math.round(width * dpr); canvas.height = Math.round(height * dpr);
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    stars = Array.from({length: Math.min(125, Math.floor(width * height / 8500))}, () => ({
-      x: Math.random() * width,
-      y: Math.random() * height,
-      r: Math.random() * 1.3 + .25,
-      alpha: Math.random() * .55 + .15,
-      speed: Math.random() * .16 + .025
-    }));
-    if (reduce.matches) draw(false);
+    stars = Array.from({length: Math.min(125, Math.floor(width * height / 8500))}, () => ({x: Math.random() * width, y: Math.random() * height, r: Math.random() * 1.3 + .25, alpha: Math.random() * .55 + .15, speed: Math.random() * .16 + .025}));
+    draw(false);
   }
-
-  function draw(animate = true) {
-    cancelAnimationFrame(frame);
+  function draw(animate) {
+    cancelAnimationFrame(frame); frame = 0;
     ctx.clearRect(0, 0, width, height);
     for (const s of stars) {
-      ctx.beginPath();
-      ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
-      ctx.fillStyle = `rgba(155,220,255,${s.alpha})`;
-      ctx.fill();
-      if (animate && !reduce.matches) {
-        s.y -= s.speed;
-        if (s.y < -2) { s.y = height + 2; s.x = Math.random() * width; }
-      }
+      ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(155,220,255," + s.alpha + ")"; ctx.fill();
+      if (animate) { s.y -= s.speed; if (s.y < -2) { s.y = height + 2; s.x = Math.random() * width; } }
     }
-    if (animate && !reduce.matches) frame = requestAnimationFrame(() => draw(true));
+    if (animate && !document.hidden) frame = requestAnimationFrame(() => draw(true));
   }
-
-  window.addEventListener("resize", resize);
+  addEventListener("resize", resize);
+  document.addEventListener("visibilitychange", () => { if (!document.hidden && !reduce.matches && !frame) draw(true); });
   resize();
   if (!reduce.matches) draw(true);
 })();
 
+/* ---------- Scroll reveal ---------- */
 (() => {
   const items = document.querySelectorAll(".reveal");
-  if (!("IntersectionObserver" in window) || window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-    items.forEach(item => item.classList.add("visible"));
-    return;
-  }
-  const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("visible");
-        observer.unobserve(entry.target);
-      }
-    });
-  }, {threshold: 0.12});
+  if (!("IntersectionObserver" in window) || matchMedia("(prefers-reduced-motion: reduce)").matches) { items.forEach(i => i.classList.add("visible")); return; }
+  const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("visible"); observer.unobserve(entry.target); } }), {threshold: 0.12});
   items.forEach(item => observer.observe(item));
 })();
 
+/* ---------- Content Planner (localStorage + CSV) ---------- */
 (() => {
   const form = document.getElementById("plannerForm");
   if (!form) return;
   const $ = id => document.getElementById(id);
   const storageKey = "shubhamCreatorHubContentPlanV1";
   let items = [];
-  try {
-    const saved = localStorage.getItem(storageKey);
-    items = saved ? JSON.parse(saved) : [];
-    if (!Array.isArray(items)) items = [];
-  } catch (_) { items = []; }
+  try { const saved = localStorage.getItem(storageKey); items = saved ? JSON.parse(saved) : []; if (!Array.isArray(items)) items = []; } catch (_) { items = []; }
   const announce = message => { $("plannerStatus").textContent = message; };
   const persist = () => {
     try { localStorage.setItem(storageKey, JSON.stringify(items)); announce("Saved in this browser."); return true; }
     catch (_) { announce("Browser storage is unavailable or full. Export your plan as CSV to keep a backup."); return false; }
   };
-  const make = (tag, className, textValue) => {
-    const node = document.createElement(tag);
-    if (className) node.className = className;
-    if (textValue !== undefined) node.textContent = textValue;
-    return node;
-  };
+  const make = (tag, className, textValue) => { const n = document.createElement(tag); if (className) n.className = className; if (textValue !== undefined) n.textContent = textValue; return n; };
   function render() {
     const root = $("plannerList");
     root.replaceChildren();
@@ -1194,13 +791,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
       const statusLabel = make("label", "", "Update status");
       statusLabel.htmlFor = "status-" + item.id;
       const status = document.createElement("select");
-      status.id = "status-" + item.id;
-      status.style.maxWidth = "220px";
-      status.style.border = "1px solid #ffffff25";
-      status.style.borderRadius = "10px";
-      status.style.padding = "10px";
-      status.style.background = "#080c1a";
-      status.style.color = "var(--text)";
+      status.id = "status-" + item.id; status.className = "planner-status";
       ["Idea", "Researching", "Script ready", "Editing", "Scheduled", "Published"].forEach(value => {
         const option = document.createElement("option");
         option.value = value; option.textContent = value; option.selected = value === item.status; status.append(option);
@@ -1236,64 +827,39 @@ document.getElementById("year").textContent = new Date().getFullYear();
   render();
 })();
 
-
+/* ---------- Creator Workflow Studio ---------- */
 (() => {
   const form = document.getElementById("workflowForm");
   if (!form) return;
   const $ = id => document.getElementById(id);
-  const setValue = (id, value) => { const field = $(id); if (field) field.value = value; };
+  const setValue = (id, value) => { const f = $(id); if (f) f.value = value; };
   form.addEventListener("submit", event => {
     event.preventDefault();
     const topic = $("workflowTopic").value.trim();
     if (!topic) { $("workflowStatus").textContent = "Enter a video topic first."; return; }
-    const channel = $("workflowChannel").value;
-    const format = $("workflowFormat").value;
-    const style = $("workflowStyle").value;
-    const notes = $("workflowNotes").value.trim();
-
-    setValue("scriptTopic", topic);
-    setValue("scriptChannel", channel);
-    setValue("scriptFormat", format);
-    setValue("scriptTone", style === "friendly" ? "friendly" : style);
-    setValue("scriptFacts", notes);
-
-    setValue("seoTopic", topic);
-    setValue("seoChannel", channel);
-    setValue("seoFormat", format === "short" ? "Shorts" : "long");
+    const channel = $("workflowChannel").value, format = $("workflowFormat").value, style = $("workflowStyle").value, notes = $("workflowNotes").value.trim();
+    setValue("scriptTopic", topic); setValue("scriptChannel", channel); setValue("scriptFormat", format); setValue("scriptTone", style); setValue("scriptFacts", notes);
+    setValue("seoTopic", topic); setValue("seoChannel", channel); setValue("seoFormat", format === "short" ? "Shorts" : "long");
     setValue("seoTone", style === "curious" ? "curiosity" : style === "cinematic" ? "cinematic" : style === "friendly" ? "practical" : "educational");
-    setValue("seoAudience", channel === "Project Dark Earth" ? "curious viewers" : "beginners");
-    setValue("seoNotes", notes);
-
-    setValue("thumbTopic", topic);
-    setValue("thumbChannel", channel);
+    setValue("seoAudience", channel === "Project Dark Earth" ? "curious viewers" : "beginners"); setValue("seoNotes", notes);
+    setValue("thumbTopic", topic); setValue("thumbChannel", channel);
     setValue("thumbMood", channel === "Project Dark Earth" ? "cinematic mystery" : style === "cinematic" ? "dramatic discovery" : "high-tech futuristic");
     setValue("thumbDetails", notes);
-
-    $("scriptForm").requestSubmit();
-    $("seoForm").requestSubmit();
-    $("thumbForm").requestSubmit();
-
-    setValue("planTitle", topic);
-    setValue("planChannel", channel);
-    setValue("planFormat", format === "short" ? "Short" : "Long video");
-    setValue("planStatus", "Idea");
-    setValue("planNotes", notes);
+    $("scriptForm").requestSubmit(); $("seoForm").requestSubmit(); $("thumbForm").requestSubmit();
+    setValue("planTitle", topic); setValue("planChannel", channel); setValue("planFormat", format === "short" ? "Short" : "Long video"); setValue("planStatus", "Idea"); setValue("planNotes", notes);
     $("plannerForm").requestSubmit();
-
     $("workflowStatus").textContent = "Package drafted and the idea was added to your Content Planner. Scroll down to review the script, SEO suggestions, thumbnail prompt and plan entry.";
-    $("workflowStatus").scrollIntoView({behavior:"smooth", block:"nearest"});
+    $("workflowStatus").scrollIntoView(smoothOpt());
   });
 })();
 
-
-/* Supabase cloud dashboard: browser-safe publishable key only; access enforced by RLS. */
+/* ---------- Supabase cloud dashboard: publishable key only; access enforced by RLS ---------- */
 (() => {
   const $ = id => document.getElementById(id);
   if (!$("cloudConfigForm")) return;
-  let client = null;
-  let currentUser = null;
+  let client = null, currentUser = null, listening = false;
   const configKey = "shubhamCreatorHubSupabaseConfigV1";
-  const say = (id, message) => { const el = $(id); if (el) el.textContent = message; };
+  const say = (id, message) => { const e = $(id); if (e) e.textContent = message; };
   const setAuthButtons = signedIn => {
     $("cloudSignOut").disabled = !signedIn;
     $("cloudSignUp").disabled = signedIn;
@@ -1301,80 +867,43 @@ document.getElementById("year").textContent = new Date().getFullYear();
     $("cloudProjectForm").querySelector('button[type="submit"]').disabled = !signedIn;
     $("cloudRefreshProjects").disabled = !signedIn;
   };
-  const escapeText = value => String(value ?? "");
   function loadSavedConfig() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(configKey) || "null");
-      if (saved && saved.url && saved.key) {
-        $("cloudProjectUrl").value = saved.url;
-        $("cloudPublishableKey").value = saved.key;
-      }
-    } catch (_) {}
+    try { const saved = JSON.parse(localStorage.getItem(configKey) || "null"); if (saved && saved.url && saved.key) { $("cloudProjectUrl").value = saved.url; $("cloudPublishableKey").value = saved.key; } } catch (_) {}
   }
   async function refreshProjects() {
-    if (!client || !currentUser) {
-      say("cloudProjectStatusMessage", "Sign in to view your private cloud projects.");
-      return;
-    }
+    if (!client || !currentUser) { say("cloudProjectStatusMessage", "Sign in to view your private cloud projects."); return; }
     say("cloudProjectStatusMessage", "Loading your projects…");
-    const { data, error } = await client.from("creator_projects")
-      .select("id,title,project_type,content,status,created_at,updated_at")
-      .order("updated_at", { ascending: false });
-    if (error) {
-      say("cloudProjectStatusMessage", "Could not load projects: " + error.message);
-      return;
-    }
+    const { data, error } = await client.from("creator_projects").select("id,title,project_type,content,status,created_at,updated_at").order("updated_at", { ascending: false });
+    if (error) { say("cloudProjectStatusMessage", "Could not load projects: " + error.message); return; }
     const root = $("cloudProjectList");
     root.replaceChildren();
-    if (!data || data.length === 0) {
-      say("cloudProjectStatusMessage", "No cloud projects yet. Save your first draft above.");
-      return;
-    }
+    if (!data || data.length === 0) { say("cloudProjectStatusMessage", "No cloud projects yet. Save your first draft above."); return; }
     say("cloudProjectStatusMessage", data.length + " cloud project(s) loaded.");
     data.forEach(project => {
-      const card = document.createElement("article");
-      card.className = "seo-output";
-      const heading = document.createElement("h4");
-      heading.textContent = escapeText(project.title);
-      const meta = document.createElement("p");
-      meta.className = "seo-output-text";
-      meta.textContent = escapeText(project.project_type) + " · " + escapeText(project.status) + " · " + new Date(project.updated_at || project.created_at).toLocaleString();
-      const body = document.createElement("p");
-      body.className = "seo-output-text";
+      const card = document.createElement("article"); card.className = "seo-output";
+      const heading = document.createElement("h4"); heading.textContent = String(project.title ?? "");
+      const meta = document.createElement("p"); meta.className = "seo-output-text";
+      meta.textContent = String(project.project_type ?? "") + " · " + String(project.status ?? "") + " · " + new Date(project.updated_at || project.created_at).toLocaleString();
+      const body = document.createElement("p"); body.className = "seo-output-text";
       const content = project.content && typeof project.content === "object" ? (project.content.text || JSON.stringify(project.content, null, 2)) : String(project.content || "");
       body.textContent = content.slice(0, 5000);
-      const remove = document.createElement("button");
-      remove.type = "button";
-      remove.className = "secondary-btn";
-      remove.textContent = "Delete project";
+      const remove = document.createElement("button"); remove.type = "button"; remove.className = "secondary-btn"; remove.textContent = "Delete project";
       remove.addEventListener("click", async () => {
         if (!window.confirm("Delete this cloud project? This cannot be undone.")) return;
         const { error: deleteError } = await client.from("creator_projects").delete().eq("id", project.id);
         if (deleteError) say("cloudProjectStatusMessage", "Delete failed: " + deleteError.message);
         else { say("cloudProjectStatusMessage", "Project deleted."); refreshProjects(); }
       });
-      card.append(heading, meta, body, remove);
-      root.append(card);
+      card.append(heading, meta, body, remove); root.append(card);
     });
   }
   async function connect(url, key, persist) {
-    if (!window.supabase || !window.supabase.createClient) {
-      say("cloudConnectionStatus", "Supabase library did not load. Check your internet connection and refresh the page.");
-      return;
-    }
+    if (!window.supabase || !window.supabase.createClient) { say("cloudConnectionStatus", "Supabase library did not load. Check your internet connection and refresh the page."); return; }
     try {
       const normalized = url.trim().replace(/\/$/, "");
-      if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(normalized)) {
-        say("cloudConnectionStatus", "Enter the project URL in the form https://your-project.supabase.co.");
-        return;
-      }
-      if (!key.trim().startsWith("sb_publishable_")) {
-        say("cloudConnectionStatus", "Use the sb_publishable_ key only. Secret keys are not supported here.");
-        return;
-      }
-      client = window.supabase.createClient(normalized, key.trim(), {
-        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
-      });
+      if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(normalized)) { say("cloudConnectionStatus", "Enter the project URL in the form https://your-project.supabase.co."); return; }
+      if (!key.trim().startsWith("sb_publishable_")) { say("cloudConnectionStatus", "Use the sb_publishable_ key only. Secret keys are not supported here."); return; }
+      client = window.supabase.createClient(normalized, key.trim(), { auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true } });
       if (persist) localStorage.setItem(configKey, JSON.stringify({ url: normalized, key: key.trim() }));
       say("cloudConnectionStatus", "Client initialized. Checking your sign-in session…");
       const { data, error } = await client.auth.getSession();
@@ -1391,21 +920,14 @@ document.getElementById("year").textContent = new Date().getFullYear();
         Promise.resolve().then(refreshProjects);
       });
     } catch (error) {
-      client = null;
-      currentUser = null;
-      setAuthButtons(false);
+      client = null; currentUser = null; setAuthButtons(false);
       say("cloudConnectionStatus", "Connection setup failed: " + (error.message || "Unknown error"));
     }
   }
-  $("cloudConfigForm").addEventListener("submit", event => {
-    event.preventDefault();
-    connect($("cloudProjectUrl").value, $("cloudPublishableKey").value, true);
-  });
+  $("cloudConfigForm").addEventListener("submit", event => { event.preventDefault(); connect($("cloudProjectUrl").value, $("cloudPublishableKey").value, true); });
   $("cloudForgetConfig").addEventListener("click", () => {
-    localStorage.removeItem(configKey);
-    client = null; currentUser = null;
-    $("cloudProjectUrl").value = "";
-    $("cloudPublishableKey").value = "";
+    localStorage.removeItem(configKey); client = null; currentUser = null;
+    $("cloudProjectUrl").value = ""; $("cloudPublishableKey").value = "";
     setAuthButtons(false);
     say("cloudConnectionStatus", "Local configuration forgotten in this browser. This does not delete your Supabase project or cloud data.");
     say("cloudAuthStatus", "Connect to Supabase first.");
@@ -1414,8 +936,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
   });
   $("cloudSignUp").addEventListener("click", async () => {
     if (!client) return say("cloudAuthStatus", "Connect to Supabase first.");
-    const email = $("cloudEmail").value.trim();
-    const password = $("cloudPassword").value;
+    const email = $("cloudEmail").value.trim(), password = $("cloudPassword").value;
     if (!email || password.length < 8) return say("cloudAuthStatus", "Enter an email and a password of at least 8 characters.");
     const { data, error } = await client.auth.signUp({ email, password, options: { emailRedirectTo: location.origin + location.pathname } });
     if (error) return say("cloudAuthStatus", "Sign-up failed: " + error.message);
@@ -1442,13 +963,7 @@ document.getElementById("year").textContent = new Date().getFullYear();
     if (!client || !currentUser) return say("cloudProjectStatusMessage", "Connect and sign in first.");
     const title = $("cloudProjectTitle").value.trim();
     if (!title) return say("cloudProjectStatusMessage", "Enter a project title.");
-    const record = {
-      user_id: currentUser.id,
-      title,
-      project_type: $("cloudProjectType").value,
-      content: { text: $("cloudProjectContent").value.trim() },
-      status: $("cloudProjectStatus").value
-    };
+    const record = { user_id: currentUser.id, title, project_type: $("cloudProjectType").value, content: { text: $("cloudProjectContent").value.trim() }, status: $("cloudProjectStatus").value };
     const { error } = await client.from("creator_projects").insert(record);
     if (error) return say("cloudProjectStatusMessage", "Save failed: " + error.message);
     $("cloudProjectForm").reset();
@@ -1458,34 +973,36 @@ document.getElementById("year").textContent = new Date().getFullYear();
   $("cloudRefreshProjects").addEventListener("click", refreshProjects);
   setAuthButtons(false);
   loadSavedConfig();
-  if ($("cloudProjectUrl").value && $("cloudPublishableKey").value) {
-    connect($("cloudProjectUrl").value, $("cloudPublishableKey").value, false);
-  }
+  /* The Supabase script is deferred; wait for it before auto-reconnecting. */
+  addEventListener("load", () => { if ($("cloudProjectUrl").value && $("cloudPublishableKey").value) connect($("cloudProjectUrl").value, $("cloudPublishableKey").value, false); });
 })();
 
-</script>
-
-<script>
-/* Lightweight local prototype: no public posting or external transmission. */
+/* ---------- People Pulse / India Innovation Board (local prototype) ---------- */
 (() => {
   const $ = id => document.getElementById(id);
   const key = "shubhamHub.peoplePulse.v1";
   let posts = [];
   try { posts = JSON.parse(localStorage.getItem(key) || "[]"); if (!Array.isArray(posts)) posts = []; } catch (_) { posts = []; }
   const save = () => { try { localStorage.setItem(key, JSON.stringify(posts)); return true; } catch (_) { return false; } };
-  const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  const uid = () => (crypto.randomUUID ? crypto.randomUUID() : String(Date.now()) + Math.random());
+  const el = (tag, cls, txt) => { const n = document.createElement(tag); if (cls) n.className = cls; if (txt !== undefined) n.textContent = txt; return n; };
   const render = () => {
     const wall = $("pulseWall"); if (!wall) return;
     const filter = $("pulseFilter")?.value || "all";
     const shown = posts.filter(p => filter === "all" || p.kind === filter).slice().reverse();
     wall.replaceChildren();
-    if (!shown.length) { const empty = document.createElement("div"); empty.className = "pulse-empty"; empty.textContent = "Your wall is ready. Add a reflection or an idea above to see it here."; wall.appendChild(empty); return; }
+    if (!shown.length) { wall.appendChild(el("div", "pulse-empty", "Your wall is ready. Add a reflection or an idea above to see it here.")); return; }
     shown.forEach(post => {
-      const article = document.createElement("article"); article.className = "pulse-post";
+      const article = el("article", "pulse-post");
       const label = post.kind === "idea" ? "🇮🇳 INDIA IDEA · " + post.category : "COMMUNITY REFLECTION · " + post.mood;
       const heading = post.kind === "idea" ? post.title : post.author || "Community member";
       const content = post.kind === "idea" ? post.details : post.message;
-      article.innerHTML = '<div class="pulse-post-top"><span class="pulse-chip">'+esc(label)+'</span><small>'+esc(new Date(post.createdAt).toLocaleDateString())+'</small></div><h4>'+esc(heading)+'</h4><p>'+esc(content)+'</p><div class="pulse-post-actions"><button class="secondary-btn" type="button" data-like="'+esc(post.id)+'">♡ Helpful · '+Number(post.likes||0)+'</button><button class="secondary-btn" type="button" data-delete="'+esc(post.id)+'">Delete</button></div>';
+      const top = el("div", "pulse-post-top"); top.append(el("span", "pulse-chip", label), el("small", "", new Date(post.createdAt).toLocaleDateString()));
+      const actions = el("div", "pulse-post-actions");
+      const like = el("button", "secondary-btn", "♡ Helpful · " + Number(post.likes || 0)); like.type = "button"; like.dataset.like = post.id;
+      const del = el("button", "secondary-btn", "Delete"); del.type = "button"; del.dataset.delete = post.id;
+      actions.append(like, del);
+      article.append(top, el("h4", "", heading), el("p", "", content), actions);
       wall.appendChild(article);
     });
   };
@@ -1493,172 +1010,315 @@ document.getElementById("year").textContent = new Date().getFullYear();
     event.preventDefault();
     const message = $("pulseMessage").value.trim();
     if (!message) return;
-    posts.push({id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now())+Math.random(),kind:"reflection",author:$("pulseName").value.trim().slice(0,40),mood:$("pulseMood").value,message:message.slice(0,420),likes:0,createdAt:new Date().toISOString()});
-    const ok = save(); $("pulseForm").reset(); $("pulseStatus").textContent = ok ? "Reflection added to your local wall. It has not been shared publicly." : "Browser storage is unavailable. Please check browser privacy settings."; render();
+    posts.push({id: uid(), kind: "reflection", author: $("pulseName").value.trim().slice(0, 40), mood: $("pulseMood").value, message: message.slice(0, 420), likes: 0, createdAt: new Date().toISOString()});
+    const ok = save(); $("pulseForm").reset();
+    $("pulseStatus").textContent = ok ? "Reflection added to your local wall. It has not been shared publicly." : "Browser storage is unavailable. Please check browser privacy settings.";
+    render();
   });
   $("ideaForm")?.addEventListener("submit", event => {
     event.preventDefault();
     const title = $("ideaTitle").value.trim(), details = $("ideaDetails").value.trim();
     if (!title || !details) return;
-    posts.push({id:crypto.randomUUID ? crypto.randomUUID() : String(Date.now())+Math.random(),kind:"idea",title:title.slice(0,90),category:$("ideaCategory").value,details:details.slice(0,600),likes:0,createdAt:new Date().toISOString()});
-    const ok = save(); $("ideaForm").reset(); $("ideaStatus").textContent = ok ? "Idea added to your local wall. For now, only this browser can see it." : "Browser storage is unavailable. Please check browser privacy settings."; render();
+    posts.push({id: uid(), kind: "idea", title: title.slice(0, 90), category: $("ideaCategory").value, details: details.slice(0, 600), likes: 0, createdAt: new Date().toISOString()});
+    const ok = save(); $("ideaForm").reset();
+    $("ideaStatus").textContent = ok ? "Idea added to your local wall. For now, only this browser can see it." : "Browser storage is unavailable. Please check browser privacy settings.";
+    render();
   });
   $("pulseFilter")?.addEventListener("change", render);
   $("pulseWall")?.addEventListener("click", event => {
     const like = event.target.closest("[data-like]"), del = event.target.closest("[data-delete]");
-    if (like) { const post = posts.find(p => p.id === like.dataset.like); if (post) post.likes = Number(post.likes||0)+1; save(); render(); }
+    if (like) { const post = posts.find(p => p.id === like.dataset.like); if (post) post.likes = Number(post.likes || 0) + 1; save(); render(); }
     if (del) { const post = posts.find(p => p.id === del.dataset.delete); if (!post) return; if (!confirm("Delete this entry from this browser?")) return; posts = posts.filter(p => p.id !== post.id); save(); render(); }
   });
   $("pulseExport")?.addEventListener("click", () => {
-    const blob = new Blob([JSON.stringify(posts,null,2)], {type:"application/json"});
-    const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href=url; a.download="shubham-people-pulse-backup.json"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    const blob = new Blob([JSON.stringify(posts, null, 2)], {type: "application/json"});
+    const url = URL.createObjectURL(blob); const a = document.createElement("a");
+    a.href = url; a.download = "shubham-people-pulse-backup.json"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
     $("pulseStatus").textContent = "Local wall backup exported.";
   });
   render();
 })();
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
 <script>
-(()=> {
-  const canvas=document.getElementById('planetary-canvas');
-  const hero=document.querySelector('header.hero');
-  const stage=document.getElementById('planetary-stage');
-  if(!canvas||!hero||!stage||!window.THREE) {
-    const status=document.getElementById('orbit-status');
-    if(status) status.textContent='3D LIBRARY UNAVAILABLE';
-    return;
+/* ---------- Orrery 3D planetarium ----------
+   Square-artifact fixes: (1) the Sun glow was a Sprite with NO texture (rendered as a square) — now uses a radial
+   alpha-gradient texture; (2) star Points used the default square sprite — now use a round dot texture;
+   (3) planet atmospheres are Fresnel shader shells instead of additive square sprites. */
+addEventListener("load", () => {
+  const $ = id => document.getElementById(id);
+  const canvas = $("planetary-canvas"), hero = document.querySelector("header.hero"), stage = $("planetary-stage");
+  const status = $("orbit-status"), toggle = $("orbit-toggle"), speedBtn = $("orbit-speed"), viewBtn = $("orbit-view"), info = $("planet-info");
+  const fail = msg => { if (stage) stage.classList.add("fallback"); if (status) status.textContent = msg; };
+  if (!canvas || !hero || !stage) return;
+  if (!window.THREE) return fail("3D LIBRARY UNAVAILABLE");
+  const T = THREE;
+  let renderer;
+  try { renderer = new T.WebGLRenderer({canvas, alpha: true, antialias: true, powerPreference: "high-performance"}); }
+  catch (_) { return fail("WEBGL UNAVAILABLE"); }
+  const small = matchMedia("(max-width:700px)").matches;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  renderer.setPixelRatio(Math.min(devicePixelRatio || 1, small ? 1.5 : 2));
+  renderer.outputColorSpace = T.SRGBColorSpace;
+  renderer.toneMapping = T.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.05;
+  canvas.addEventListener("webglcontextlost", e => { e.preventDefault(); halt(); fail("WEBGL CONTEXT LOST — RELOAD PAGE"); });
+
+  const scene = new T.Scene();
+  const camera = new T.PerspectiveCamera(40, 1, .1, 400);
+  scene.add(new T.AmbientLight(0x8fa8d8, .3));
+  const sunLight = new T.PointLight(0xfff0d8, 4.6, 0, 0); scene.add(sunLight); /* decay 0 = even, controlled lighting across all orbits */
+
+  /* Soft radial texture: alpha fades to 0 well before the canvas edge, so no square edges can appear. */
+  function radialTex(stops) {
+    const c = document.createElement("canvas"); c.width = c.height = 128;
+    const g = c.getContext("2d"), r = g.createRadialGradient(64, 64, 0, 64, 64, 64);
+    stops.forEach(s => r.addColorStop(s[0], s[1]));
+    g.fillStyle = r; g.fillRect(0, 0, 128, 128);
+    const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; return t;
   }
-  const THREE=window.THREE;
-  const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true,powerPreference:'high-performance'});
-  renderer.setPixelRatio(Math.min(window.devicePixelRatio||1,2));
-  renderer.setSize(hero.clientWidth,hero.clientHeight,false);
-  renderer.outputColorSpace=THREE.SRGBColorSpace;
-  renderer.toneMapping=THREE.ACESFilmicToneMapping;
-  renderer.toneMappingExposure=1.12;
-  const scene=new THREE.Scene();
-  scene.fog=new THREE.FogExp2(0x030711,.008);
-  const camera=new THREE.PerspectiveCamera(42,hero.clientWidth/hero.clientHeight,.1,220);
-  camera.position.set(0,2.5,27);
-  const ambient=new THREE.HemisphereLight(0x9abfff,0x141525,1.25);scene.add(ambient);
-  const sunLight=new THREE.PointLight(0xffe4bf,210,150,1.5);sunLight.position.set(-10,5,13);scene.add(sunLight);
-  const rim=new THREE.PointLight(0x557dff,55,90,2);rim.position.set(8,-4,-8);scene.add(rim);
-  const loader=new THREE.TextureLoader();loader.setCrossOrigin('anonymous');
-  const textureURLs={
-    Earth:'https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg',
-    Mars:'https://threejs.org/examples/textures/planets/mars_1k_color.jpg',
-    Jupiter:'https://threejs.org/examples/textures/planets/jupiter.jpg',
-    Saturn:'https://threejs.org/examples/textures/planets/saturn.jpg',
-    Mercury:'https://threejs.org/examples/textures/planets/mercury.jpg',
-    Venus:'https://threejs.org/examples/textures/planets/venus_surface.jpg',
-    Neptune:'https://threejs.org/examples/textures/planets/uranus.jpg',
-    Moon:'https://threejs.org/examples/textures/planets/moon_1024.jpg'
+  const hex = c => "#" + c.toString(16).padStart(6, "0");
+  function procTex(p) { /* procedural fallback surface */
+    const c = document.createElement("canvas"); c.width = 512; c.height = 256;
+    const g = c.getContext("2d"); g.fillStyle = hex(p.color); g.fillRect(0, 0, 512, 256);
+    let s = p.name.length * 977 + 7; const rnd = () => (s = (s * 16807) % 2147483647) / 2147483647;
+    if (p.gas) { for (let y = 0; y < 256;) { const h = 4 + rnd() * 16; g.fillStyle = "rgba(" + (rnd() < .5 ? "255,255,255" : "40,25,10") + "," + (.05 + rnd() * .14) + ")"; g.fillRect(0, y, 512, h); y += h; } }
+    else { for (let i = 0; i < 220; i++) { g.fillStyle = "rgba(" + (p.name === "Earth" ? "60,140,70" : "0,0,0") + "," + (.08 + rnd() * .14) + ")"; g.beginPath(); g.arc(rnd() * 512, rnd() * 256, 1 + rnd() * (p.name === "Earth" ? 14 : 9), 0, 7); g.fill(); } }
+    const t = new T.CanvasTexture(c); t.colorSpace = T.SRGBColorSpace; t.anisotropy = 4; return t;
+  }
+
+  const textureURLs = {
+    Earth: "https://threejs.org/examples/textures/planets/earth_atmos_2048.jpg",
+    Mars: "https://threejs.org/examples/textures/planets/mars_1k_color.jpg",
+    Jupiter: "https://threejs.org/examples/textures/planets/jupiter.jpg",
+    Saturn: "https://threejs.org/examples/textures/planets/saturn.jpg",
+    Mercury: "https://threejs.org/examples/textures/planets/mercury.jpg",
+    Venus: "https://threejs.org/examples/textures/planets/venus_surface.jpg",
+    Neptune: "https://threejs.org/examples/textures/planets/uranus.jpg"
   };
-  const configs=[
-    {name:'Mercury',radius:.43,orbit:3.1,speed:.42,color:0x9d968c,desc:'Airless, cratered inner world'},
-    {name:'Venus',radius:.68,orbit:4.5,speed:.29,color:0xd7a66d,desc:'Dense clouds and volcanic terrain'},
-    {name:'Earth',radius:.82,orbit:6.15,speed:.21,color:0x3c9bff,desc:'Our blue home, alive with oceans and clouds'},
-    {name:'Mars',radius:.59,orbit:7.9,speed:.16,color:0xe36b49,desc:'The red planet, sculpted by ancient water'},
-    {name:'Jupiter',radius:1.45,orbit:10.15,speed:.105,color:0xd5b18a,desc:'A gas giant with immense storm systems'},
-    {name:'Saturn',radius:1.17,orbit:12.7,speed:.078,color:0xdcc08b,desc:'A giant world surrounded by icy rings'},
-    {name:'Neptune',radius:.94,orbit:15.1,speed:.058,color:0x4c79ff,desc:'A distant blue ice giant'}
+  const configs = [
+    {name: "Mercury", radius: .43, orbit: 3.4, speed: .42, spin: .05, color: 0x9d968c, atmo: 0x9d968c, k: .0, desc: "Airless, cratered inner world", fact: "The smallest planet; it completes an orbit in about 88 Earth days."},
+    {name: "Venus", radius: .68, orbit: 4.9, speed: .29, spin: -.03, color: 0xd7a66d, atmo: 0xffc98a, k: .8, desc: "Dense clouds and volcanic terrain", fact: "Its thick carbon-dioxide atmosphere makes it the hottest planet; one day is longer than its year."},
+    {name: "Earth", radius: .82, orbit: 6.5, speed: .21, spin: .3, color: 0x3c9bff, atmo: 0x4bbcff, k: 1.1, desc: "Our blue home, alive with oceans and clouds", fact: "The only known world with life; about 71% of its surface is ocean, and it has one moon."},
+    {name: "Mars", radius: .59, orbit: 8.1, speed: .16, spin: .28, color: 0xe36b49, atmo: 0xff8e66, k: .45, desc: "The red planet, sculpted by ancient water", fact: "Iron-oxide dust gives it its red color; it has two small moons, Phobos and Deimos."},
+    {name: "Jupiter", radius: 1.45, orbit: 10.9, speed: .105, spin: .6, gas: 1, color: 0xd5b18a, atmo: 0xe8c9a0, k: .35, desc: "A gas giant with immense storm systems", fact: "The largest planet; its Great Red Spot is a storm wider than Earth."},
+    {name: "Saturn", radius: 1.17, orbit: 13.4, speed: .078, spin: .55, gas: 1, color: 0xdcc08b, atmo: 0xf0dba8, k: .35, desc: "A giant world surrounded by icy rings", fact: "Has the most extensive ring system of any planet and is less dense than water."},
+    {name: "Neptune", radius: .94, orbit: 15.8, speed: .058, spin: .45, gas: 1, color: 0x4c79ff, atmo: 0x5f8dff, k: .9, tint: 0x7aa2ff, desc: "A distant blue ice giant", fact: "The farthest planet, with supersonic winds; one orbit takes about 165 Earth years."}
   ];
-  const system=new THREE.Group();scene.add(system);
-  const planetMeshes=[];
-  const fallbackMaterial=(c)=>new THREE.MeshStandardMaterial({color:c,roughness:.82,metalness:.02});
-  const sphereGeo=new THREE.SphereGeometry(1,80,64);
-  configs.forEach((p,i)=>{
-    const orbit=new THREE.Mesh(new THREE.TorusGeometry(p.orbit,.008,6,240),new THREE.MeshBasicMaterial({color:0x9ab8d7,transparent:true,opacity:.19}));
-    orbit.rotation.x=Math.PI/2.05;orbit.position.y=-.18;system.add(orbit);
-    const material=fallbackMaterial(p.color);
-    const mesh=new THREE.Mesh(sphereGeo,material);mesh.scale.setScalar(p.radius);
-    mesh.userData={name:p.name,config:p};
-    system.add(mesh);
-    loader.load(textureURLs[p.name],tex=>{tex.colorSpace=THREE.SRGBColorSpace;material.map=tex;material.color.set(0xffffff);material.needsUpdate=true;},undefined,()=>{});
-    // Soft circular atmospheric bloom (radial texture avoids square sprite artifacts).
-    const glowCanvas=document.createElement('canvas');
-    glowCanvas.width=glowCanvas.height=128;
-    const glowCtx=glowCanvas.getContext('2d');
-    const glowGradient=glowCtx.createRadialGradient(64,64,2,64,64,64);
-    glowGradient.addColorStop(0,'rgba(255,255,255,0.22)');
-    glowGradient.addColorStop(.18,'rgba(255,255,255,0.12)');
-    glowGradient.addColorStop(.48,'rgba(255,255,255,0.035)');
-    glowGradient.addColorStop(1,'rgba(255,255,255,0)');
-    glowCtx.fillStyle=glowGradient;glowCtx.fillRect(0,0,128,128);
-    const glowTexture=new THREE.CanvasTexture(glowCanvas);
-    const glow=new THREE.Sprite(new THREE.SpriteMaterial({map:glowTexture,color:p.color,transparent:true,opacity:.5,depthWrite:false,blending:THREE.AdditiveBlending}));
-    glow.scale.set(p.radius*3.1,p.radius*3.1,1);mesh.add(glow);
-    if(p.name==='Saturn'){
-      const ring=new THREE.Mesh(new THREE.RingGeometry(p.radius*1.35,p.radius*2.2,128),new THREE.MeshStandardMaterial({color:0xdac79f,side:THREE.DoubleSide,transparent:true,opacity:.72,roughness:.8}));
-      ring.rotation.x=Math.PI/2.35;mesh.add(ring);
-      const inner=new THREE.Mesh(new THREE.RingGeometry(p.radius*1.12,p.radius*1.32,128),new THREE.MeshStandardMaterial({color:0x9c8b73,side:THREE.DoubleSide,transparent:true,opacity:.45}));
-      inner.rotation.x=Math.PI/2.35;mesh.add(inner);
-    }
-    if(p.name==='Earth'){
-      const atmo=new THREE.Mesh(new THREE.SphereGeometry(1.035,64,48),new THREE.MeshBasicMaterial({color:0x4bbcff,transparent:true,opacity:.12,side:THREE.BackSide}));
-      atmo.scale.setScalar(p.radius);mesh.add(atmo);
-    }
-    planetMeshes.push({mesh,config:p,phase:i*1.08});
+  const segW = small ? 40 : 72, segH = small ? 28 : 48;
+  const sphereGeo = new T.SphereGeometry(1, segW, segH);
+  const loader = new T.TextureLoader(); loader.setCrossOrigin("anonymous");
+
+  const atmoMaterial = (c, k) => new T.ShaderMaterial({
+    uniforms: {c: {value: new T.Color(c)}, k: {value: k}},
+    vertexShader: "varying vec3 n;varying vec3 v;void main(){n=normalize(normalMatrix*normal);vec4 mv=modelViewMatrix*vec4(position,1.);v=-mv.xyz;gl_Position=projectionMatrix*mv;}",
+    fragmentShader: "uniform vec3 c;uniform float k;varying vec3 n;varying vec3 v;void main(){float d=-dot(normalize(n),normalize(v));float f=pow(clamp(d/.5,0.,1.),2.6);gl_FragColor=vec4(c,f*k*.85);}",
+    transparent: true, blending: T.AdditiveBlending, depthWrite: false, side: T.BackSide
   });
-  const starGeo=new THREE.BufferGeometry(), starPositions=[];
-  for(let i=0;i<1700;i++){starPositions.push((Math.random()-.5)*100,(Math.random()-.5)*62,(Math.random()-.5)*75-12);}
-  starGeo.setAttribute('position',new THREE.Float32BufferAttribute(starPositions,3));
-  const stars=new THREE.Points(starGeo,new THREE.PointsMaterial({color:0xd8e5ff,size:.075,transparent:true,opacity:.82,sizeAttenuation:true}));scene.add(stars);
-  const sun=new THREE.Mesh(new THREE.SphereGeometry(.8,48,32),new THREE.MeshBasicMaterial({color:0xffdba1}));sun.position.set(-10,0,0);scene.add(sun);
-  const sunGlow=new THREE.Sprite(new THREE.SpriteMaterial({color:0xffc76e,transparent:true,opacity:.3,blending:THREE.AdditiveBlending,depthWrite:false}));sunGlow.scale.set(6,6,1);sun.add(sunGlow);
-  const raycaster=new THREE.Raycaster();raycaster.params.Points.threshold=.2;const pointer=new THREE.Vector2();
-  let selected=null,paused=false,speed=1,dragging=false,dragMoved=false,lastX=0,lastY=0,downX=0,downY=0,zoomTarget=27,camTarget=new THREE.Vector3(0,0,0),desiredCam=new THREE.Vector3(0,2.5,27),yaw=0,pitch=0;
-  const status=document.getElementById('orbit-status'),toggle=document.getElementById('orbit-toggle'),speedBtn=document.getElementById('orbit-speed'),viewBtn=document.getElementById('orbit-view');
-  const info=document.getElementById('planet-info');
-  function setSelected(item){
-    selected=item||null;
-    if(item){
-      const p=item.config;camTarget.copy(item.mesh.position);
-      zoomTarget=Math.max(2.8,p.radius*4.7);
-      if(info){info.hidden=false;info.querySelector('[data-planet-name]').textContent=p.name;info.querySelector('[data-planet-desc]').textContent=p.desc;}
-      if(status)status.textContent='FOCUS · '+p.name.toUpperCase();
-    }else{
-      camTarget.set(0,0,0);zoomTarget=27;
-      if(info)info.hidden=true;
-      if(status)status.textContent=paused?'PAUSED':'LIVE · ORBITAL';
+
+  const system = new T.Group(); scene.add(system);
+  const bodies = [];
+  configs.forEach((p, i) => {
+    const pts = []; for (let a = 0; a <= 256; a++) { const t = a / 256 * Math.PI * 2; pts.push(new T.Vector3(Math.cos(t) * p.orbit, 0, Math.sin(t) * p.orbit)); }
+    system.add(new T.LineLoop(new T.BufferGeometry().setFromPoints(pts), new T.LineBasicMaterial({color: 0x9fc4e0, transparent: true, opacity: .15, depthWrite: false})));
+    const group = new T.Group();
+    const mat = new T.MeshStandardMaterial({map: procTex(p), roughness: .88, metalness: 0});
+    const body = new T.Mesh(sphereGeo, mat); body.scale.setScalar(p.radius); group.add(body);
+    loader.load(textureURLs[p.name], tex => { tex.colorSpace = T.SRGBColorSpace; tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); if (mat.map) mat.map.dispose(); mat.map = tex; mat.color.set(p.tint || 0xffffff); mat.needsUpdate = true; }, undefined, () => {});
+    if (p.k > 0) { const atmo = new T.Mesh(sphereGeo, atmoMaterial(p.atmo, p.k)); atmo.scale.setScalar(p.radius * 1.16); group.add(atmo); }
+    if (p.name === "Saturn") {
+      const rc = document.createElement("canvas"); rc.width = 256; rc.height = 4; const g = rc.getContext("2d"), lg = g.createLinearGradient(0, 0, 256, 0);
+      [[0, "rgba(0,0,0,0)"], [.08, "rgba(150,130,100,.35)"], [.28, "rgba(222,205,168,.85)"], [.46, "rgba(190,170,135,.5)"], [.52, "rgba(20,15,10,.08)"], [.58, "rgba(215,198,160,.9)"], [.85, "rgba(190,172,140,.7)"], [1, "rgba(0,0,0,0)"]].forEach(s => lg.addColorStop(s[0], s[1]));
+      g.fillStyle = lg; g.fillRect(0, 0, 256, 4);
+      const rt = new T.CanvasTexture(rc); rt.colorSpace = T.SRGBColorSpace;
+      const rg = new T.RingGeometry(1.35, 2.35, 128, 1), pos = rg.attributes.position, uv = rg.attributes.uv;
+      for (let j = 0; j < pos.count; j++) uv.setXY(j, (Math.hypot(pos.getX(j), pos.getY(j)) - 1.35) / 1.0, .5);
+      const ring = new T.Mesh(rg, new T.MeshStandardMaterial({map: rt, side: T.DoubleSide, transparent: true, roughness: .9, depthWrite: false}));
+      ring.scale.setScalar(p.radius); ring.rotation.x = Math.PI / 2 - .47; group.add(ring);
     }
-    if(viewBtn){viewBtn.textContent=item?'◎ Reset solar view':'◎ Reset view';viewBtn.setAttribute('aria-pressed',String(!!item));}
-    document.querySelectorAll('[data-planet]').forEach(b=>b.setAttribute('aria-pressed',String(!!item&&b.dataset.planet===item.config.name)));
+    system.add(group);
+    bodies.push({group, body, p, phase: i * 1.08, minD: p.radius * (p.name === "Saturn" ? 5.2 : 2.8), focusD: p.radius * (p.name === "Saturn" ? 8 : 5.4), maxD: p.radius * 18});
+  });
+
+  /* Sun with round, faded corona */
+  const sun = new T.Mesh(sphereGeo, new T.MeshBasicMaterial({color: 0xffd9a0, toneMapped: false})); sun.scale.setScalar(1.1); scene.add(sun);
+  const corona = (s, o) => { const sp = new T.Sprite(new T.SpriteMaterial({map: radialTex([[0, "rgba(255,230,180,1)"], [.25, "rgba(255,190,100,.45)"], [.6, "rgba(255,150,60,.1)"], [.98, "rgba(255,120,40,0)"], [1, "rgba(255,120,40,0)"]]), transparent: true, opacity: o, blending: T.AdditiveBlending, depthWrite: false, toneMapped: false})); sp.scale.set(s, s, 1); sun.add(sp); };
+  corona(7, .85); corona(16, .32);
+
+  /* Round stars (dot texture) incl. a faint galactic band */
+  const dot = radialTex([[0, "rgba(255,255,255,1)"], [.4, "rgba(255,255,255,.8)"], [.9, "rgba(255,255,255,0)"], [1, "rgba(255,255,255,0)"]]);
+  function starLayer(n, size, band) {
+    const pos = new Float32Array(n * 3), col = new Float32Array(n * 3), c = new T.Color();
+    for (let i = 0; i < n; i++) {
+      const u = Math.random() * 2 - 1, th = Math.random() * Math.PI * 2; let y = u;
+      if (band && Math.random() < .6) y = (Math.random() + Math.random() + Math.random() - 1.5) * .28;
+      const r = 120 + Math.random() * 60, w = Math.sqrt(Math.max(0, 1 - y * y));
+      const x = Math.cos(th) * w * r, z = Math.sin(th) * w * r; pos.set([x, y * r, z], i * 3);
+      c.setHSL(.55 + Math.random() * .12, .35, .65 + Math.random() * .3); col.set([c.r, c.g, c.b], i * 3);
+    }
+    const g = new T.BufferGeometry(); g.setAttribute("position", new T.BufferAttribute(pos, 3)); g.setAttribute("color", new T.BufferAttribute(col, 3));
+    return new T.Points(g, new T.PointsMaterial({map: dot, size, vertexColors: true, transparent: true, depthWrite: false, sizeAttenuation: false, opacity: .9}));
   }
-  function selectByName(name){const item=planetMeshes.find(p=>p.config.name===name);if(item)setSelected(item);}
-  document.querySelectorAll('[data-planet]').forEach(b=>b.addEventListener('click',()=>selectByName(b.dataset.planet)));
-  toggle?.addEventListener('click',()=>{paused=!paused;toggle.textContent=paused?'▶ Resume motion':'Ⅱ Pause motion';toggle.setAttribute('aria-pressed',String(paused));if(!selected&&status)status.textContent=paused?'PAUSED':'LIVE · ORBITAL';});
-  speedBtn?.addEventListener('click',()=>{speed=speed===1?2:speed===2?.5:1;if(speedBtn)speedBtn.textContent='↗ Speed ×'+speed;});
-  viewBtn?.addEventListener('click',()=>setSelected(null));
-  function pointerPos(e){const r=canvas.getBoundingClientRect();pointer.x=((e.clientX-r.left)/r.width)*2-1;pointer.y=-((e.clientY-r.top)/r.height)*2+1;}
-  canvas.addEventListener('pointerdown',e=>{dragging=true;dragMoved=false;lastX=downX=e.clientX;lastY=downY=e.clientY;canvas.setPointerCapture?.(e.pointerId);});
-  canvas.addEventListener('pointermove',e=>{if(!dragging){pointerPos(e);const r=canvas.getBoundingClientRect();raycaster.setFromCamera(pointer,camera);canvas.style.cursor=raycaster.intersectObjects(planetMeshes.map(p=>p.mesh),false).length?'pointer':'grab';return;}const dx=e.clientX-lastX,dy=e.clientY-lastY;if(Math.abs(e.clientX-downX)+Math.abs(e.clientY-downY)>4)dragMoved=true;yaw-=dx*.004;pitch=Math.max(-.8,Math.min(.8,pitch+dy*.003));lastX=e.clientX;lastY=e.clientY;});
-  canvas.addEventListener('pointerup',e=>{if(!dragging)return;dragging=false;if(!dragMoved){pointerPos(e);raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects(planetMeshes.map(p=>p.mesh),false);if(hits.length){const item=planetMeshes.find(p=>p.mesh===hits[0].object);setSelected(item);}else if(selected)setSelected(null);}});
-  canvas.addEventListener('pointercancel',()=>dragging=false);
-  canvas.addEventListener('wheel',e=>{e.preventDefault();zoomTarget=THREE.MathUtils.clamp(zoomTarget+e.deltaY*.018,2.4,40);},{passive:false});
-  let last=performance.now(),elapsed=0;
-  function resize(){const w=Math.max(1,hero.clientWidth),h=Math.max(1,hero.clientHeight);renderer.setSize(w,h,false);camera.aspect=w/h;camera.updateProjectionMatrix();}
-  new ResizeObserver(resize).observe(hero);
-  function animate(now){
-    requestAnimationFrame(animate);const dt=Math.min((now-last)/1000,.04);last=now;elapsed+=dt;
-    if(!paused)planetMeshes.forEach((p,i)=>{const a=elapsed*p.config.speed*speed+p.phase;p.mesh.position.set(Math.cos(a)*p.config.orbit,Math.sin(a*.53)*.28,Math.sin(a)*p.config.orbit*.48);p.mesh.rotation.y+=dt*(.12+i*.018);});
-    if(selected){const p=planetMeshes.find(p=>p===selected);if(p)camTarget.lerp(p.mesh.position,.055);}
-    const dist=THREE.MathUtils.damp(camera.position.length(),zoomTarget,2.2,dt);
-    const dir=new THREE.Vector3(Math.sin(yaw),Math.sin(pitch),Math.cos(yaw)).normalize();
-    desiredCam.copy(camTarget).addScaledVector(dir,dist);desiredCam.y+=2.5*(dist/27);
-    camera.position.lerp(desiredCam,1-Math.exp(-3.5*dt));camera.lookAt(camTarget);
-    stars.rotation.y=elapsed*.002;
-    renderer.render(scene,camera);
+  const starsA = starLayer(small ? 700 : 1400, 1.7, true), starsB = starLayer(small ? 40 : 90, 3.4, false);
+  scene.add(starsA, starsB);
+
+  /* Asteroid belt (round points between Mars and Jupiter) */
+  const beltN = small ? 250 : 600, bp = new Float32Array(beltN * 3);
+  for (let i = 0; i < beltN; i++) { const a = Math.random() * Math.PI * 2, r = 9.5 + (Math.random() - .5) * .9; bp.set([Math.cos(a) * r, (Math.random() - .5) * .18, Math.sin(a) * r], i * 3); }
+  const bg = new T.BufferGeometry(); bg.setAttribute("position", new T.BufferAttribute(bp, 3));
+  const belt = new T.Points(bg, new T.PointsMaterial({map: dot, color: 0xb9ab98, size: 1.6, transparent: true, depthWrite: false, sizeAttenuation: false, opacity: .6}));
+  system.add(belt);
+
+  /* State */
+  const clamp = T.MathUtils.clamp;
+  let selected = null, paused = false, speed = 1, simT = 0, dragging = false, moved = false, lx = 0, ly = 0, dx0 = 0, dy0 = 0;
+  let yaw = .2, yawT = .2, pitch = .42, pitchT = .42, dist = 34;
+  const overview = () => clamp(9.5 / (.364 * camera.aspect), 30, 46);
+  let zoomTarget = overview();
+  const camTarget = new T.Vector3(), dir = new T.Vector3(), vtmp = new T.Vector3();
+  const rangeNow = () => selected ? [selected.minD, selected.maxD] : [9, 52];
+
+  function setPaused(v) {
+    paused = v;
+    if (toggle) { toggle.textContent = paused ? "▶ Resume motion" : "Ⅱ Pause motion"; toggle.setAttribute("aria-pressed", String(paused)); }
+    if (!selected && status) status.textContent = paused ? "PAUSED" : "LIVE · ORBITAL";
   }
-  // Start in a cinematic wide shot, with the planetary system weighted to the right.
-  camera.position.set(0,2.5,27);yaw=.18;
-  animate(performance.now());
-  const caption=document.querySelector('.orbital-caption');if(caption)caption.textContent='REAL-TIME 3D ORRERY · CLICK A PLANET TO FOCUS · DRAG TO ROTATE · SCROLL TO ZOOM';
-})();
+  function setSelected(item) {
+    selected = item || null;
+    if (item) {
+      zoomTarget = item.focusD;
+      if (info) { info.hidden = false; info.querySelector("[data-planet-name]").textContent = item.p.name; info.querySelector("[data-planet-desc]").textContent = item.p.desc; info.querySelector("[data-planet-fact]").textContent = item.p.fact; }
+      if (status) status.textContent = "FOCUS · " + item.p.name.toUpperCase();
+    } else {
+      zoomTarget = overview(); if (info) info.hidden = true;
+      if (status) status.textContent = paused ? "PAUSED" : "LIVE · ORBITAL";
+    }
+    if (viewBtn) { viewBtn.textContent = item ? "◎ Reset solar view" : "◎ Reset view"; viewBtn.setAttribute("aria-pressed", String(!!item)); }
+    document.querySelectorAll("[data-planet]").forEach(b => b.setAttribute("aria-pressed", String(!!item && b.dataset.planet === item.p.name)));
+  }
+  document.querySelectorAll("[data-planet]").forEach(b => b.addEventListener("click", () => setSelected(bodies.find(x => x.p.name === b.dataset.planet))));
+  toggle?.addEventListener("click", () => setPaused(!paused));
+  speedBtn?.addEventListener("click", () => { speed = speed === 1 ? 2 : speed === 2 ? .5 : 1; speedBtn.textContent = "↗ Speed ×" + speed; });
+  viewBtn?.addEventListener("click", () => { setSelected(null); yawT = .2; pitchT = .42; });
+
+  /* Screen-space picking: forgiving for small planets and touch */
+  function pick(e) {
+    const r = canvas.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top; let best = null, bd = 1e9;
+    bodies.forEach(b => {
+      vtmp.copy(b.group.position).project(camera); if (vtmp.z > 1) return;
+      const d = Math.hypot((vtmp.x + 1) / 2 * r.width - x, (1 - vtmp.y) / 2 * r.height - y);
+      const dd = camera.position.distanceTo(b.group.position), rpx = b.p.radius / (dd * Math.tan(T.MathUtils.degToRad(camera.fov / 2))) * r.height / 2;
+      if (d < Math.max(rpx * 1.25, 16) && d < bd) { bd = d; best = b; }
+    });
+    return best;
+  }
+  canvas.addEventListener("pointerdown", e => { dragging = true; moved = false; lx = dx0 = e.clientX; ly = dy0 = e.clientY; canvas.setPointerCapture?.(e.pointerId); });
+  canvas.addEventListener("pointermove", e => {
+    if (!dragging) { canvas.style.cursor = pick(e) ? "pointer" : "grab"; return; }
+    if (Math.abs(e.clientX - dx0) + Math.abs(e.clientY - dy0) > 5) moved = true;
+    yawT -= (e.clientX - lx) * .005; pitchT = clamp(pitchT + (e.clientY - ly) * .004, -.25, 1.25); lx = e.clientX; ly = e.clientY;
+  });
+  canvas.addEventListener("pointerup", e => { if (!dragging) return; dragging = false; if (!moved) { const hit = pick(e); if (hit) setSelected(hit); else if (selected) setSelected(null); } });
+  canvas.addEventListener("pointercancel", () => { dragging = false; });
+  canvas.addEventListener("wheel", e => { const [lo, hi] = rangeNow(), nz = clamp(zoomTarget * Math.exp(e.deltaY * .0012), lo, hi); if (nz !== zoomTarget) { e.preventDefault(); zoomTarget = nz; } }, {passive: false});
+  canvas.addEventListener("keydown", e => {
+    const [lo, hi] = rangeNow(); let used = true;
+    if (e.key === "ArrowLeft") yawT -= .12; else if (e.key === "ArrowRight") yawT += .12;
+    else if (e.key === "ArrowUp") pitchT = clamp(pitchT + .08, -.25, 1.25); else if (e.key === "ArrowDown") pitchT = clamp(pitchT - .08, -.25, 1.25);
+    else if (e.key === "+" || e.key === "=") zoomTarget = clamp(zoomTarget * .9, lo, hi); else if (e.key === "-") zoomTarget = clamp(zoomTarget * 1.1, lo, hi);
+    else if (e.key === "Escape") setSelected(null); else used = false;
+    if (used) e.preventDefault();
+  });
+
+  function resize() {
+    const w = Math.max(1, hero.clientWidth), h = Math.max(1, hero.clientHeight);
+    renderer.setSize(w, h, false); camera.aspect = w / h;
+    if (w > 900) camera.setViewOffset(w, h, -w * .2, 0, w, h); /* scene sits right of the hero text */
+    else camera.setViewOffset(w, h, 0, -h * .2, w, h); /* scene sits below the hero text */
+    camera.updateProjectionMatrix();
+    if (!selected) zoomTarget = overview();
+  }
+  new ResizeObserver(resize).observe(hero); resize(); dist = zoomTarget + 6;
+
+  let raf = 0, last = 0, visible = true;
+  function frame(now) {
+    raf = requestAnimationFrame(frame);
+    const dt = Math.min((now - last) / 1000, .05); last = now;
+    if (!paused) { simT += dt * speed; belt.rotation.y += dt * .01 * speed; }
+    bodies.forEach(b => {
+      const a = simT * b.p.speed + b.phase; b.group.position.set(Math.cos(a) * b.p.orbit, 0, Math.sin(a) * b.p.orbit);
+      if (!paused) b.body.rotation.y += dt * b.p.spin * speed;
+    });
+    camTarget.lerp(selected ? selected.group.position : vtmp.set(0, 0, 0), 1 - Math.exp(-4 * dt));
+    dist = T.MathUtils.damp(dist, zoomTarget, 3, dt);
+    yaw += (yawT - yaw) * (1 - Math.exp(-7 * dt)); pitch += (pitchT - pitch) * (1 - Math.exp(-7 * dt));
+    dir.set(Math.sin(yaw) * Math.cos(pitch), Math.sin(pitch), Math.cos(yaw) * Math.cos(pitch));
+    camera.position.copy(camTarget).addScaledVector(dir, dist); camera.lookAt(camTarget);
+    starsA.rotation.y += dt * .0015;
+    renderer.render(scene, camera);
+  }
+  function run() { if (raf || !visible || document.hidden) return; last = performance.now(); raf = requestAnimationFrame(frame); }
+  function halt() { cancelAnimationFrame(raf); raf = 0; }
+  new IntersectionObserver(en => { visible = en[0].isIntersecting; visible ? run() : halt(); }, {threshold: 0}).observe(hero);
+  document.addEventListener("visibilitychange", () => document.hidden ? halt() : run());
+  addEventListener("pagehide", () => { halt(); renderer.dispose(); });
+  if (reduce) setPaused(true); /* respect reduced-motion: user can resume manually */
+  run();
+});
 </script>
-<button id="ambient-audio-toggle" type="button" aria-pressed="false" aria-label="Turn on ambient music"><span class="audio-dot"></span><span id="ambient-audio-label">Enable soft ambient music</span></button>
+
 <script>
-(()=>{let ctx=null,master=null,playing=false,nodes=[];const btn=document.getElementById("ambient-audio-toggle"),label=document.getElementById("ambient-audio-label");if(!btn)return;let timers=[];function note(freq,start,duration,gain){const osc=ctx.createOscillator(),g=ctx.createGain(),filter=ctx.createBiquadFilter();osc.type="sine";osc.frequency.setValueAtTime(freq,start);filter.type="lowpass";filter.frequency.value=900;g.gain.setValueAtTime(.0001,start);g.gain.exponentialRampToValueAtTime(gain,start+.8);g.gain.exponentialRampToValueAtTime(.0001,start+duration);osc.connect(filter);filter.connect(g);g.connect(master);osc.start(start);osc.stop(start+duration+.08);nodes.push(osc);}function start(){const AudioContext=window.AudioContext||window.webkitAudioContext;if(!AudioContext)return;ctx=ctx||new AudioContext();ctx.resume();master=ctx.createGain();master.gain.value=.12;master.connect(ctx.destination);const pad=ctx.createOscillator(),pg=ctx.createGain(),lp=ctx.createBiquadFilter();pad.type="sine";pad.frequency.value=110;pg.gain.value=.12;lp.type="lowpass";lp.frequency.value=260;pad.connect(lp);lp.connect(pg);pg.connect(master);pad.start();nodes.push(pad);const sequence=[220,261.63,329.63,392,329.63,261.63,196,246.94,293.66,369.99,293.66,246.94];let idx=0;function loop(){if(!playing||!ctx)return;const now=ctx.currentTime;note(sequence[idx%sequence.length],now,5.8,.018);if(idx%3===0)note(sequence[(idx+4)%sequence.length]/2,now,7,.012);idx++;timers.push(setTimeout(loop,4200));}loop();playing=true;btn.setAttribute("aria-pressed","true");btn.setAttribute("aria-label","Turn off ambient music");label.textContent="Soft ambient music · On";}function stop(){playing=false;timers.forEach(clearTimeout);timers=[];nodes.forEach(n=>{try{n.stop()}catch(e){}});nodes=[];if(master&&ctx){master.gain.setTargetAtTime(.0001,ctx.currentTime,.08);}btn.setAttribute("aria-pressed","false");btn.setAttribute("aria-label","Enable soft ambient music");label.textContent="Enable soft ambient music";}btn.addEventListener("click",()=>{if(playing){stop();return;}try{start();}catch(e){label.textContent="Audio unavailable in this browser";}});})();
+/* ---------- Soft ambient music: user-started, fades in/out, single AudioContext ---------- */
+(() => {
+  const btn = document.getElementById("ambient-audio-toggle"), label = document.getElementById("ambient-audio-label");
+  if (!btn) return;
+  const AC = window.AudioContext || window.webkitAudioContext;
+  if (!AC) { btn.disabled = true; label.textContent = "Audio unavailable"; return; }
+  const SCALE = [220, 261.63, 329.63, 392, 329.63, 261.63, 196, 246.94, 293.66, 369.99, 293.66, 246.94];
+  let ctx = null, master = null, on = false, voices = [], timers = [], fadeTimer = 0, idx = 0;
+  const ui = state => {
+    btn.setAttribute("aria-pressed", String(state));
+    btn.setAttribute("aria-label", state ? "Turn off ambient music" : "Turn on ambient music");
+    label.textContent = state ? "Soft ambient music · On" : "Enable soft ambient music";
+  };
+  function voice(freq, t, dur, gain, lp) {
+    const o = ctx.createOscillator(), g = ctx.createGain(), f = ctx.createBiquadFilter();
+    o.type = "sine"; o.frequency.setValueAtTime(freq, t); f.type = "lowpass"; f.frequency.value = lp;
+    g.gain.setValueAtTime(.0001, t); g.gain.linearRampToValueAtTime(gain, t + Math.min(2.2, dur / 3)); g.gain.linearRampToValueAtTime(.0001, t + dur);
+    o.connect(f); f.connect(g); g.connect(master); o.start(t); o.stop(t + dur + .1);
+    voices.push(o); o.onended = () => { voices = voices.filter(v => v !== o); try { g.disconnect(); f.disconnect(); } catch (_) {} };
+  }
+  function teardown() {
+    clearTimeout(fadeTimer); fadeTimer = 0; timers.forEach(clearTimeout); timers = [];
+    voices.forEach(v => { try { v.stop(); } catch (_) {} }); voices = [];
+    if (master) { try { master.disconnect(); } catch (_) {} master = null; }
+  }
+  function loop() {
+    if (!on || !ctx) return;
+    const now = ctx.currentTime;
+    voice(SCALE[idx % SCALE.length], now, 7, .03, 900);
+    if (idx % 3 === 0) voice(SCALE[(idx + 4) % SCALE.length] / 2, now, 9, .02, 600);
+    idx++; timers.push(setTimeout(loop, 4200));
+  }
+  async function start() {
+    teardown(); ctx = ctx || new AC();
+    await ctx.resume();
+    master = ctx.createGain(); master.gain.setValueAtTime(0, ctx.currentTime); master.gain.linearRampToValueAtTime(.45, ctx.currentTime + 3); /* gentle 3s fade-in, modest volume */
+    master.connect(ctx.destination);
+    voice(55, ctx.currentTime, 3600, .05, 220); voice(82.41, ctx.currentTime, 3600, .035, 220); /* low drone pad */
+    on = true; ui(true); loop();
+  }
+  function stop() {
+    on = false; ui(false); timers.forEach(clearTimeout); timers = [];
+    if (master && ctx) { const g = master.gain, t = ctx.currentTime; g.cancelScheduledValues(t); g.setValueAtTime(g.value, t); g.linearRampToValueAtTime(0, t + 1.2); }
+    fadeTimer = setTimeout(() => { teardown(); if (ctx && ctx.state === "running") ctx.suspend(); }, 1400);
+  }
+  btn.addEventListener("click", async () => {
+    if (on) { stop(); return; }
+    try { await start(); } catch (_) { on = false; ui(false); label.textContent = "Audio blocked — try again"; }
+  });
+})();
 </script>
 </body>
 </html>
