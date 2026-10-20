@@ -83,6 +83,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
 @media(max-width:700px){nav{align-items:flex-start;flex-direction:column;padding:14px 6%}.links{gap:12px;font-size:12px}.hero{min-height:70vh;padding-top:80px}h1{letter-spacing:-1.5px}.about{grid-template-columns:1fr}section{padding:55px 6%}.stats{grid-template-columns:repeat(3,1fr)}.stat strong{font-size:19px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
 </style>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
 <canvas id="starfield" aria-hidden="true"></canvas>
@@ -94,6 +95,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
     <a href="#about">About</a>
     <a href="#projects">Projects</a>
     <a href="#studio">Creator Studio</a>
+    <a href="#cloud-dashboard">Cloud Dashboard</a>
     <a href="#videos">YouTube</a>
     <a href="#contact">Contact</a>
   </div>
@@ -429,6 +431,56 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
   </div>
 
   <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
+</section>
+
+
+<section id="cloud-dashboard" class="section">
+  <div class="section-heading">
+    <p class="eyebrow">PRIVATE WORKSPACE</p>
+    <h2>Creator <span class="gradient-text">Cloud Dashboard</span></h2>
+    <p>Sign in to save creator projects to your Supabase account and access them across devices.</p>
+  </div>
+  <div class="tool-card">
+    <h3>Connect your Supabase project</h3>
+    <p class="notice">Use only your Project URL and publishable key. Never enter a secret or service-role key here. This setup is saved in this browser only.</p>
+    <form id="cloudConfigForm" class="tool-form">
+      <label for="cloudProjectUrl">Project URL</label>
+      <input id="cloudProjectUrl" type="url" placeholder="https://your-project.supabase.co" required autocomplete="url">
+      <label for="cloudPublishableKey">Publishable key</label>
+      <input id="cloudPublishableKey" type="password" placeholder="sb_publishable_..." required autocomplete="off">
+      <div class="seo-actions"><button type="submit" class="primary-btn">Connect securely</button><button type="button" id="cloudForgetConfig" class="secondary-btn">Forget local config</button></div>
+    </form>
+    <p id="cloudConnectionStatus" class="notice" role="status" aria-live="polite">Not connected. Add your Project URL and publishable key to begin.</p>
+  </div>
+  <div class="tool-card" id="cloudAuthCard">
+    <h3>Account access</h3>
+    <p class="notice">Use your email and password to create an account or sign in. If email confirmation is enabled, confirm your email before signing in.</p>
+    <form id="cloudAuthForm" class="tool-form">
+      <label for="cloudEmail">Email address</label>
+      <input id="cloudEmail" type="email" required autocomplete="email" placeholder="you@example.com">
+      <label for="cloudPassword">Password</label>
+      <input id="cloudPassword" type="password" required minlength="8" autocomplete="current-password" placeholder="At least 8 characters">
+      <div class="seo-actions"><button type="button" id="cloudSignUp" class="secondary-btn">Create account</button><button type="submit" class="primary-btn">Sign in</button><button type="button" id="cloudSignOut" class="secondary-btn" disabled>Sign out</button></div>
+    </form>
+    <p id="cloudAuthStatus" class="notice" role="status" aria-live="polite">Connect to Supabase first.</p>
+  </div>
+  <div class="tool-card" id="cloudProjectsCard">
+    <h3>Cloud projects</h3>
+    <p class="notice">Save a project draft to your private cloud workspace. Your existing browser-based Content Planner remains unchanged.</p>
+    <form id="cloudProjectForm" class="tool-form">
+      <label for="cloudProjectTitle">Project title</label>
+      <input id="cloudProjectTitle" type="text" maxlength="180" required placeholder="e.g. AI tools video — episode 1">
+      <label for="cloudProjectType">Project type</label>
+      <select id="cloudProjectType"><option value="content">Content idea</option><option value="script">Script draft</option><option value="seo">SEO package</option><option value="thumbnail">Thumbnail prompt</option><option value="workflow">Creator workflow</option><option value="other">Other</option></select>
+      <label for="cloudProjectStatus">Status</label>
+      <select id="cloudProjectStatus"><option value="idea">Idea</option><option value="draft">Draft</option><option value="in_progress">In progress</option><option value="ready">Ready</option><option value="published">Published</option></select>
+      <label for="cloudProjectContent">Notes / content</label>
+      <textarea id="cloudProjectContent" rows="5" maxlength="20000" placeholder="Paste notes, a script draft, or your project details here."></textarea>
+      <div class="seo-actions"><button type="submit" class="primary-btn">Save to cloud</button><button type="button" id="cloudRefreshProjects" class="secondary-btn">Refresh projects</button></div>
+    </form>
+    <p id="cloudProjectStatusMessage" class="notice" role="status" aria-live="polite">Sign in to save and load your private projects.</p>
+    <div id="cloudProjectList" class="seo-results" aria-live="polite"></div>
+  </div>
 </section>
 
 <section id="videos">
@@ -898,6 +950,184 @@ document.getElementById("year").textContent = new Date().getFullYear();
     $("workflowStatus").textContent = "Package drafted and the idea was added to your Content Planner. Scroll down to review the script, SEO suggestions, thumbnail prompt and plan entry.";
     $("workflowStatus").scrollIntoView({behavior:"smooth", block:"nearest"});
   });
+})();
+
+
+/* Supabase cloud dashboard: browser-safe publishable key only; access enforced by RLS. */
+(() => {
+  const $ = id => document.getElementById(id);
+  if (!$("cloudConfigForm")) return;
+  let client = null;
+  let currentUser = null;
+  const configKey = "shubhamCreatorHubSupabaseConfigV1";
+  const say = (id, message) => { const el = $(id); if (el) el.textContent = message; };
+  const setAuthButtons = signedIn => {
+    $("cloudSignOut").disabled = !signedIn;
+    $("cloudSignUp").disabled = signedIn;
+    $("cloudAuthForm").querySelector('button[type="submit"]').disabled = signedIn;
+    $("cloudProjectForm").querySelector('button[type="submit"]').disabled = !signedIn;
+    $("cloudRefreshProjects").disabled = !signedIn;
+  };
+  const escapeText = value => String(value ?? "");
+  function loadSavedConfig() {
+    try {
+      const saved = JSON.parse(localStorage.getItem(configKey) || "null");
+      if (saved && saved.url && saved.key) {
+        $("cloudProjectUrl").value = saved.url;
+        $("cloudPublishableKey").value = saved.key;
+      }
+    } catch (_) {}
+  }
+  async function refreshProjects() {
+    if (!client || !currentUser) {
+      say("cloudProjectStatusMessage", "Sign in to view your private cloud projects.");
+      return;
+    }
+    say("cloudProjectStatusMessage", "Loading your projects…");
+    const { data, error } = await client.from("creator_projects")
+      .select("id,title,project_type,content,status,created_at,updated_at")
+      .order("updated_at", { ascending: false });
+    if (error) {
+      say("cloudProjectStatusMessage", "Could not load projects: " + error.message);
+      return;
+    }
+    const root = $("cloudProjectList");
+    root.replaceChildren();
+    if (!data || data.length === 0) {
+      say("cloudProjectStatusMessage", "No cloud projects yet. Save your first draft above.");
+      return;
+    }
+    say("cloudProjectStatusMessage", data.length + " cloud project(s) loaded.");
+    data.forEach(project => {
+      const card = document.createElement("article");
+      card.className = "seo-output";
+      const heading = document.createElement("h4");
+      heading.textContent = escapeText(project.title);
+      const meta = document.createElement("p");
+      meta.className = "seo-output-text";
+      meta.textContent = escapeText(project.project_type) + " · " + escapeText(project.status) + " · " + new Date(project.updated_at || project.created_at).toLocaleString();
+      const body = document.createElement("p");
+      body.className = "seo-output-text";
+      const content = project.content && typeof project.content === "object" ? (project.content.text || JSON.stringify(project.content, null, 2)) : String(project.content || "");
+      body.textContent = content.slice(0, 5000);
+      const remove = document.createElement("button");
+      remove.type = "button";
+      remove.className = "secondary-btn";
+      remove.textContent = "Delete project";
+      remove.addEventListener("click", async () => {
+        if (!window.confirm("Delete this cloud project? This cannot be undone.")) return;
+        const { error: deleteError } = await client.from("creator_projects").delete().eq("id", project.id);
+        if (deleteError) say("cloudProjectStatusMessage", "Delete failed: " + deleteError.message);
+        else { say("cloudProjectStatusMessage", "Project deleted."); refreshProjects(); }
+      });
+      card.append(heading, meta, body, remove);
+      root.append(card);
+    });
+  }
+  async function connect(url, key, persist) {
+    if (!window.supabase || !window.supabase.createClient) {
+      say("cloudConnectionStatus", "Supabase library did not load. Check your internet connection and refresh the page.");
+      return;
+    }
+    try {
+      const normalized = url.trim().replace(/\/$/, "");
+      if (!/^https:\/\/[a-z0-9-]+\.supabase\.co$/i.test(normalized)) {
+        say("cloudConnectionStatus", "Enter the project URL in the form https://your-project.supabase.co.");
+        return;
+      }
+      if (!key.trim().startsWith("sb_publishable_")) {
+        say("cloudConnectionStatus", "Use the sb_publishable_ key only. Secret keys are not supported here.");
+        return;
+      }
+      client = window.supabase.createClient(normalized, key.trim(), {
+        auth: { persistSession: true, autoRefreshToken: true, detectSessionInUrl: true }
+      });
+      if (persist) localStorage.setItem(configKey, JSON.stringify({ url: normalized, key: key.trim() }));
+      say("cloudConnectionStatus", "Client initialized. Checking your sign-in session…");
+      const { data, error } = await client.auth.getSession();
+      if (error) throw error;
+      currentUser = data.session?.user || null;
+      say("cloudConnectionStatus", "Connected to Supabase. " + (currentUser ? "Signed-in session found." : "Please sign in below."));
+      say("cloudAuthStatus", currentUser ? "Signed in as " + currentUser.email : "Not signed in.");
+      setAuthButtons(!!currentUser);
+      await refreshProjects();
+      client.auth.onAuthStateChange((_event, session) => {
+        currentUser = session?.user || null;
+        say("cloudAuthStatus", currentUser ? "Signed in as " + currentUser.email : "Not signed in.");
+        setAuthButtons(!!currentUser);
+        Promise.resolve().then(refreshProjects);
+      });
+    } catch (error) {
+      client = null;
+      currentUser = null;
+      setAuthButtons(false);
+      say("cloudConnectionStatus", "Connection setup failed: " + (error.message || "Unknown error"));
+    }
+  }
+  $("cloudConfigForm").addEventListener("submit", event => {
+    event.preventDefault();
+    connect($("cloudProjectUrl").value, $("cloudPublishableKey").value, true);
+  });
+  $("cloudForgetConfig").addEventListener("click", () => {
+    localStorage.removeItem(configKey);
+    client = null; currentUser = null;
+    $("cloudProjectUrl").value = "";
+    $("cloudPublishableKey").value = "";
+    setAuthButtons(false);
+    say("cloudConnectionStatus", "Local configuration forgotten in this browser. This does not delete your Supabase project or cloud data.");
+    say("cloudAuthStatus", "Connect to Supabase first.");
+    say("cloudProjectStatusMessage", "Sign in to save and load your private projects.");
+    $("cloudProjectList").replaceChildren();
+  });
+  $("cloudSignUp").addEventListener("click", async () => {
+    if (!client) return say("cloudAuthStatus", "Connect to Supabase first.");
+    const email = $("cloudEmail").value.trim();
+    const password = $("cloudPassword").value;
+    if (!email || password.length < 8) return say("cloudAuthStatus", "Enter an email and a password of at least 8 characters.");
+    const { data, error } = await client.auth.signUp({ email, password, options: { emailRedirectTo: location.origin + location.pathname } });
+    if (error) return say("cloudAuthStatus", "Sign-up failed: " + error.message);
+    say("cloudAuthStatus", data.session ? "Account created and signed in." : "Account created. Check your email to confirm, then sign in.");
+  });
+  $("cloudAuthForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    if (!client) return say("cloudAuthStatus", "Connect to Supabase first.");
+    const { data, error } = await client.auth.signInWithPassword({ email: $("cloudEmail").value.trim(), password: $("cloudPassword").value });
+    if (error) return say("cloudAuthStatus", "Sign-in failed: " + error.message);
+    currentUser = data.user;
+    say("cloudAuthStatus", "Signed in as " + (data.user.email || "your account") + ".");
+    setAuthButtons(true);
+    await refreshProjects();
+  });
+  $("cloudSignOut").addEventListener("click", async () => {
+    if (!client) return;
+    const { error } = await client.auth.signOut();
+    if (error) say("cloudAuthStatus", "Sign-out failed: " + error.message);
+    else { currentUser = null; setAuthButtons(false); say("cloudAuthStatus", "Signed out."); await refreshProjects(); }
+  });
+  $("cloudProjectForm").addEventListener("submit", async event => {
+    event.preventDefault();
+    if (!client || !currentUser) return say("cloudProjectStatusMessage", "Connect and sign in first.");
+    const title = $("cloudProjectTitle").value.trim();
+    if (!title) return say("cloudProjectStatusMessage", "Enter a project title.");
+    const record = {
+      user_id: currentUser.id,
+      title,
+      project_type: $("cloudProjectType").value,
+      content: { text: $("cloudProjectContent").value.trim() },
+      status: $("cloudProjectStatus").value
+    };
+    const { error } = await client.from("creator_projects").insert(record);
+    if (error) return say("cloudProjectStatusMessage", "Save failed: " + error.message);
+    $("cloudProjectForm").reset();
+    say("cloudProjectStatusMessage", "Project saved to your private cloud workspace.");
+    await refreshProjects();
+  });
+  $("cloudRefreshProjects").addEventListener("click", refreshProjects);
+  setAuthButtons(false);
+  loadSavedConfig();
+  if ($("cloudProjectUrl").value && $("cloudPublishableKey").value) {
+    connect($("cloudProjectUrl").value, $("cloudPublishableKey").value, false);
+  }
 })();
 
 </script>
