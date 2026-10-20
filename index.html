@@ -142,7 +142,34 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
 @media(max-width:760px){.pulse-grid{grid-template-columns:1fr}.tool-card{border-radius:17px}.pulse-wall-head{align-items:flex-start}.pulse-wall-actions{width:100%}.pulse-wall-actions select{flex:1;min-width:120px}}
 @media(prefers-reduced-motion:reduce){body:before{animation:none!important}.pulse-post{animation:none!important}}
 
-</style>
+
+/* === IMMERSIVE 3D / PREMIUM CREATOR ECONOMY LAYER === */
+:root{--neon:#70f0ff;--neon2:#b59bff;--panel:rgba(11,16,34,.82)}
+html{scroll-padding-top:105px}
+body{perspective:1200px}
+.hero{isolation:isolate}
+.hero:before,.hero:after{filter:drop-shadow(0 0 28px rgba(98,232,255,.12));transform-style:preserve-3d}
+.hero-inner{animation:heroLift 7s ease-in-out infinite}
+@keyframes heroLift{0%,100%{transform:translateY(0)}50%{transform:translateY(-7px)}}
+.card,.tool-card,.pulse-panel,.revenue-card,.feature{transform-style:preserve-3d;backface-visibility:hidden}
+.card:hover,.revenue-card:hover{transform:translateY(-7px) rotateX(1deg);box-shadow:0 26px 70px rgba(0,0,0,.3),0 0 0 1px rgba(112,240,255,.09)}
+#revenue-lab .section-heading{margin-bottom:28px}
+.revenue-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,245px),1fr));gap:17px}
+.revenue-card{display:flex;flex-direction:column;align-items:flex-start;min-width:0;position:relative;overflow:hidden;padding:25px;border:1px solid rgba(144,178,255,.2);border-radius:22px;background:linear-gradient(145deg,rgba(17,28,53,.9),rgba(10,12,28,.92));box-shadow:0 18px 55px rgba(0,0,0,.2);transition:transform .3s,border-color .3s,box-shadow .3s}
+.revenue-card:before{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(112,240,255,.13),transparent 48%)}
+.revenue-icon{display:grid;place-items:center;width:50px;height:50px;border:1px solid rgba(112,240,255,.25);border-radius:15px;background:linear-gradient(145deg,rgba(112,240,255,.13),rgba(181,155,255,.14));font-size:25px;color:var(--neon);box-shadow:inset 0 0 24px rgba(112,240,255,.05)}
+.revenue-tag{margin-top:20px;font-size:10px;font-weight:850;letter-spacing:1.5px;color:var(--neon)}
+.revenue-card h3{font-size:21px;margin:8px 0}
+.revenue-card p{font-size:13px;line-height:1.7}
+.revenue-card .btn{margin-top:auto}
+.revenue-text-link{font-size:12px;color:var(--neon);margin-top:13px}
+.revenue-disclosure{font-size:11px!important;border-left:2px solid var(--neon2);padding-left:10px}
+.revenue-note{margin-top:17px;padding:17px 19px;border:1px solid rgba(144,178,255,.18);border-radius:15px;background:rgba(10,15,31,.68);font-size:13px;color:#b9c5e0;line-height:1.7}
+.revenue-note strong{color:#e8edff}
+a:focus-visible,button:focus-visible{outline:2px solid var(--neon);outline-offset:3px}
+@media(max-width:700px){.hero-inner{animation:none}.revenue-card{padding:21px}}
+@media(prefers-reduced-motion:reduce){.hero-inner{animation:none!important}.card:hover,.revenue-card:hover{transform:none}}
+\n</style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
 <body>
@@ -158,6 +185,7 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
     <a href="#cloud-dashboard">Cloud Dashboard</a>
     <a href="#people-pulse">People & India</a>
     <a href="#videos">YouTube</a>
+    <a href="#revenue-lab">Earn</a>
     <a href="#contact">Contact</a>
   </div>
 </nav>
@@ -619,7 +647,45 @@ button:disabled{opacity:.45;cursor:not-allowed;transform:none}
   </div>
 </section>
 
-<section id="contact">
+
+<section id="revenue-lab">
+  <div class="section-heading">
+    <p class="eyebrow">CREATOR ECONOMY · TRANSPARENT BY DESIGN</p>
+    <h2>Revenue <span class="gradient-text">Lab</span></h2>
+    <p>Build sustainable income from useful content, digital products and trusted recommendations. These are setup paths—not promises of instant or guaranteed earnings.</p>
+  </div>
+  <div class="revenue-grid">
+    <article class="revenue-card">
+      <div class="revenue-icon">▶</div><span class="revenue-tag">CONTENT MONETIZATION</span>
+      <h3>Video & website ads</h3>
+      <p>Explore Google AdSense for eligible website ads and YouTube Studio for channel monetization. Approval, original content, policy compliance and qualifying traffic are required.</p>
+      <a class="btn primary" href="https://adsense.google.com/start/" target="_blank" rel="noopener noreferrer">Explore AdSense ↗</a>
+      <a class="revenue-text-link" href="https://studio.youtube.com/" target="_blank" rel="noopener noreferrer">Open YouTube Studio ↗</a>
+    </article>
+    <article class="revenue-card">
+      <div class="revenue-icon">◇</div><span class="revenue-tag">AFFILIATE RECOMMENDATIONS</span>
+      <h3>Recommend tools you trust</h3>
+      <p>Apply to relevant affiliate programs and publish honest reviews. You earn only if a program approves you and qualifying referrals convert.</p>
+      <a class="btn" href="https://affiliate-program.amazon.in/" target="_blank" rel="noopener noreferrer">Amazon Associates India ↗</a>
+      <p class="revenue-disclosure">Always disclose affiliate links clearly. Never recommend a product solely for commission.</p>
+    </article>
+    <article class="revenue-card">
+      <div class="revenue-icon">⬡</div><span class="revenue-tag">DIGITAL PRODUCTS</span>
+      <h3>Sell useful downloads</h3>
+      <p>Create original templates, creator planners, dashboard guides or educational resources. A storefront/payment provider is needed to collect payments and deliver purchases.</p>
+      <a class="btn" href="https://gumroad.com/" target="_blank" rel="noopener noreferrer">Explore Gumroad ↗</a>
+    </article>
+    <article class="revenue-card">
+      <div class="revenue-icon">✦</div><span class="revenue-tag">COMMUNITY SUPPORT</span>
+      <h3>Support the work</h3>
+      <p>Once you have an audience, offer optional support or memberships through a third-party provider. Check its fees, eligibility and payout rules first.</p>
+      <a class="btn" href="https://ko-fi.com/" target="_blank" rel="noopener noreferrer">Explore Ko-fi ↗</a>
+    </article>
+  </div>
+  <div class="revenue-note"><strong>Honest status:</strong> no earning account is automatically created, no payout is guaranteed, and no visitor is charged by this page. Apply, configure your own approved accounts, add your real affiliate disclosures and payment links, and test the full checkout flow before launch.</div>
+  <div class="revenue-note"><strong>Desktop security:</strong> this is a public website, so it cannot safely or directly control your entire laptop, access private files, or run arbitrary commands. Any future desktop automation should be a separate, explicitly permissioned local app with visible controls—not hidden code embedded in a public page.</div>
+</section>
+\n<section id="contact">
   <div class="section-head reveal">
     <div class="eyebrow">Stay connected</div>
     <h2>Let's build something <span class="gradient">useful.</span></h2>
