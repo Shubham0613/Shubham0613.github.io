@@ -51,6 +51,28 @@ section{padding:76px 7%;max-width:1280px;margin:auto}
 .stat span{font-size:11px;color:var(--muted)}
 .project-link{margin-top:12px}
 .notice{font-size:12px;border-left:2px solid var(--purple);padding:8px 12px;margin-top:18px}
+
+.seo-tool{margin-top:24px;padding:clamp(18px,3vw,30px);border:1px solid #62e8ff38;border-radius:20px;background:linear-gradient(145deg,#10182beF,#111024f2);box-shadow:0 18px 55px #0003}
+.seo-tool h3{margin:0 0 6px;font-size:clamp(22px,3vw,30px)}
+.seo-tool-intro{margin:0 0 22px;font-size:14px}
+.seo-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}
+.seo-field{display:flex;flex-direction:column;gap:7px;min-width:0}
+.seo-field.full{grid-column:1/-1}
+.seo-field label{font-size:12px;font-weight:750;color:#dce5ff}
+.seo-field input,.seo-field select,.seo-field textarea{width:100%;min-width:0;border:1px solid #ffffff25;border-radius:10px;padding:12px;background:#080c1a;color:var(--text);font:inherit;font-size:14px}
+.seo-field textarea{min-height:84px;resize:vertical}
+.seo-field input:focus,.seo-field select:focus,.seo-field textarea:focus{outline:2px solid #62e8ff80;border-color:var(--cyan)}
+.seo-results{display:grid;gap:14px;margin-top:24px}
+.seo-output{border:1px solid #ffffff20;border-radius:14px;padding:16px;background:#070b19a8;min-width:0}
+.seo-output-head{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+.seo-output h4{margin:0;font-size:15px}
+.seo-output-text{white-space:pre-wrap;overflow-wrap:anywhere;color:#e5eaff;font-size:14px;margin:12px 0 0}
+.seo-copy{border:1px solid #62e8ff55;border-radius:8px;padding:7px 11px;background:#14243a;color:var(--cyan);font:inherit;font-size:12px;font-weight:750;cursor:pointer}
+.seo-copy:hover{background:#1a3150}
+.seo-status{font-size:12px;color:var(--cyan);min-height:20px;margin:10px 0 0}
+.seo-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:18px}
+@media(max-width:600px){.seo-form{grid-template-columns:1fr}.seo-field.full{grid-column:auto}.seo-tool{padding:17px}.seo-output{padding:13px}}
+
 .video-card{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
 .video-mark{display:grid;place-items:center;width:76px;height:76px;flex:0 0 76px;border-radius:20px;background:linear-gradient(135deg,#16284a,#352052);font-size:32px}
 footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);color:var(--muted);font-size:12px}
@@ -177,6 +199,84 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
       <p>Collect reusable prompts for research, AI tools and creative workflows.</p>
     </article>
   </div>
+
+  <div class="seo-tool reveal" id="youtube-seo">
+    <div class="eyebrow">Free browser-based tool</div>
+    <h3>YouTube SEO Studio</h3>
+    <p class="seo-tool-intro">Create title ideas, a video description and relevant hashtags from your topic. This first version uses built-in templates in your browser—no account, API key or paid service required.</p>
+    <form id="seoForm" class="seo-form">
+      <div class="seo-field full">
+        <label for="seoTopic">Video topic <span aria-hidden="true">*</span></label>
+        <input id="seoTopic" name="topic" maxlength="160" required placeholder="e.g. 5 free AI tools that save time">
+      </div>
+      <div class="seo-field">
+        <label for="seoChannel">Channel</label>
+        <select id="seoChannel" name="channel">
+          <option value="Mind Over Machines">Mind Over Machines</option>
+          <option value="Project Dark Earth">Project Dark Earth</option>
+          <option value="general">General / another channel</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="seoFormat">Video format</label>
+        <select id="seoFormat" name="format">
+          <option value="Shorts">YouTube Short</option>
+          <option value="long">Long-form video</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="seoAudience">Target audience</label>
+        <select id="seoAudience" name="audience">
+          <option value="beginners">Beginners</option>
+          <option value="curious viewers">Curious viewers</option>
+          <option value="creators and professionals">Creators and professionals</option>
+          <option value="technology enthusiasts">Technology enthusiasts</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="seoTone">Style</label>
+        <select id="seoTone" name="tone">
+          <option value="curiosity">Curiosity-driven</option>
+          <option value="educational">Educational</option>
+          <option value="cinematic">Cinematic / documentary</option>
+          <option value="practical">Practical and direct</option>
+        </select>
+      </div>
+      <div class="seo-field full">
+        <label for="seoKeywords">Optional keywords (comma-separated)</label>
+        <input id="seoKeywords" name="keywords" maxlength="240" placeholder="e.g. AI tools, productivity, tutorial">
+      </div>
+      <div class="seo-field full">
+        <label for="seoNotes">Key points to mention (optional)</label>
+        <textarea id="seoNotes" name="notes" maxlength="500" placeholder="Add what the video actually covers so the description stays accurate."></textarea>
+      </div>
+      <div class="seo-actions full">
+        <button class="btn primary" type="submit">Generate SEO pack ✦</button>
+        <button class="btn" type="reset">Clear form</button>
+      </div>
+    </form>
+    <p class="seo-status" id="seoStatus" role="status" aria-live="polite"></p>
+    <div class="seo-results" id="seoResults" hidden>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Title ideas</h4><button class="seo-copy" type="button" data-copy="seoTitles">Copy titles</button></div>
+        <div class="seo-output-text" id="seoTitles"></div>
+      </div>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Video description</h4><button class="seo-copy" type="button" data-copy="seoDescription">Copy description</button></div>
+        <div class="seo-output-text" id="seoDescription"></div>
+      </div>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Hashtags</h4><button class="seo-copy" type="button" data-copy="seoHashtags">Copy hashtags</button></div>
+        <div class="seo-output-text" id="seoHashtags"></div>
+      </div>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Suggested tags / keywords</h4><button class="seo-copy" type="button" data-copy="seoTags">Copy keywords</button></div>
+        <div class="seo-output-text" id="seoTags"></div>
+      </div>
+      <p class="notice">SEO suggestions are template-based, not live search-volume data or AI-generated research. Check that every title and claim accurately reflects your video before publishing.</p>
+    </div>
+  </div>
+
   <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
 </section>
 
@@ -223,7 +323,92 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
 <footer>© <span id="year"></span> Shubham Creator Hub · Built to explore what's possible.</footer>
 
 <script>
+
 document.getElementById("year").textContent = new Date().getFullYear();
+
+(() => {
+  const form = document.getElementById("seoForm");
+  if (!form) return;
+  const byId = id => document.getElementById(id);
+  const clean = value => String(value || "").replace(/[<>]/g, "").replace(/\s+/g, " ").trim();
+  const titleCase = value => value.replace(/\b\w/g, ch => ch.toUpperCase());
+  const splitKeywords = value => [...new Set(value.split(",").map(clean).filter(Boolean))].slice(0, 12);
+  const slugHashtag = value => {
+    const words = value.replace(/[^\p{L}\p{N}\s]/gu, " ").trim().split(/\s+/).filter(Boolean);
+    if (!words.length) return "";
+    return "#" + words.map(titleCase).join("").replace(/[^\p{L}\p{N}]/gu, "");
+  };
+  const setText = (id, value) => { byId(id).textContent = value; };
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const topic = clean(byId("seoTopic").value);
+    if (!topic) { byId("seoTopic").focus(); return; }
+    const channel = byId("seoChannel").value;
+    const format = byId("seoFormat").value;
+    const audience = byId("seoAudience").value;
+    const tone = byId("seoTone").value;
+    const keywords = splitKeywords(byId("seoKeywords").value);
+    const notes = clean(byId("seoNotes").value);
+    const short = format === "Shorts";
+    const channelKeywords = channel === "Mind Over Machines"
+      ? ["AI tools", "technology", "digital productivity"]
+      : channel === "Project Dark Earth"
+        ? ["mysteries", "history", "documentary"]
+        : ["YouTube", "video content"];
+    const titles = tone === "cinematic"
+      ? [topic + " | The Story Behind the Mystery", "What Makes " + topic + " So Fascinating?", "Inside " + topic + ": What We Know"]
+      : tone === "educational"
+        ? [topic + ": A Simple Guide", "How " + topic + " Works (Explained)", topic + " Explained for Beginners"]
+        : tone === "practical"
+          ? [topic + " — Step-by-Step Guide", "Try This: " + topic, topic + ": What You Need to Know"]
+          : [topic + " — What You Need to Know", "The Truth About " + topic, "Before You Try " + topic + ", Watch This"];
+    const formattedTitles = short
+      ? titles.map((title, index) => (index + 1) + ". " + (title.length > 82 ? title.slice(0, 79).trimEnd() + "…" : title + (title.length < 60 ? " #Shorts" : "")))
+      : titles.map((title, index) => (index + 1) + ". " + title);
+    const channelLine = channel === "general" ? "" : "\nChannel: " + channel;
+    const description = topic + "\n\n" +
+      (notes ? notes + "\n\n" : "In this video, we explore " + topic + " for " + audience + ". Watch to learn the key ideas and takeaways.\n\n") +
+      (keywords.length ? "Topics covered: " + keywords.join(", ") + ".\n\n" : "") +
+      "If you found this useful, like the video, share your thoughts in the comments, and subscribe for more content." +
+      channelLine + "\n\n" +
+      (short ? "#Shorts " : "") + "Please verify all details and tailor this description to the final video.";
+    const baseTags = [...new Set([...channelKeywords, ...keywords, ...topic.split(/\s+/).filter(word => word.length > 2)])];
+    const hashtags = [...new Set([...(short ? ["#Shorts"] : []), ...baseTags.map(slugHashtag).filter(Boolean)])].slice(0, 12);
+    setText("seoTitles", formattedTitles.join("\n"));
+    setText("seoDescription", description);
+    setText("seoHashtags", hashtags.join(" "));
+    setText("seoTags", [...new Set([...keywords, ...channelKeywords, ...topic.split(/\s+/).filter(word => word.length > 2)])].join(", "));
+    byId("seoResults").hidden = false;
+    byId("seoStatus").textContent = "SEO pack created in your browser. Review and customize it before publishing.";
+    byId("seoResults").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+  });
+  form.addEventListener("reset", () => {
+    byId("seoResults").hidden = true;
+    byId("seoStatus").textContent = "";
+  });
+  document.querySelectorAll("[data-copy]").forEach(button => {
+    button.addEventListener("click", async () => {
+      const target = byId(button.dataset.copy);
+      const value = target ? target.textContent : "";
+      if (!value) return;
+      try {
+        await navigator.clipboard.writeText(value);
+        byId("seoStatus").textContent = "Copied to clipboard.";
+      } catch (error) {
+        const area = document.createElement("textarea");
+        area.value = value;
+        area.style.position = "fixed";
+        area.style.opacity = "0";
+        document.body.appendChild(area);
+        area.select();
+        const copied = document.execCommand("copy");
+        area.remove();
+        byId("seoStatus").textContent = copied ? "Copied to clipboard." : "Copy was blocked by your browser. Select and copy the text manually.";
+      }
+    });
+  });
+})();
+
 
 (() => {
   const canvas = document.getElementById("starfield");
