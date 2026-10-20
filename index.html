@@ -2159,6 +2159,74 @@ addEventListener("load", () => {
     const group = new T.Group();
     const mat = new T.MeshStandardMaterial({map: procTex(p), roughness: .88, metalness: 0});
     const body = new T.Mesh(sphereGeo, mat); body.scale.setScalar(p.radius); group.add(body);
+
+    // India highlight: attached directly to Earth's rotating textured sphere.
+    if (p.name === "Earth") {
+      const indiaOutline = [
+        [35.5,74.0],[34.8,73.0],[33.2,74.1],[31.5,74.9],[29.8,75.6],[28.0,77.0],
+        [27.5,79.0],[29.0,80.8],[30.8,81.5],[30.0,83.0],[28.0,84.7],[27.2,88.0],
+        [28.0,89.8],[26.8,92.0],[25.0,94.0],[23.0,97.0],[21.0,92.5],[20.0,88.0],
+        [22.0,85.0],[21.5,82.0],[19.0,84.0],[17.0,82.5],[14.5,80.3],[11.5,79.8],
+        [8.0,77.5],[6.8,75.8],[9.0,73.8],[12.0,74.0],[15.0,73.5],[18.0,72.7],
+        [21.0,70.5],[23.0,68.5],[25.0,70.0],[26.8,70.5],[28.5,71.8],[31.0,72.5],
+        [33.5,74.0],[35.5,74.0]
+      ];
+      const indiaPoint = (lat, lon, radius = 1.018) => {
+        const la = T.MathUtils.degToRad(lat), lo = T.MathUtils.degToRad(lon);
+        return new T.Vector3(radius * Math.cos(la) * Math.cos(lo), radius * Math.sin(la), -radius * Math.cos(la) * Math.sin(lo));
+      };
+      const borderPoints = indiaOutline.map(([lat, lon]) => indiaPoint(lat, lon, 1.018));
+      const borderCurve = new T.CatmullRomCurve3(borderPoints, false, "centripetal");
+      const borderGlow = new T.Mesh(
+        new T.TubeGeometry(borderCurve, 220, .030, 5, false),
+        new T.MeshBasicMaterial({color: 0xff8a24, transparent: true, opacity: .25, blending: T.AdditiveBlending, depthWrite: false})
+      );
+      const borderCore = new T.Mesh(
+        new T.TubeGeometry(borderCurve, 220, .010, 5, false),
+        new T.MeshBasicMaterial({color: 0xffb347, transparent: true, opacity: .98, depthWrite: false})
+      );
+      body.add(borderGlow, borderCore);
+
+      const makeEarthTag = (lines, options = {}) => {
+        const c = document.createElement("canvas"); c.width = 512; c.height = lines.length > 1 ? 160 : 96;
+        const g = c.getContext("2d");
+        g.textAlign = "center"; g.textBaseline = "middle";
+        g.font = options.font || "700 42px system-ui, sans-serif";
+        g.lineWidth = 7; g.strokeStyle = "rgba(5,10,20,.8)";
+        lines.forEach((line, i) => { const y = lines.length > 1 ? 42 + i * 66 : c.height / 2; g.strokeText(line, 256, y); g.fillStyle = options.color || "#ff922b"; g.fillText(line, 256, y); });
+        const tex = new T.CanvasTexture(c); tex.colorSpace = T.SRGBColorSpace;
+        const sprite = new T.Sprite(new T.SpriteMaterial({map: tex, transparent: true, depthTest: true, depthWrite: false}));
+        sprite.scale.set(options.width || .68, options.height || .16, 1);
+        return sprite;
+      };
+      const indiaTag = makeEarthTag(["INDIA"], {font:"800 48px system-ui, sans-serif", width:.70, height:.14, color:"#ff9635"});
+      indiaTag.position.copy(indiaPoint(24.8, 78.8, 1.045));
+      body.add(indiaTag);
+
+      // Small saffron triangular dhwaj marker with Om symbol.
+      const flagCanvas = document.createElement("canvas"); flagCanvas.width = 256; flagCanvas.height = 160;
+      const fg = flagCanvas.getContext("2d");
+      fg.fillStyle = "#ff8a18"; fg.beginPath(); fg.moveTo(24, 28); fg.lineTo(224, 70); fg.lineTo(24, 116); fg.closePath(); fg.fill();
+      fg.strokeStyle = "#ffe0a3"; fg.lineWidth = 4; fg.stroke();
+      fg.fillStyle = "#7d1f0c"; fg.font = "bold 38px serif"; fg.textAlign = "center"; fg.textBaseline = "middle"; fg.fillText("ॐ", 96, 72);
+      const flagTex = new T.CanvasTexture(flagCanvas); flagTex.colorSpace = T.SRGBColorSpace;
+      const flag = new T.Sprite(new T.SpriteMaterial({map: flagTex, transparent: true, depthTest: true, depthWrite: false}));
+      flag.scale.set(.28, .18, 1); flag.position.copy(indiaPoint(29.5, 79.5, 1.055)); body.add(flag);
+
+      const regionalLabels = [
+        ["LADAKH",34.2,77.6],["RAJASTHAN",26.2,73.8],["GUJARAT",22.8,71.5],
+        ["MAHARASHTRA",19.0,75.5],["MADHYA PRADESH",23.5,78.5],["UTTAR PRADESH",27.0,80.8],
+        ["BIHAR",25.8,85.5],["WEST BENGAL",23.5,87.8],["ODISHA",20.5,85.5],
+        ["TELANGANA",17.8,79.2],["KARNATAKA",15.0,76.0],["TAMIL NADU",11.0,78.5],
+        ["KERALA",10.2,76.3],["ANDHRA PRADESH",15.8,80.2],["ASSAM",26.2,92.0]
+      ];
+      const regionSprites = regionalLabels.map(([name, lat, lon]) => {
+        const sprite = makeEarthTag([name], {font:"700 25px system-ui, sans-serif", width:.42, height:.075, color:"#fff0bd"});
+        sprite.position.copy(indiaPoint(lat, lon, 1.035)); sprite.visible = false; body.add(sprite); return sprite;
+      });
+      body.userData.indiaMarker = {indiaTag, flag, regionSprites};
+    }
+
     loader.load(textureURLs[p.name], tex => { tex.colorSpace = T.SRGBColorSpace; tex.anisotropy = Math.min(8, renderer.capabilities.getMaxAnisotropy()); if (mat.map) mat.map.dispose(); mat.map = tex; mat.color.set(p.tint || 0xffffff); mat.needsUpdate = true; }, undefined, () => {});
     if (p.k > 0) { const atmo = new T.Mesh(sphereGeo, atmoMaterial(p.atmo, p.k)); atmo.scale.setScalar(p.radius * 1.16); group.add(atmo); }
     if (p.name === "Saturn") {
@@ -2283,6 +2351,13 @@ addEventListener("load", () => {
     bodies.forEach(b => {
       const a = simT * b.p.speed + b.phase; b.group.position.set(Math.cos(a) * b.p.orbit, 0, Math.sin(a) * b.p.orbit);
       if (!paused) b.body.rotation.y += dt * b.p.spin * speed;
+      if (b.p.name === "Earth" && b.body.userData.indiaMarker) {
+        const markers = b.body.userData.indiaMarker;
+        const zoomedEarth = selected === b && dist < 3.15;
+        markers.indiaTag.visible = selected === b && dist < 6.5;
+        markers.flag.visible = selected === b && dist < 6.5;
+        markers.regionSprites.forEach(s => { s.visible = zoomedEarth; });
+      }
     });
     camTarget.lerp(selected ? selected.group.position : vtmp.set(0, 0, 0), 1 - Math.exp(-4 * dt));
     dist = T.MathUtils.damp(dist, zoomTarget, 3, dt);
