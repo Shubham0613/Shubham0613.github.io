@@ -333,6 +333,66 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
     </div>
   </div>
 
+
+  <div class="seo-tool reveal" id="thumbnail-studio">
+    <div class="eyebrow">Free browser-based tool</div>
+    <h3>Thumbnail Prompt Studio</h3>
+    <p class="seo-tool-intro">Create a detailed prompt for an image generator. This tool writes the prompt locally; it does not generate the thumbnail image itself.</p>
+    <form id="thumbForm" class="seo-form">
+      <div class="seo-field full">
+        <label for="thumbTopic">Video topic <span aria-hidden="true">*</span></label>
+        <input id="thumbTopic" maxlength="180" required placeholder="e.g. The mystery of Göbekli Tepe">
+      </div>
+      <div class="seo-field">
+        <label for="thumbChannel">Channel</label>
+        <select id="thumbChannel">
+          <option value="Mind Over Machines">Mind Over Machines</option>
+          <option value="Project Dark Earth">Project Dark Earth</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="thumbMood">Visual mood</label>
+        <select id="thumbMood">
+          <option value="cinematic mystery">Cinematic mystery</option>
+          <option value="high-tech futuristic">High-tech futuristic</option>
+          <option value="documentary realism">Documentary realism</option>
+          <option value="clean educational">Clean educational</option>
+          <option value="dramatic discovery">Dramatic discovery</option>
+        </select>
+      </div>
+      <div class="seo-field">
+        <label for="thumbText">Thumbnail text (optional)</label>
+        <input id="thumbText" maxlength="55" placeholder="e.g. LOST HISTORY?">
+      </div>
+      <div class="seo-field">
+        <label for="thumbColors">Color palette</label>
+        <select id="thumbColors">
+          <option value="electric cyan and violet on deep black">Cyan and violet</option>
+          <option value="warm amber and deep charcoal">Amber and charcoal</option>
+          <option value="earthy bronze, sand and shadow">Earthy bronze</option>
+          <option value="crimson accents with cool blue shadows">Crimson and blue</option>
+          <option value="clean white, navy and cyan">White, navy and cyan</option>
+        </select>
+      </div>
+      <div class="seo-field full">
+        <label for="thumbDetails">Specific visual elements (optional)</label>
+        <textarea id="thumbDetails" maxlength="400" placeholder="e.g. ancient stone pillars, fog, distant landscape, one central focal point"></textarea>
+      </div>
+      <div class="seo-actions full">
+        <button class="btn primary" type="submit">Create thumbnail prompt ✦</button>
+        <button class="btn" type="reset">Clear form</button>
+      </div>
+    </form>
+    <p class="seo-status" id="thumbStatus" role="status" aria-live="polite"></p>
+    <div class="seo-results" id="thumbResults" hidden>
+      <div class="seo-output">
+        <div class="seo-output-head"><h4>Image-generation prompt</h4><button class="seo-copy" type="button" id="thumbCopy">Copy prompt</button></div>
+        <div class="seo-output-text" id="thumbPrompt"></div>
+      </div>
+      <p class="notice">Tip: image generators may render text inaccurately. For clean lettering, generate the artwork without text and add the title in an editor.</p>
+    </div>
+  </div>
+
   <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
 </section>
 
@@ -552,6 +612,62 @@ document.getElementById("year").textContent = new Date().getFullYear();
   });
 })();
 
+
+
+(() => {
+  const form = document.getElementById("thumbForm");
+  if (!form) return;
+  const el = id => document.getElementById(id);
+  const clean = value => String(value || "").replace(/[<>]/g, "").replace(/\s+/g, " ").trim();
+  form.addEventListener("submit", event => {
+    event.preventDefault();
+    const topic = clean(el("thumbTopic").value);
+    if (!topic) { el("thumbTopic").focus(); return; }
+    const channel = el("thumbChannel").value;
+    const mood = el("thumbMood").value;
+    const colors = el("thumbColors").value;
+    const text = clean(el("thumbText").value);
+    const details = clean(el("thumbDetails").value);
+    const style = channel === "Project Dark Earth"
+      ? "investigative history and mystery documentary, atmospheric ancient-world or exploration visuals, grounded documentary realism"
+      : "modern technology and AI creator channel, polished digital visuals, sleek high-contrast composition";
+    const prompt = "Create a professional YouTube thumbnail for the video topic: " + topic + ".\n\n" +
+      "CHANNEL DIRECTION: " + channel + " — " + style + ".\n" +
+      "VISUAL MOOD: " + mood + ".\n" +
+      "COLOR PALETTE: " + colors + ".\n" +
+      (details ? "VISUAL ELEMENTS: " + details + ".\n" : "") +
+      (text ? "OPTIONAL THUMBNAIL WORDING: \"" + text + "\". Keep the wording short, large and spelled exactly as supplied; if accurate text rendering is unreliable, leave clean space for later typography.\n" : "Do not add text, captions, logos or watermarks; leave clean negative space for optional title text.\n") +
+      "\nCOMPOSITION: 16:9 landscape, designed for small-screen readability, one clear focal subject, strong foreground/background separation, deliberate depth, controlled dramatic lighting, crisp details and a simple visual hierarchy. Use a bold but uncluttered layout.\n" +
+      "QUALITY: polished editorial thumbnail art, coherent lighting, sharp focal point, professional color grading.\n" +
+      "AVOID: tiny unreadable text, clutter, random symbols, misleading visual claims, fake interface screenshots, distorted faces or hands, copied copyrighted characters, brand logos, and watermarks.";
+    el("thumbPrompt").textContent = prompt;
+    el("thumbResults").hidden = false;
+    el("thumbStatus").textContent = "Prompt created locally. Paste it into an image generator and review its output.";
+    el("thumbResults").scrollIntoView({behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "nearest"});
+  });
+  form.addEventListener("reset", () => {
+    el("thumbResults").hidden = true;
+    el("thumbStatus").textContent = "";
+  });
+  el("thumbCopy").addEventListener("click", async () => {
+    const value = el("thumbPrompt").textContent;
+    if (!value) return;
+    try {
+      await navigator.clipboard.writeText(value);
+      el("thumbStatus").textContent = "Prompt copied to clipboard.";
+    } catch (error) {
+      const area = document.createElement("textarea");
+      area.value = value;
+      area.style.position = "fixed";
+      area.style.opacity = "0";
+      document.body.appendChild(area);
+      area.select();
+      const copied = document.execCommand("copy");
+      area.remove();
+      el("thumbStatus").textContent = copied ? "Prompt copied to clipboard." : "Copy was blocked; select and copy the prompt manually.";
+    }
+  });
+})();
 
 (() => {
   const canvas = document.getElementById("starfield");
