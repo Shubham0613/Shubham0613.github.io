@@ -82,6 +82,66 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
 @keyframes orbit{to{transform:rotate(360deg)}}
 @media(max-width:700px){nav{align-items:flex-start;flex-direction:column;padding:14px 6%}.links{gap:12px;font-size:12px}.hero{min-height:70vh;padding-top:80px}h1{letter-spacing:-1.5px}.about{grid-template-columns:1fr}section{padding:55px 6%}.stats{grid-template-columns:repeat(3,1fr)}.stat strong{font-size:19px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.reveal{opacity:1;transform:none}}
+
+/* === CREATOR HUB VISUAL REFINEMENT === */
+:root{--glass:rgba(12,17,34,.74);--glass-border:rgba(163,190,255,.18);--shadow:0 24px 80px rgba(0,0,0,.28)}
+body{background:#060813}
+body:before{z-index:-3;background:radial-gradient(ellipse at 12% 15%,rgba(22,88,137,.3),transparent 42%),radial-gradient(ellipse at 86% 34%,rgba(94,39,143,.28),transparent 42%),radial-gradient(ellipse at 48% 100%,rgba(13,72,79,.2),transparent 42%),#060813;background-size:140% 140%;animation:ambientDrift 24s ease-in-out infinite alternate}
+#starfield{z-index:-2;opacity:.72}
+@keyframes ambientDrift{0%{background-position:0% 0%}100%{background-position:100% 80%}}
+nav{background:rgba(6,8,19,.78);border-bottom-color:rgba(148,183,255,.16);box-shadow:0 8px 36px rgba(0,0,0,.12)}
+.links a{padding:7px 0;transition:color .2s ease,text-shadow .2s ease}
+.links a:hover{color:#8ff0ff;text-shadow:0 0 18px rgba(98,232,255,.35)}
+section{width:100%}
+.section-heading{margin:0 0 28px}
+.section-heading h2{font-size:clamp(29px,4vw,43px);line-height:1.15;margin:8px 0}
+.section-heading p{max-width:690px}
+.tool-card{position:relative;isolation:isolate;margin:20px 0;padding:clamp(20px,3vw,32px);border:1px solid rgba(133,175,255,.2);border-radius:22px;background:linear-gradient(145deg,rgba(18,27,49,.88),rgba(12,13,30,.86));box-shadow:var(--shadow);backdrop-filter:blur(18px);overflow:hidden}
+.tool-card:before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;background:radial-gradient(circle at 100% 0,rgba(98,232,255,.1),transparent 45%)}
+.tool-card h3{font-size:clamp(20px,2.5vw,27px);margin:0 0 8px}
+.tool-form{display:grid;grid-template-columns:1fr;gap:9px}
+.tool-form label,.pulse-form label{font-size:12px;font-weight:750;color:#dce7ff;margin-top:5px}
+.tool-form input,.tool-form select,.tool-form textarea,.pulse-form input,.pulse-form select,.pulse-form textarea{display:block;width:100%;min-width:0;max-width:100%;color:#f4f6ff;background:rgba(5,9,22,.88);border:1px solid rgba(172,194,255,.22);border-radius:12px;padding:13px 14px;font:inherit;font-size:14px;outline:none;transition:border-color .2s,box-shadow .2s,background .2s}
+.tool-form input:focus,.tool-form select:focus,.tool-form textarea:focus,.pulse-form input:focus,.pulse-form select:focus,.pulse-form textarea:focus{border-color:#62e8ff;box-shadow:0 0 0 3px rgba(98,232,255,.12);background:#080e20}
+.tool-form textarea,.pulse-form textarea{resize:vertical;line-height:1.55}
+.primary-btn,.secondary-btn{appearance:none;display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:42px;padding:10px 16px;border-radius:11px;font:inherit;font-size:13px;font-weight:800;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s,background .2s}
+.primary-btn{color:#07101a;background:linear-gradient(110deg,#67e8f9,#b5a0ff);border:1px solid transparent;box-shadow:0 8px 26px rgba(98,232,255,.12)}
+.secondary-btn{color:#e7edff;background:rgba(255,255,255,.045);border:1px solid rgba(172,194,255,.22)}
+.primary-btn:hover,.secondary-btn:hover{transform:translateY(-2px);box-shadow:0 10px 28px rgba(98,232,255,.12);border-color:rgba(98,232,255,.65)}
+button:disabled{opacity:.45;cursor:not-allowed;transform:none}
+.seo-actions{gap:10px}
+.notice{color:#aebbd8;line-height:1.65}
+#cloudConnectionStatus,#cloudAuthStatus,#cloudProjectStatusMessage{overflow-wrap:anywhere}
+#cloudProjectList{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px;margin-top:18px}
+#cloudProjectList .seo-output{background:rgba(5,9,22,.58);border-color:rgba(172,194,255,.17)}
+#cloudProjectList button{margin:6px 7px 0 0}
+.people-pulse{max-width:1280px}
+.pulse-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.pulse-panel{position:relative;overflow:hidden;padding:clamp(20px,3vw,30px);border:1px solid rgba(151,180,255,.2);border-radius:24px;background:linear-gradient(145deg,rgba(18,29,53,.86),rgba(11,13,30,.9));box-shadow:var(--shadow);backdrop-filter:blur(16px)}
+.pulse-panel:after{content:"";position:absolute;right:-80px;top:-100px;width:220px;height:220px;border-radius:50%;background:rgba(98,232,255,.07);filter:blur(2px);pointer-events:none}
+.pulse-panel h3,.pulse-wall-head h3{font-size:clamp(21px,3vw,28px);margin:10px 0}
+.pulse-kicker{font-size:10px;font-weight:850;letter-spacing:2px;color:var(--cyan)}
+.pulse-form{position:relative;z-index:1;display:grid;gap:9px}
+.pulse-form label span{color:var(--muted);font-weight:500}
+.pulse-form button{margin-top:9px;justify-self:start}
+.pulse-status{font-size:12px;min-height:22px;color:#9eeeff;overflow-wrap:anywhere}
+.pulse-wall-head{display:flex;align-items:flex-end;justify-content:space-between;gap:18px;flex-wrap:wrap;margin:38px 0 18px}
+.pulse-wall-actions{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.pulse-wall-actions select{min-height:40px;border-radius:10px;border:1px solid var(--glass-border);padding:8px 12px;color:var(--text);background:#0b1020}
+.pulse-wall{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,260px),1fr));gap:14px}
+.pulse-post{min-width:0;border:1px solid var(--glass-border);border-radius:17px;padding:19px;background:linear-gradient(145deg,rgba(18,24,44,.8),rgba(8,11,24,.85));box-shadow:0 12px 40px rgba(0,0,0,.14);animation:postEnter .35s ease both}
+.pulse-post .pulse-post-top{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.pulse-chip{display:inline-flex;border:1px solid rgba(98,232,255,.25);border-radius:30px;padding:4px 9px;font-size:10px;color:#8feeff}
+.pulse-post h4{margin:12px 0 6px;font-size:17px;overflow-wrap:anywhere}
+.pulse-post p{font-size:13px;white-space:pre-wrap;overflow-wrap:anywhere;margin:8px 0 15px}
+.pulse-post small{font-size:11px;color:#94a2c2}
+.pulse-post-actions{display:flex;gap:8px;flex-wrap:wrap}
+.pulse-post-actions button{font-size:11px;min-height:32px;padding:6px 10px}
+.pulse-empty{grid-column:1/-1;padding:28px;border:1px dashed var(--glass-border);border-radius:16px;text-align:center;color:var(--muted)}
+@keyframes postEnter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:760px){.pulse-grid{grid-template-columns:1fr}.tool-card{border-radius:17px}.pulse-wall-head{align-items:flex-start}.pulse-wall-actions{width:100%}.pulse-wall-actions select{flex:1;min-width:120px}}
+@media(prefers-reduced-motion:reduce){body:before{animation:none!important}.pulse-post{animation:none!important}}
+
 </style>
   <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 </head>
@@ -96,6 +156,7 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
     <a href="#projects">Projects</a>
     <a href="#studio">Creator Studio</a>
     <a href="#cloud-dashboard">Cloud Dashboard</a>
+    <a href="#people-pulse">People & India</a>
     <a href="#videos">YouTube</a>
     <a href="#contact">Contact</a>
   </div>
@@ -433,6 +494,53 @@ footer{text-align:center;padding:32px 20px;border-top:1px solid var(--line);colo
   <p class="notice">Next build stage: add secure sign-in and a private owner dashboard. Never place AI API keys in this public website's HTML or JavaScript.</p>
 </section>
 
+
+
+<section id="people-pulse" class="people-pulse">
+  <div class="section-head reveal">
+    <div class="eyebrow">People · Possibility · Progress</div>
+    <h2>India's next chapter starts <span class="gradient">with people.</span></h2>
+    <p>A community concept for sharing honest reflections, local challenges, and practical ideas that could make our communities better. Start with one small, useful idea.</p>
+  </div>
+  <div class="pulse-grid">
+    <div class="pulse-panel">
+      <span class="pulse-kicker">01 / COMMUNITY VOICE</span>
+      <h3>What's on your mind?</h3>
+      <p>Share a thought, a lesson, gratitude, or a challenge you'd like people to understand. Keep it respectful and avoid personal contact details.</p>
+      <form id="pulseForm" class="pulse-form">
+        <label for="pulseName">Display name <span>(optional)</span></label>
+        <input id="pulseName" maxlength="40" placeholder="A name or alias">
+        <label for="pulseMood">How are you feeling?</label>
+        <select id="pulseMood" required><option value="Hopeful">🌱 Hopeful</option><option value="Grateful">💛 Grateful</option><option value="Curious">🔎 Curious</option><option value="Stressed">🌧️ Stressed</option><option value="Motivated">⚡ Motivated</option><option value="Reflective">🌌 Reflective</option></select>
+        <label for="pulseMessage">Your reflection</label>
+        <textarea id="pulseMessage" maxlength="420" rows="4" required placeholder="What's something you wish more people understood? (420 characters max)"></textarea>
+        <button class="primary-btn" type="submit">Add to my local wall ↗</button>
+      </form>
+      <p id="pulseStatus" class="pulse-status" role="status" aria-live="polite">Your entries stay in this browser on this device for now.</p>
+    </div>
+    <div class="pulse-panel pulse-idea-panel">
+      <span class="pulse-kicker">02 / INDIA INNOVATION BOARD</span>
+      <h3>Small ideas. Real progress.</h3>
+      <p>Suggest a practical, peaceful, inclusive idea for education, public spaces, accessibility, sustainability, digital literacy, or local opportunity.</p>
+      <form id="ideaForm" class="pulse-form">
+        <label for="ideaTitle">Idea headline</label>
+        <input id="ideaTitle" maxlength="90" required placeholder="e.g. Digital skills clubs in local libraries">
+        <label for="ideaCategory">Focus area</label>
+        <select id="ideaCategory"><option>Education & skills</option><option>Clean & green communities</option><option>Digital inclusion</option><option>Jobs & entrepreneurship</option><option>Public health & accessibility</option><option>Local infrastructure</option><option>Culture & community</option></select>
+        <label for="ideaDetails">What could work?</label>
+        <textarea id="ideaDetails" maxlength="600" rows="3" required placeholder="Describe a practical first step, who it helps, and what success might look like."></textarea>
+        <button class="primary-btn" type="submit">Share idea on this device ↗</button>
+      </form>
+      <p id="ideaStatus" class="pulse-status" role="status" aria-live="polite">Ideas are saved locally in this browser; they are not public or sent to a server.</p>
+    </div>
+  </div>
+  <div class="pulse-wall-head">
+    <div><span class="pulse-kicker">YOUR LOCAL COMMUNITY WALL</span><h3>Reflections & ideas</h3></div>
+    <div class="pulse-wall-actions"><select id="pulseFilter" aria-label="Filter community wall"><option value="all">Everything</option><option value="reflection">Reflections</option><option value="idea">India ideas</option></select><button type="button" class="secondary-btn" id="pulseExport">Export backup</button></div>
+  </div>
+  <div id="pulseWall" class="pulse-wall" aria-live="polite"></div>
+  <p class="notice">Important: this is currently a local prototype, not a public social network. Entries and likes are stored only in this browser. Public sharing, moderation, reporting, and cross-device sync require a secure backend and community rules before launch.</p>
+</section>
 
 <section id="cloud-dashboard" class="section">
   <div class="section-heading">
@@ -1131,6 +1239,60 @@ document.getElementById("year").textContent = new Date().getFullYear();
 })();
 
 </script>
+
+<script>
+/* Lightweight local prototype: no public posting or external transmission. */
+(() => {
+  const $ = id => document.getElementById(id);
+  const key = "shubhamHub.peoplePulse.v1";
+  let posts = [];
+  try { posts = JSON.parse(localStorage.getItem(key) || "[]"); if (!Array.isArray(posts)) posts = []; } catch (_) { posts = []; }
+  const save = () => { try { localStorage.setItem(key, JSON.stringify(posts)); return true; } catch (_) { return false; } };
+  const esc = value => String(value ?? "").replace(/[&<>"']/g, ch => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));
+  const render = () => {
+    const wall = $("pulseWall"); if (!wall) return;
+    const filter = $("pulseFilter")?.value || "all";
+    const shown = posts.filter(p => filter === "all" || p.kind === filter).slice().reverse();
+    wall.replaceChildren();
+    if (!shown.length) { const empty = document.createElement("div"); empty.className = "pulse-empty"; empty.textContent = "Your wall is ready. Add a reflection or an idea above to see it here."; wall.appendChild(empty); return; }
+    shown.forEach(post => {
+      const article = document.createElement("article"); article.className = "pulse-post";
+      const label = post.kind === "idea" ? "🇮🇳 INDIA IDEA · " + post.category : "COMMUNITY REFLECTION · " + post.mood;
+      const heading = post.kind === "idea" ? post.title : post.author || "Community member";
+      const content = post.kind === "idea" ? post.details : post.message;
+      article.innerHTML = '<div class="pulse-post-top"><span class="pulse-chip">'+esc(label)+'</span><small>'+esc(new Date(post.createdAt).toLocaleDateString())+'</small></div><h4>'+esc(heading)+'</h4><p>'+esc(content)+'</p><div class="pulse-post-actions"><button class="secondary-btn" type="button" data-like="'+esc(post.id)+'">♡ Helpful · '+Number(post.likes||0)+'</button><button class="secondary-btn" type="button" data-delete="'+esc(post.id)+'">Delete</button></div>';
+      wall.appendChild(article);
+    });
+  };
+  $("pulseForm")?.addEventListener("submit", event => {
+    event.preventDefault();
+    const message = $("pulseMessage").value.trim();
+    if (!message) return;
+    posts.push({id: crypto.randomUUID ? crypto.randomUUID() : String(Date.now())+Math.random(),kind:"reflection",author:$("pulseName").value.trim().slice(0,40),mood:$("pulseMood").value,message:message.slice(0,420),likes:0,createdAt:new Date().toISOString()});
+    const ok = save(); $("pulseForm").reset(); $("pulseStatus").textContent = ok ? "Reflection added to your local wall. It has not been shared publicly." : "Browser storage is unavailable. Please check browser privacy settings."; render();
+  });
+  $("ideaForm")?.addEventListener("submit", event => {
+    event.preventDefault();
+    const title = $("ideaTitle").value.trim(), details = $("ideaDetails").value.trim();
+    if (!title || !details) return;
+    posts.push({id:crypto.randomUUID ? crypto.randomUUID() : String(Date.now())+Math.random(),kind:"idea",title:title.slice(0,90),category:$("ideaCategory").value,details:details.slice(0,600),likes:0,createdAt:new Date().toISOString()});
+    const ok = save(); $("ideaForm").reset(); $("ideaStatus").textContent = ok ? "Idea added to your local wall. For now, only this browser can see it." : "Browser storage is unavailable. Please check browser privacy settings."; render();
+  });
+  $("pulseFilter")?.addEventListener("change", render);
+  $("pulseWall")?.addEventListener("click", event => {
+    const like = event.target.closest("[data-like]"), del = event.target.closest("[data-delete]");
+    if (like) { const post = posts.find(p => p.id === like.dataset.like); if (post) post.likes = Number(post.likes||0)+1; save(); render(); }
+    if (del) { const post = posts.find(p => p.id === del.dataset.delete); if (!post) return; if (!confirm("Delete this entry from this browser?")) return; posts = posts.filter(p => p.id !== post.id); save(); render(); }
+  });
+  $("pulseExport")?.addEventListener("click", () => {
+    const blob = new Blob([JSON.stringify(posts,null,2)], {type:"application/json"});
+    const url = URL.createObjectURL(blob); const a = document.createElement("a"); a.href=url; a.download="shubham-people-pulse-backup.json"; document.body.appendChild(a); a.click(); a.remove(); URL.revokeObjectURL(url);
+    $("pulseStatus").textContent = "Local wall backup exported.";
+  });
+  render();
+})();
+</script>
+
 </body>
 </html>
 
