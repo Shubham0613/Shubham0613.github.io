@@ -159,3 +159,4 @@ if (rl) {
 const contact = document.getElementById("contact");
 if (contact) contact.append($("div", {className: "seo-tool", style: "margin-top:28px"}, [$("div", {className: "eyebrow", textContent: "Work with me"}), $("h3", {textContent: "Open to entry-level opportunities and collaborations"}), $("p", {className: "seo-tool-intro", textContent: "IT operations, cybersecurity-adjacent and sales roles, plus data and creator projects. Send a message on LinkedIn or Instagram, or ask Nova."}), $("button", {className: "btn primary", type: "button", textContent: "Ask Nova about Shubham ✦", onclick: () => toggle(true)})]));
 })();
+
