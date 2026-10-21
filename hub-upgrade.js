@@ -118,7 +118,7 @@ function say(text, cls) {
   else { let last = 0; text.replace(/\[([^\]]+)\]\((https:[^)]+)\)/g, (s, label, url, i) => { m.append(text.slice(last, i), $("a", {href: url, target: "_blank", rel: "noopener noreferrer", textContent: label})); last = i + s.length; return s; }); m.append(text.slice(last)); }
   log.append(m); log.scrollTop = log.scrollHeight;
 }
-function send(t) { t = String(t).trim(); if (!t) return; say(t, "nv-u"); setTimeout(() => say(answer(t), "nv-b"), 350); }
+function send(t) { t = String(t).trim(); if (!t) return; say(t, "nv-u"); setTimeout(() => say(answer(t), "nv-b"), 60); }
 SUGGEST.forEach(s => chips.append($("button", {type: "button", textContent: s, onclick: () => send(s)})));
 function toggle(open) { panel.hidden = !open; launcher.setAttribute("aria-expanded", String(open)); if (open) { if (!log.children.length) say(answer("hello"), "nv-b"); input.focus(); } }
 addEventListener("keydown", e => { if (e.key === "Escape" && !panel.hidden) toggle(false); });
